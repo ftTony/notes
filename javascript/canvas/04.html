@@ -9,6 +9,36 @@
 
 <body>
     <canvas id="canvas" width="800" height="500"></canvas>
+    <script>
+        function draw() {
+            var ctx = document.getElementById('canvas').getContext('2d');
+            var img = new Image()
+            // 简单的线图
+            // img.onload = function () {
+            //     ctx.drawImage(img, 0, 0);
+            //     ctx.beginPath();
+            //     ctx.moveTo(30, 96);
+            //     ctx.lineTo(70, 66);
+            //     ctx.lineTo(103, 76);
+            //     ctx.lineTo(170, 15);
+            //     ctx.stroke();
+            // }
+            // img.src = 'img/backdrop.png'
+
+            //  平铺图像
+            // img.onload = function () {
+            //     for (var i = 0; i < 4; i++) {
+            //         for (var j = 0; j < 3; j++) {
+            //             ctx.drawImage(img, j * 50, i * 38, 50, 38);
+            //         }
+            //     }
+            // }
+            // img.src = 'img/rhino.jpg'
+
+            // 切片
+        }
+        draw()
+    </script>
 </body>
 
 </html>
