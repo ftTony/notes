@@ -9,6 +9,29 @@
 
 <body>
     <canvas id="canvas" width="800" height="500"></canvas>
+    <script>
+        function draw() {
+            var ctx = document.getElementById('canvas').getContext('2d');
+
+            // 一个填充文本示例
+            // ctx.font = "48px serif";
+            // ctx.fillText("Hello world", 10, 50);
+
+            // 一个文本边框示例
+            // ctx.font = "48px serif";
+            // ctx.strokeText("Hello world", 10, 50);
+
+            // textBaseline 例子
+            // ctx.font = "48px serif";
+            // ctx.textBaseline = "hanging";
+            // ctx.strokeText("Hello world", 0, 100);
+
+            // 预测量文本宽度
+            var text = ctx.measureText("foo");
+            console.log(text.width); // 16;
+        }
+        draw()
+    </script>
 </body>
 
 </html>
