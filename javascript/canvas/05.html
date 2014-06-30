@@ -31,15 +31,64 @@
             // ctx.restore(); // 加载默认颜色配置
             // ctx.fillRect(60, 60, 30, 30); // 使用加载的配置绘制一个矩形
 
-            for (var i = 0; i < 3; i++) {
-                for (var j = 0; j < 3; j++) {
-                    ctx.save()
-                    ctx.fillStyle = 'rgb(' + (51 * i) + ', ' + (255 - 51 * i) + ', 255)';
-                    ctx.translate(10 + j * 50, 10 + i * 50)
-                    ctx.fillRect(0, 0, 25, 25)
-                    ctx.restore()
-                }
+            // for (var i = 0; i < 3; i++) {
+            //     for (var j = 0; j < 3; j++) {
+            //         ctx.save()
+            //         ctx.fillStyle = 'rgb(' + (51 * i) + ', ' + (255 - 51 * i) + ', 255)';
+            //         ctx.translate(10 + j * 50, 10 + i * 50)
+            //         ctx.fillRect(0, 0, 25, 25)
+            //         ctx.restore()
+            //     }
+            // }
+
+            // rotate 例子
+            // ctx.translate(100, 100)
+            // ctx.fillRect(0, 0, 100, 100)
+            // ctx.rotate(Math.PI / 3)
+            // ctx.fillStyle = 'pink'
+            // ctx.fillRect(0, 0, 100, 100)
+
+            // ctx.translate(75, 75);
+            // for (var i = 1; i < 6; i++) { // Loop through rings (from inside to out)
+            //     ctx.save();
+            //     ctx.fillStyle = 'rgb(' + (51 * i) + ',' + (255 - 51 * i) + ',255)';
+
+            //     for (var j = 0; j < i * 6; j++) { // draw individual dots
+            //         ctx.rotate(Math.PI * 2 / (i * 6));
+            //         ctx.beginPath();
+            //         ctx.arc(0, i * 12.5, 5, 0, Math.PI * 2, true);
+            //         ctx.fill();
+            //     }
+
+            //     ctx.restore();
+            // }
+
+            // scale 例子
+
+            // ctx.save()
+            // ctx.scale(10, 3);
+            // ctx.fillRect(1, 10, 10, 10);
+            // ctx.restore()
+
+            // ctx.scale(-1, 1)
+            // ctx.font = '48px serif'
+            // ctx.fillText('MDN', -200, 120)
+
+            // transforms 例子
+
+            var sin = Math.sin(Math.PI / 6)
+            var cos = Math.cos(Math.PI / 6)
+            ctx.translate(100, 100)
+            var c = 0
+            for (var i = 0; i <= 12; i++) {
+                c = Math.floor(255 / 12 * i)
+                ctx.fillStyle = 'rgb(' + c + ',' + c + ',' + c + ')'
+                ctx.fillRect(0, 0, 100, 10)
+                ctx.transform(cos, sin, -sin, cos, 0, 0)
             }
+            ctx.setTransform(-1, 0, 0, 1, 100, 100)
+            ctx.fillStyle = 'rgba(255, 128, 255, 0.5)'
+            ctx.fillRect(0, 50, 100, 100)
         }
         draw()
     </script>
