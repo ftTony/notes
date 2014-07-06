@@ -25,6 +25,7 @@
             var x = event.layerX
             var y = event.layerY
             var pixel = ctx.getImageData(x, y, 1, 1)
+            console.log(pixel)
             var data = pixel.data
             var rgba = 'rgba(' + data[0] + ',' + data[1] + ',' + data[2] + ',' + (data[3] / 255) + ')'
             color.style.background = rgba
