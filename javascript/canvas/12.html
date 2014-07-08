@@ -10,9 +10,40 @@
 <body>
     <canvas id="canvas" width="800" height="500"></canvas>
     <script>
-        function clock() {
-            var now = new Date();
+        var cn
+        var c
+        var u = 10
+        const m = {
+            x: innerWidth / 2,
+            y: innerHeight / 2
+        }
+
+        window.onmousemove = function (e) {
+            m.x = e.clientX
+            m.y = e.clientY
+        }
+
+        function gc() {
+            var s = '0123456789ABCDEF'
+        }
+        var a = []
+        window.onload = function myfunction() {
             var ctx = document.getElementById('canvas').getContext('2d');
+        }
+        window.onresize = function () {
+            resize()
+        }
+
+        function resize() {
+
+        }
+
+        function ab(x, y, r, cc, o, s) {
+
+        }
+
+        function anim() {
+
 
         }
         window.requestAnimationFrame(clock)
