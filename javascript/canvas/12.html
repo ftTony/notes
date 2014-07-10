@@ -5,6 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canvas 基本动画（鼠标追踪动画）</title>
+    <style>
+        #canvas {
+            position: fixed;
+            z-index: -1;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+    </style>
 </head>
 
 <body>
@@ -25,10 +37,29 @@
 
         function gc() {
             var s = '0123456789ABCDEF'
+            var c = '#'
+            for (var i = 0; i < 6; i++) {
+                c += s[Math.ceil(Math.random() * 15)]
+            }
+            return c
         }
         var a = []
         window.onload = function myfunction() {
-            var ctx = document.getElementById('canvas').getContext('2d');
+            cn = document.getElementById('canvas')
+            c = cn.getContext('2d');
+
+            for (var i = 0; i < 10; i++) {
+                var r = 30
+                var x = Math.random() * (innerWidth - 2 * r) + r
+                var y = Math.random() * (innerHeight - 2 * r) + r
+                var t = new ab(innerWidth / 2, innerHeight / 2, 5, 'red', Math.random() * 200 + 20, 2)
+                a.push(t)
+            }
+
+            c.lineWidth = '2'
+            c.globalAlpha = 0.5
+            resize()
+            anim()
         }
         window.onresize = function () {
             resize()
