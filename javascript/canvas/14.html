@@ -114,15 +114,31 @@
     <canvas id="main"></canvas>
     <script>
         function tmz() {
-
+            var e = new Date(t),
+                i = new Date,
+                n = Math.abs(i.getMinutes() - e.getMinutes),
+                o = Math.abs(i.getSeconds() - e.getSeconds())
+            return n + ' : ' + o
         }
 
         function call(t, e) {
-
+            return t.x < e.x + e.w && t.x + t.w > e.x && t.y < e.y + e.h && t.h + t.y > e.y
         }
 
         function snake() {
+            this.w = 15
+            this.h = 15
+            this.dx = 1
+            this.dy = 1
+            this.xf = 1
+            this.yf = 1
+            this.sn = []
+            for (var t = {
+                    x: w / 2,
+                    y: h / 2
+                }, e = 0; e < 5; e++) {
 
+            }
         }
 
         function gc() {
@@ -134,19 +150,34 @@
         }
 
         function init() {
-
+            cc.height = h
+            cc.width = w
+            c.fillRect(0, 0, w, innerHeight)
+            for (var t = 0; t < 10; t++) {
+                fa.push(new food)
+            }
+            s = new snake(w / 2, h / 2, 400, 4, 4)
+            anima()
         }
 
         function anima() {
-
+            c.fillStyle = 'rgba(0,0,0,0.11)'
+            c.fillRect(0, 0, cc.width, cc.height)
+            fa.forEach(t => t.put())
+            s.draw()
+            document.getElementById('time').innerText = tmz()
+            setTimeout(() => {
+                requestAnimationFrame(anima)
+            }, fw)
         }
 
         function emit(t) {
-
+            key.keydown(t)
         }
 
         function touch(t) {
-
+            t.classList.toggle('off'),
+                document.getElementsByClassName('keypress')[0].classList.toggle('hide')
         }
 
         window.onkeydown = function (t) {
