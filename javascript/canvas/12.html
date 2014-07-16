@@ -88,7 +88,20 @@
 
             this.o = o
             this.dr = function () {
-
+                const ls = {
+                    x: this.x,
+                    y: this.y
+                }
+                this.theta += this.s
+                this.x = m.x + Math.cos(this.theta) * this.t
+                this.y = m.y + Math.sin(this.theta) * this.t
+                c.beginPath()
+                c.lineWidth = this.r
+                c.strokeStyle = this.cc
+                c.moveTo(ls.x, ls.y)
+                c.lineTo(this.x, this.y)
+                c.stroke()
+                c.closePath()
             }
         }
 
@@ -100,7 +113,6 @@
                 e.dr()
             })
         }
-        window.requestAnimationFrame(clock)
     </script>
 </body>
 
