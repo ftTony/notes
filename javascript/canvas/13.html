@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas（缩放和反锯齿）</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="300" height="227"></canvas>
+    <canvas id="zoom" width="300" height="227"></canvas>
+    <div>
+        <label for="smoothbtn">
+            <input type="checkbox" name="smoothbtn" checked="checked" id="smoothbtn">
+            Enable image smoothing
+        </label>
+    </div>
+    <script>
+        var img = new Image()
+        img.src = './img/rhino.jpg'
+        img.onload = function () {
+            draw(this)
+        }
+
+        function draw(img) {
+            var canvas = document.getElementById('canvas')
+            var ctx = canvas.getContext('2d')
+            ctx.drawImage(img, 0, 0)
+            img.style.display = 'none'
+            var zoomctx =
+        }
+    </script>
+</body>
+
+</html>
