@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>股票分时图</title>
+    <style>
+        #canvas {
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" height="425"></canvas>
+    <script>
+        var cn = document.getElementById('canvas')
+        canvas.width = document.documentElement.clientWidth
+        var cx = cn.getContext('2d')
+        var stepx = Math.floor((cn.width - 30) / 11)
+        var stepy = Math.floor((cn.height - 30) / 6)
+        cx.storkeStyle = '#69bcdf'
+        cx.lineWidth = 0.5
+        cx.lineCap = 'round'
+        for (var i = stepx; i < cn.width - stepx; i += stepx) {
+            cx.beginPath()
+            cx.moveTo(i, 0)
+            cx.lineTo(i, cn.height - 30)
+            cx.stroke()
+        }
+        for (var i = stepy; i < cn.height - stepy; i += stepy) {
+            cx.beginPath()
+            cx.moveTo(30, i)
+            cx.lineTo(cn.width - 30, i)
+            cx.stroke()
+        }
+        cx.storkeStyle = '#95c0d2'
+        cx.lineWidth = 1
+        cx.strokeRect(30, 1, cn.width - 60, cn.height - 32)
+        // // ctx.moveTo(30, 0)
+        // ctx.strokeStyle = '#dce1e6'
+        // ctx.rect(20, 0, 750, 350)
+        // ctx.stroke()
+    </script>
+</body>
+
+</html>
