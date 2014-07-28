@@ -18,8 +18,9 @@
         var cn = document.getElementById('canvas')
         canvas.width = document.documentElement.clientWidth
         var cx = cn.getContext('2d')
-        var stepx = Math.floor((cn.width - 30) / 11)
+        var stepx = Math.floor((cn.width - 30) / 12)
         var stepy = Math.floor((cn.height - 30) / 6)
+        var tmp = ['9:30', '10:00', '11:00', '12:00/13:00', '14:00', '15:00', '16:00']
         cx.storkeStyle = '#69bcdf'
         cx.lineWidth = 0.5
         cx.lineCap = 'round'
