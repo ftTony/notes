@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas使用图片</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="500"></canvas>
+    <script>
+        var img = new Image()
+        img.src = './img/rhino.jpg'
+        img.onload = function () {
+            var canvas = document.getElementById('canvas')
+            var ctx = canvas.getContext('2d')
+            ctx.drawImage(img, 100, 50, 230, 230, 200, 50, 300, 300)
+        }
+    </script>
+</body>
+
+</html>
