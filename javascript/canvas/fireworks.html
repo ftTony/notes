@@ -169,7 +169,7 @@
         let imgData = [] // 覆盖文字的矩形区域
         let checkPercent = 0.4 // 检测区域中非白色像素点的比例小于限制的时需要生成烟花
         let textLeft = 180 // 文字距离画布左侧距离
-        let testTop = 80 // 文字距离画布上侧距离
+        let textTop = 80 // 文字距离画布上侧距离
         let g = new Vector2(0, 9.8) // 重力加速度
 
         start()
@@ -240,16 +240,34 @@
 
         // 检测指定区域是否需要生成烟花圆
         function shouldAddBall(x, y) {
-
+            let pixels = context.getImageData(textLeft + x * gap, textTop + y * gap, 5, 5)
+            if (!count(pixels)) return
+            return {
+                x: textLeft + x * gap,
+                y: textTop + y * gap
+            }
         }
 
-        function count(piexls) {
-
+        function count(pixels) {
+            let data = pixels.data
+            let total = data.length
+            let num = data.filter(item => item !== 255).length
+            return (num / total) > checkPercent
         }
 
         // 每隔一定时间增加一个新的球体
         function addBall(pos) {
-
+            let {
+                x,
+                y
+            } = pos
+            let r = Math.ceil(Math.random() * 4 + 1)
+            let i = Math.ceil(Math.random() * 16)
+            let left = pos.x < (textLeft + xs / 2) ? -1 : 1
+            let ball = new Ball(x, y, balls.length)
+            ball.color = colorPalette[i]
+            ball.velocity = new Vector2(left * 10 * Math.random(), -20 * Math.random())
+            balls.push(ball)
         }
     </script>
 </body>
