@@ -22,7 +22,25 @@
     <canvas id="canvas" width="1200" height="800"></canvas>
     <script>
         let dt = 0.1 // 每帧表示的时间间隔
-
+        // 日期格式化工具
+        Date.prototype.Format = function (fmt) { //author: meizz   
+            var o = {
+                "M+": this.getMonth() + 1, //月份   
+                "d+": this.getDate(), //日   
+                "h+": this.getHours(), //小时   
+                "m+": this.getMinutes(), //分   
+                "s+": this.getSeconds(), //秒   
+                "q+": Math.floor((this.getMonth() + 3) / 3), //季度   
+                "S": this.getMilliseconds() //毫秒   
+            };
+            if (/(y+)/.test(fmt))
+                fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+            for (var k in o)
+                if (new RegExp("(" + k + ")").test(fmt))
+                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[
+                        k]).length)));
+            return fmt;
+        }
         class Ball {
             constructor(x, y, r, id) {
                 this.pos = new Vector2(x, y) // 记录当前坐标
@@ -116,7 +134,84 @@
                 return this.x * v.x + this.y * v.y
             }
         }
-        var ctx = document.getElementById('canvas').getContext('2d')
+        const canvas = document.getElementById('canvas')
+        const context = canvas.getContext('2d')
+        var colorPalette = [
+            "#2ec7c9",
+            "#b6a2de",
+            "#5ab1ef",
+            "#ffb980",
+            "#d87a80",
+            "#8d98b3",
+            "#e5cf0d",
+            "#97b552",
+            "#95706d",
+            "#dc69aa",
+            "#07a2a4",
+            "#9a7fd1",
+            "#588dd5",
+            "#f5994e",
+            "#c05050",
+            "#59678c",
+            "#c9ab00",
+            "#7eb00a",
+            "#6f5553",
+            "#c14089"
+        ];
+
+        let balls = []
+        let timer = new Timer()
+        let rightBorder = 800
+        let bottomBorder = 300
+        let gap = 5
+        let xs = 380 // 文字所占区域宽度
+        let ys = 120 // 文字所占区域高度
+        let imgData = [] // 覆盖文字的矩形区域
+        let checkPercent = 0.4 // 检测区域中非白色像素点的比例小于限制的时需要生成烟花
+        let textLeft = 180 // 文字距离画布左侧距离
+        let testTop = 80 // 文字距离画布上侧距离
+        let g = new Vector2(0, 9.8) // 重力加速度
+
+        start()
+
+        function start() {
+            init()
+            requestAnimationFrame(startAnim)
+        }
+
+        // 初始化设置
+        function init() {
+
+        }
+
+        // 绘制背景
+        function paintBg() {
+
+        }
+
+        // 帧动画
+        function startAnim() {
+
+        }
+
+        // 时间变化时生成爆破
+        function handleTimerChange() {
+
+        }
+
+        // 检测指定区域是否需要生成烟花圆
+        function shouldAddBall(x, y) {
+
+        }
+
+        function count(piexls) {
+
+        }
+
+        // 每隔一定时间增加一个新的球体
+        function addBall(pos) {
+
+        }
     </script>
 </body>
 
