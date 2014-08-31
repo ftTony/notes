@@ -264,7 +264,7 @@
             let r = Math.ceil(Math.random() * 4 + 1)
             let i = Math.ceil(Math.random() * 16)
             let left = pos.x < (textLeft + xs / 2) ? -1 : 1
-            let ball = new Ball(x, y, balls.length)
+            let ball = new Ball(x, y, r, balls.length)
             ball.color = colorPalette[i]
             ball.velocity = new Vector2(left * 10 * Math.random(), -20 * Math.random())
             balls.push(ball)
