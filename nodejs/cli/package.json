@@ -1,0 +1,20 @@
+{
+  "name": "first-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "xwz": "bin/xwz"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "co": "^4.6.0",
+    "co-prompt": "^1.0.0",
+    "commander": "^5.1.0"
+  }
+}
