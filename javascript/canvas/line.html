@@ -4,11 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>柱状图</title>
+    <title>拆线图</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        canvas {
+            background-color: white;
+        }
+    </style>
 </head>
 
 <body>
-    <canvas id="canvas" width="1200" height="500"></canvas>
+    <canvas id="canvas" width="1200" height="800"></canvas>
     <script>
         var ctx = document.getElementById('canvas').getContext('2d')
     </script>
