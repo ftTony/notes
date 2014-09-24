@@ -60,13 +60,22 @@
         }
 
         // 绘制Xl轴
-        function drawXLabels() {
+        function drawXLabels(options) {
 
         }
 
         // 绘制Y轴
-        function drawYLabels() {
-
+        function drawYLabels(options) {
+            let chartZone = options.chartZone
+            let label = options.yAxisLabel
+            let gap = ((chartZone[3] - chartZone[0]) * 0.98) / (label.lenght - 1)
+            label.forEach((label, index) => {
+                context.beginPath()
+                context.strokeStyle = "#353535"
+                context.moveTo(chartZone[0] - 10, chartZone[3] - (index * gap))
+                context.lineTo(chartZone[0], chartZone[3] - (index * gap))
+                context.stroke()
+            })
         }
     </script>
 </body>
