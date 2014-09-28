@@ -68,13 +68,28 @@
         function drawYLabels(options) {
             let chartZone = options.chartZone
             let label = options.yAxisLabel
-            let gap = ((chartZone[3] - chartZone[0]) * 0.98) / (label.lenght - 1)
+            let gap = ((chartZone[3] - chartZone[0]) * 0.98) / (label.length - 1)
             label.forEach((label, index) => {
                 context.beginPath()
                 context.strokeStyle = "#353535"
                 context.moveTo(chartZone[0] - 10, chartZone[3] - (index * gap))
                 context.lineTo(chartZone[0], chartZone[3] - (index * gap))
                 context.stroke()
+
+                context.beginPath()
+                let offset = context.measureText(label).width + 20
+                context.font = "16px"
+                context.strokeStyle = "#353535"
+                let width = context.measureText(label).width
+                context.fillText(label, chartZone[0] - offset, chartZone[3] - (index * gap))
+                if (index > 0) {
+                    context.beginPath()
+                    context.strokeStyle = '#eaeaea'
+                    context.lineWidth = 2
+                    context.moveTo(chartZone[0], chartZone[3] - (index * gap))
+                    context.lineTo(chartZone[2], chartZone[3] - (index * gap))
+                    context.stroke()
+                }
             })
         }
     </script>
