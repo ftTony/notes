@@ -29,7 +29,6 @@
             yAxisLabel: ['0', '100', '200', '300', '400'],
             yMax: 400,
             xAxisLabel: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            xAxisPos: [], //用于暂存x坐标轴标签的位置
             data: [10, 50, 200, 330, 390, 320, 220],
             barStyle: {
                 width: 70,
@@ -46,6 +45,8 @@
             drawAxis(options)
             drawYLabels(options)
             drawXLabels(options)
+            drawData(options)
+            drawDataGradient(options)
         }
 
         // 绘制坐标
@@ -66,17 +67,18 @@
             let gap = ((chartZone[2] - chartZone[0]) * 0.96) / (labels.length)
             labels.forEach((label, index) => {
                 context.beginPath()
+                let offset = context.measureText(label).width;
                 context.font = '18'
-                context.textAlign = "center";
+                // context.textAlign = "center";
                 context.strokeStyle = "#eaeaea";
-                context.fillText(label, chartZone[0] + (gap * (index + 1)), chartZone[3] + 20)
+                context.fillText(label, chartZone[0] + (gap * (index + 1)) - offset, chartZone[3] + 20)
                 context.beginPath()
                 context.strokeStyle = '#353535'
-                context.moveTo(chartZone[0] + (gap * (index + 1)), chartZone[3])
-                context.lineTo(chartZone[0] + (gap * (index + 1)), chartZone[3] + 5)
+                context.moveTo(chartZone[0] + (gap * (index + 1)) - offset / 2, chartZone[3])
+                context.lineTo(chartZone[0] + (gap * (index + 1)) - offset / 2, chartZone[3] + 5)
                 context.stroke()
-
-                options.xAxisPos[index] = (index + 1) * gap;
+                //存储偏移量
+                options.offsetXLabel = offset / 2;
             })
         }
 
@@ -106,6 +108,34 @@
                     context.lineTo(chartZone[2], chartZone[3] - (index * gap))
                     context.stroke()
                 }
+            })
+        }
+
+        // 绘制数据
+        function drawData(options) {
+
+        }
+
+        // 渐变数据
+        function drawDataGradient(options) {
+            let data = options.data
+            let xLength = (options.chartZone[2] - options.chartZone[0]) * 0.96
+            let yLength = (options.chartZone[3] - options.chartZone[1]) * 0.98;
+            let gap = xLength / options.xAxisLabel.length
+
+            // 创建渐变
+            let fillStyleGradient = context.createLinearGradient(50, 50, 50, 700);
+            fillStyleGradient.addColorStop(0, options.barStyle.color);
+            fillStyleGradient.addColorStop(1, 'rgba(1,176,241,0.6)')
+
+            // 绘制矩形
+            data.forEach((item, index) => {
+                context.fillStyle = fillStyleGradient
+                let width = options.barStyle.width
+                let x0 = options.chartZone[0] + (index + 1) * gap - width / 2 - options.offsetXLabel
+                let height = item * yLength / options.yMax
+                let y0 = options.chartZone[3] - height
+                context.fillRect(x0, y0, width, height)
             })
         }
     </script>
