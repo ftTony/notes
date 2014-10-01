@@ -61,14 +61,30 @@
 
         // 绘制Xl轴
         function drawXLabels(options) {
+            let chartZone = options.chartZone
+            let labels = options.xAxisLabel
+            let gap = ((chartZone[2] - chartZone[0]) * 0.96) / (labels.length)
+            labels.forEach((label, index) => {
+                context.beginPath()
+                context.font = '18'
+                context.textAlign = "center";
+                context.strokeStyle = "#eaeaea";
+                context.fillText(label, chartZone[0] + (gap * (index + 1)), chartZone[3] + 20)
+                context.beginPath()
+                context.strokeStyle = '#353535'
+                context.moveTo(chartZone[0] + (gap * (index + 1)), chartZone[3])
+                context.lineTo(chartZone[0] + (gap * (index + 1)), chartZone[3] + 5)
+                context.stroke()
 
+                options.xAxisPos[index] = (index + 1) * gap;
+            })
         }
 
         // 绘制Y轴
         function drawYLabels(options) {
             let chartZone = options.chartZone
             let label = options.yAxisLabel
-            let gap = ((chartZone[3] - chartZone[0]) * 0.98) / (label.length - 1)
+            let gap = ((chartZone[3] - chartZone[1]) * 0.98) / (label.length - 1)
             label.forEach((label, index) => {
                 context.beginPath()
                 context.strokeStyle = "#353535"
