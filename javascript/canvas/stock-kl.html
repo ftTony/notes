@@ -5,13 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>股票K线图</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        canvas {
+            background-color: white;
+        }
+    </style>
 </head>
 
 <body>
-    <canvas id="canvas" width="1200" height="500"></canvas>
+    <canvas id="canvas" width="1200" height="800"></canvas>
+    <script src="data.js"></script>
     <script>
         var canvas = document.getElementById('canvas')
-        var context = canva.getContext('2d')
+        var context = canvas.getContext('2d')
         //基本绘图配置
         let options = {
             chartZone: [50, 50, 1000, 700],
@@ -33,7 +45,17 @@
 
         // 绘制坐标轴
         function drawAxis(options) {
-
+            let chartZone = options.chartZone
+            context.beginPath()
+            context.strokeWidth = 4;
+            context.strokeStyle = "#353535";
+            context.moveTo(chartZone[0], chartZone[1])
+            context.lineTo(chartZone[0], chartZone[3])
+            context.stroke()
+            context.beginPath()
+            context.moveTo(chartZone[0], chartZone[3])
+            context.lineTo(chartZone[2], chartZone[3])
+            context.stroke()
         }
 
         // 绘制y轴坐标
