@@ -46,6 +46,28 @@
 
         // 绘制K线图
         function drawData(options) {
+            let data = options.data
+            console.log(data)
+            let xLength = options.chartZone[2] - options.chartZone[0]
+            let c // 记录当前绘制点的颜色
+            let gap = xLength / options.xAxisLabel.length
+            let activeX = 0 // 记录绘制过程中当前点的x坐标
+            let activeY = 0 // 记录绘制过程中当前点的y坐标
+            context.strokeWidth = 2
+            context.beginPath()
+            context.moveTo(options.chartZone[0], options.chartZone[3]) // 先将起点移动至0,0坐标
+            for (let i = 0; i < data.length; i++) {
+
+            }
+        }
+
+        // 根据K线图的数据计算绘图颜色
+        function getColor(data) {
+
+        }
+
+        // 从可视坐标系坐标转换为canvas坐标系坐标
+        function transCoord(coord) {
 
         }
     </script>
