@@ -5,12 +5,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>碰撞</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        canvas {
+            background-color: white;
+        }
+    </style>
 </head>
 
 <body>
-    <canvas id="canvas" width="1200" height="500"></canvas>
+    <canvas id="canvas" width="1200" height="800"></canvas>
     <script>
-        var ctx = document.getElementById('canvas').getContext('2d')
+        var canvas = document.getElementById('canvas')
+        var context = canvas.getContext('2d')
+        let dt = 0.5
+
+        // 球体
+        class Ball {
+            constructor(x, y, id) {
+
+            }
+
+            /** 更新状态
+             * 
+             */
+            update(index, balls) {
+
+            }
+            paint() {
+
+            }
+            // 检测碰撞
+            checkCollision(ball) {
+
+            }
+            // 处理碰撞
+            handleCollision(ball) {
+
+            }
+        }
+
+        // 二维向量定义
+        Vector2 = function (x, y) {
+            this.x = x
+            this.y = y
+        }
+        Vector2.prototype = {
+
+        }
+        var colorPalette = [
+            '#dd6b66', '#759aa0', '#e69d87', '#8dc1a9', '#ea7e53',
+            '#eedd78', '#73a373', '#73b9bc', '#7289ab', '#91ca8c', '#f49f42'
+        ]
+
+        let balls = []
+        let steps = 0 // 全局帧数记录
+        let rightBorder = 800
+        let bottomBorder = 300
+
+        start()
+
+        function start() {
+
+        }
+
+        // 绘制背景
+        function painBg() {
+
+        }
+
+        // 帧动画
+        function startAnim() {
+            steps++
+        }
+
+        // 每隔一定时间增加一个新的球体
+        function addBall() {
+
+        }
     </script>
 </body>
 
