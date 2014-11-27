@@ -1,18 +1,23 @@
 {
-  "name": "template",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "webpack-box dev",
-    "build": "webpack-box build",
-    "dll": "webpack-box dll",
-    "build:ssr": "webpack-box build:ssr",
-    "ssr:server": "webpack-box ssr:server"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "webpack": "^4.43.0"
-  }
+    "name": "template",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "cross-env NODE_ENV=development webpack",
+        "build": "cross-env NODE_ENV=production webpack"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "webpack-cli": "^3.3.11"
+    },
+    "dependencies": {
+        "cross-env": "^7.0.2",
+        "css-loader": "^3.5.3",
+        "cssnano": "^4.1.10",
+        "ora": "^4.0.4",
+        "rimraf": "^3.0.2",
+        "webpack": "^4.43.0"
+    }
 }
