@@ -10,5 +10,12 @@ const resolve = p => {
 }
 
 module.exports = () => {
+    const map = new Map()
+    files.map(_ => {
+        const name = _.split('/').pop().replace('.js', '')
+        return map.set(name, require(_)(config, resolve))
+    })
 
+    map.forEach(v => v())
+    return config
 }
