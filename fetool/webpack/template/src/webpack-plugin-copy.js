@@ -8,8 +8,22 @@ class CopyDirWebpackPlugin {
         const opt = this.options;
         compiler.plugin('done', (stats) => {
             if (process.env.NODE_ENV === 'production') {
-
+                (async () => {
+                    const toFilesPath = await globby([`${opt.to}/**`, '!.git/**'])
+                    toFilesPath.forEach(filePath => fs.removeSync(filePath))
+                    const fromFilesPath = await globby([`${opt.from}/**`])
+                    fromFilesPath.forEach(fromPath => {
+                        const cachePath = fromPath
+                        fromPath = fromPath.replace('dist', opt.to)
+                        const dirpaths = fromPath.substring(0, fromFilesPath.lastIndexOf('/'))
+                        fs.mkdirSync(dirpaths)
+                        fs.copySync(cachePath, fromPath)
+                    })
+                    console.log(` 完成copy ${opt.from} to ${opt.to}  `)
+                })()
             }
         })
     }
 }
+
+module.exports = CopyDirWebpackPlugin
