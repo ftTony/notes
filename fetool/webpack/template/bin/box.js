@@ -25,4 +25,23 @@ program.usage('<command> [options]').version(packageConfig.version).command('bui
         name
     }, boxConf)
     if (lock) return
+    process.env.NODE_ENV = 'production'
+    lock = true
+    if (!name && boxConf.pages) {
+        args.clear = true
+        Object.keys(boxConf, pages).forEach(page => {
+
+        })
+    }
+})
+
+program.usage('<command> [options]').version(packageConfig.version).command('dev [app-page]').description(`构建生产环境`).option('-d,--dll', '合并差分包').action(async (name, cmd) => {
+    process.env.NODE_ENV = 'development'
+    const options = cleanArgs(cmd)
+    const args = Object.assign(options, {
+        name
+    }, boxConf)
+    if (lock) return
+    lock = true
+    require('../build/dev')(args)
 })
