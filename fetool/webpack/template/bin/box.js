@@ -45,3 +45,23 @@ program.usage('<command> [options]').version(packageConfig.version).command('dev
     lock = true
     require('../build/dev')(args)
 })
+
+program.usage('<command> [options]').version(packageConfig.version).command('dll [app-page]').description(`编译差分包`).action(async (name, cmd) => {
+    const options = cleanArgs(cmd)
+    const args = Object.assign(options, {
+        name
+    }, boxConf)
+    if (lock) return
+    lock = true
+    require('../build/dll')(args)
+})
+
+program.usage('<command> [options]').version(packageConfig.version).command('build:ssr [app-age]').description(`服务端渲染`).action(async (name, cmd) => {
+    const options = cleanArgs(cmd)
+    const args = Object.assign(options, {
+        name
+    }, boxConf)
+    if (lock) return
+    lock = true
+    require('../build/ssr')(args)
+})
