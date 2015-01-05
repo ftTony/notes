@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nextTick学习2</title>
+    <script type="text/javascript" src="https://cn.vuejs.org/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <template>
+          <div ref="list">{{name}}</div>
+        </template>
+      </div>
+      <script type="text/javascript">
+        new Vue({
+          el: '#app',
+          data: {
+            name: 'tony'
+          },
+          created() {
+            console.log(this.$refs.list); // 打印undefined
+            this.$nextTick(() => {
+              console.log(this.$refs.list); // 打印出 
+            });
+          },
+          methods: {
+            
+          }
+        })
+      </script>
+</body>
+</html>
