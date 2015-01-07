@@ -34,4 +34,5 @@ const dijkstra = (graph, src) => {
             }
         }
     }
+    return dist
 }
