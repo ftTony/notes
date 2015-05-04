@@ -32,16 +32,14 @@
             }
             // 每页多少条
             let pageCount = Math.min(curTotal, once)
-            window.requestAnimationFrame(function () {
-                let fragment = document.createDocumentFragment()
+            setTimeout(function () {
                 for (let i = 0; i < pageCount; i++) {
                     let li = document.createElement('li')
                     li.innerText = curIndex + i + ':' + ~~(Math.random() * total)
-                    fragment.appendChild(li)
+                    ul.appendChild(li)
                 }
-                ul.appendChild(fragment)
                 loop(curTotal - pageCount, curIndex + pageCount)
-            })
+            }, 0)
         }
         loop(total, index)
     </script>
