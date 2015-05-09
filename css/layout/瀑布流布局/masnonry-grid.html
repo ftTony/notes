@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瀑布流布局——grid</title>
+    <style>
+        .masonry {
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 5px;
+            height: 540px;
+        }
+
+        .masonry .item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 3px;
+            border: 1px solid #999;
+            font-size: 40px;
+        }
+
+        .masonry .item:nth-child(1) {
+            height: 150px;
+            background-color: #ef3429;
+        }
+
+        .masonry .item:nth-child(2) {
+            height: 160px;
+            background-color: #f68f25;
+        }
+
+        .masonry .item:nth-child(3) {
+            height: 170px;
+            background-color: #4ba846;
+        }
+
+        .masonry .item:nth-child(4) {
+            height: 180px;
+            background-color: #0476c2;
+        }
+
+        .masonry .item:nth-child(5) {
+            height: 140px;
+            background-color: #c077af;
+        }
+
+        .masonry .item:nth-child(6) {
+            height: 155px;
+            background-color: #f8d29d;
+        }
+
+        .masonry .item:nth-child(7) {
+            height: 165px;
+            background-color: #b4a87f;
+        }
+
+        .masonry .item:nth-child(8) {
+            height: 180px;
+            background-color: #d0e4a8;
+        }
+
+        .masonry .item:nth-child(9) {
+            height: 175px;
+            background-color: #4dc7ec;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="masonry">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+    </div>
+</body>
+
+</html>
