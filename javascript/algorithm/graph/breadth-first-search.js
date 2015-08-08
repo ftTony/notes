@@ -18,7 +18,7 @@ const inittializeColor = vertices => {
     return color
 }
 
-const breadthFristSearch = (graph, startVertex, callback) => {
+const breadthFirstSearch = (graph, startVertex, callback) => {
     const vertices = graph.getVertices()
     const adjList = graph.getAdjList()
     const color = inittializeColor(vertices)
