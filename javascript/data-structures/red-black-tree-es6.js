@@ -90,8 +90,14 @@ class RedBlackTree extends BinarySearchTree {
         if (!node.parent) {
             this.root = tmp
         } else {
-
+            if (node === node.parent.left) {
+                node.parent.left = tmp
+            } else {
+                node.parent.right = tmp
+            }
         }
+        tmp.left = node
+        node.parent = tmp
     }
     insert(key) {
         if (this.root == null) {
@@ -123,6 +129,6 @@ class RedBlackTree extends BinarySearchTree {
 
     }
     getRoot() {
-
+        return this.root
     }
 }
