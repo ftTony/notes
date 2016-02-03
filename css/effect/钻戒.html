@@ -5,8 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>钻戒</title>
     <style>
-        #diamond-narrow{
-            
+        #diamond-narrow {
+            width: 0;
+            height: 0;
+            border: 50px solid transparent;
+            border-bottom: 70px solid red;
+            position: relative;
+            top: -50px;
+        }
+        #diamond-narrow:after {
+            content: '';
+            position: absolute;
+            left: -50px;
+            top: 70px;
+            width: 0;
+            height: 0;
+            border: 50px solid transparent;
+            border-top: 70px solid red;
         }
     </style>
 </head>
