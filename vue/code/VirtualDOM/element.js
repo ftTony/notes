@@ -24,7 +24,19 @@ function Element(tagName, props, children) {
     this.tagName = tagName
     this.props = props || {}
     this.children = children || []
+    this.key = props ? props.key : void 666
 
+    var count = 0
+
+    _.each(this.children, function (child, i) {
+        if (child instanceof Element) {
+            count += child.count
+        } else {
+            children[i] = '' + child
+        }
+        count++
+    })
+    this.count = count
 }
 
 Element.prototype.render = function () {
