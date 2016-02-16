@@ -17,7 +17,9 @@ function dfsWalk(node, walker, patches) {
 
     var len = node.childNodes ? node.childNodes.length : 0
     for (var i = 0; i < len; i++) {
-
+        var child = node.childNodes[i]
+        walker.index++
+        dfsWalk(child, walker, patches)
     }
 
     if (currentPatches) {
@@ -26,12 +28,18 @@ function dfsWalk(node, walker, patches) {
 }
 
 function applyPatches(node, currentPatches) {
+    _.each(currentPatches, function (currentPatch) {
+        switch (currentPatch.type) {
 
+        }
+    })
 }
 
 function setProps(node, props) {
     for (var key in props) {
+        if (props[key] === void 666) {
 
+        }
     }
 }
 
