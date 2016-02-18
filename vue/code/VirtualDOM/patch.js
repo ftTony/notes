@@ -30,7 +30,25 @@ function dfsWalk(node, walker, patches) {
 function applyPatches(node, currentPatches) {
     _.each(currentPatches, function (currentPatch) {
         switch (currentPatch.type) {
+            case REPLACE:
+                var newNode = (typeof currentPatch.node === 'string') ? document.createTextNode(currentPatch.node) : currentPatch.node.render()
+                node.parentNode.replaceChild(newNode, node)
+                break
+            case REORDER:
+                reorderChildren(nodek, currentPatch.moves)
+                break
+            case PROPS:
+                setProps(node, currentPatch.props)
+                break
+            case TEXT:
+                if (node.textContent) {
 
+                } else {
+
+                }
+                break
+            default:
+                throw new Error('Unknown patch type ' + currentPatch.type)
         }
     })
 }
@@ -38,7 +56,10 @@ function applyPatches(node, currentPatches) {
 function setProps(node, props) {
     for (var key in props) {
         if (props[key] === void 666) {
-
+            node.removeAttribute(key)
+        } else {
+            var value = props[key]
+            _.setAttr(node, key, value)
         }
     }
 }
