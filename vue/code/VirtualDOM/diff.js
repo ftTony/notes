@@ -10,7 +10,21 @@ function diff(oldTree, newTree) {
 }
 
 function dfsWalk(oldNode, newNode, index, patches) {
+    var currentPatch = []
 
+    if (newNode === null) {
+
+    } else if (_.isString(oldNode) && _.isString(newNode)) {
+
+    } else if (oldNode.tagName === newNode.tagName && oldNode.key === newNode.key) {
+
+    } else {
+
+    }
+
+    if (currentPatch.length) {
+        patches[index] = currentPatch
+    }
 }
 
 function diffChildren(oldChildren, newChildren, index, patches, currentPatch) {
@@ -18,7 +32,21 @@ function diffChildren(oldChildren, newChildren, index, patches, currentPatch) {
 }
 
 function diffProps(oldNode, newNode) {
+    var count = 0
+    var oldProps = oldNode.props
+    var newProps = newNode.props
 
+    var key, value
+    var propsPatches = {}
+
+    for (key in oldProps) {
+        value = oldProps[key]
+
+    }
+
+    for (key in newProps) {
+
+    }
 }
 
 function isIgnoreChildren(node) {
