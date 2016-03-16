@@ -4,10 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>双飞布局</title>
+    <title>等高布局</title>
     <style>
       .container {
-        min-width: 600px;
+        overflow: hidden;
+      }
+      .center,
+      .left,
+      .right {
+        padding-bottom: 10000px;
+        margin-bottom: -10000px;
       }
       .left {
         float: left;
@@ -37,7 +43,15 @@
   <body>
     <article class="container">
       <div class="center">
-        <div class="inner">双飞翼布局</div>
+        <div class="inner">等高布局</div>
+        <div class="inner">等高布局</div>
+        <div class="inner">等高布局</div>
+        <div class="inner">等高布局</div>
+        <div class="inner">等高布局</div>
+        <div class="inner">等高布局</div>
+        <div class="inner">等高布局</div>
+        <div class="inner">等高布局</div>
+        <div class="inner">等高布局</div>
       </div>
       <div class="left"></div>
       <div class="right"></div>
