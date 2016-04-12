@@ -119,4 +119,6 @@ ETag根据实体内容生成的一段hash字符串（类似于MD5或者SHA1之�
 
 [http://www.cnblogs.com/yjf512/p/3244882.html](http://www.cnblogs.com/yjf512/p/3244882.html)
 
+[http://www.cnblogs.com/vajoy/p/5341664.html](http://www.cnblogs.com/vajoy/p/5341664.html)
 
+[http://www.cnblogs.com/lovesong/p/5352973.html](http://www.cnblogs.com/lovesong/p/5352973.html)
