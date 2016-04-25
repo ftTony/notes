@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>React 学习</title>
+	<script type="text/javascript" src="js/react.min.js"></script>
+	<script src="js/JSXTransformer.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/jsx">
+		var App=React.createClass({
+			render:function () {
+				return (
+					<button onClick={this.testClick} style={{backgroudColor:'#ff0000',fontSize:'28px',width:'200px',height:'100px'}}>Hello,ReactJS!!</button>
+					);
+			},
+			testClick:function () {
+				alert('testClick');
+			}
+		});
+		React.render(<App />,document.getElementById('example'));
+	</script>
+</body>
+</html>

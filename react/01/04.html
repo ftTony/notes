@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>React重新学习</title>
+	<script type="text/javascript" src="js/react.min.js"></script>
+	<script src="js/JSXTransformer.js"></script>
+	<style type="text/css">
+		.nameStyle{
+			color:dodgerblue;
+		}
+	</style>
+</head>
+<body>
+	<div id="a"></div>
+	<script type="text/jsx">
+		var name='Tony';
+		var Demo=React.createClass({
+			render:function(){	
+				var a='Hello,';
+				return (
+					<p className='nameStyle'>{a,name}</p>
+				);
+			}
+		});
+		var DemoWrap=React.createClass({
+			render:function(){
+				return (<ul>{
+					[1,2,3].map(function(v){
+					return <li style={{fontSize:'20px'}}>{v}<Demo /></li>
+					})
+				}</ul>);
+			}
+		})
+		React.render(
+			<DemoWrap />,
+			document.getElementById('a')
+		)
+	</script>
+</body>
+</html>

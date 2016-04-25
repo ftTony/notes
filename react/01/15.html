@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>React学习</title>
+	<script type="text/javascript" src="js/react.min.js"></script>
+	<script src="js/JSXTransformer.js"></script>
+</head>
+<body>
+	<div id="demo"></div>
+	<script type="text/jsx">
+		var MyTitle=React.createClass({
+			propTypes:{
+				title:React.PropTypes.string.isRequired
+			},
+			render:function(){
+				return this.props.title==1234?<p>是一个字符串</p>:null
+			}
+		});
+		var data='123';
+		React.render(
+			<MyTitle title="1234" />,
+			document.getElementById('demo')
+		);
+	</script>
+</body>
+</html>

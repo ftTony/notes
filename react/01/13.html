@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>React学习</title>
+	<script type="text/javascript" src="js/react.min.js"></script>
+	<script src="js/JSXTransformer.js"></script>
+</head>
+<body>
+	<div id="demo"></div>
+	<script type="text/jsx">
+		var MyComponent=React.createClass({
+			handleClick:function(){
+				React.findDOMNode(this.refs.myTextInput).focus();
+			},
+			render:function(){
+				return (
+					<div>
+						<input type="text" ref="myTextInput" />
+						<input type="button" value="Focus the text input" onClick={this.handleClick} />
+					</div>
+				);
+			}
+		});
+		React.render(
+			<MyComponent />,
+			document.getElementById('demo')
+		)
+	</script>
+</body>
+</html>

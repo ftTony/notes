@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>React学习</title>
+	<style type="text/css">
+		.height50{
+			height: 50px;
+		}
+		.height400{
+			height: 400px;
+		}
+		.width400{
+			width: 400px;
+		}
+		.bgred{
+			background-color: #6Ac5ac;
+		}
+		.box{
+			display: flex;
+			flex-direction:column;
+			flex:1;
+			position: relative;
+			color:#fdc72f;
+			line-height: 1em;
+		}
+		.label{
+			top:0;
+			left: 0;
+			padding: 0 3px 3px 0;
+			position: absolute;
+			background-color: #fdc72f;
+			color:white;
+			line-height: 1em;
+		}
+		.top{
+			width: 100%;
+			justify-content:center;
+			display: flex;
+			align-items:center;
+		}
+		.bottom{
+			width:100%;
+			display: flex;
+			justify-content:center;
+			align-items:center;
+		}
+		.right{
+			width:50px;
+			display: flex;
+			justify-content:space-around;
+			align-items:center;
+		}
+		.left{
+			width:50px;
+			display: flex;
+			justify-content:space-around;
+			align-items:center;
+		}
+		.margginBox{
+			position: absolute;
+			top:100px;
+			padding-left: 7px;
+			padding-right: 7px;
+		}
+		.borderBox{
+			flex:1;
+			display: flex;
+			justify-content:space-between;
+		}
+	</style>
+	<script type="text/javascript" src="js/react.min.js"></script>
+	<script src="js/JSXTransformer.js"></script>
+</head>
+<body>
+	<div id="container"></div>
+	<script type="text/jsx">
+	var Box=React.createClass({
+		render:function(){
+			var parentClass='box '+this.props.width+' '+this.props.height;
+			var topClass='top height50 '+this.props.classBg;
+			var leftClass='left '+this.props.classBg;
+			var rightClass='right '+this.props.classBg;
+			var bottomClass='bottom '+this.props.classBg;
+			return (
+					<div className={parentClass}>
+						<span className='label'>{this.props.boxName}</span>
+						<span className={topClass}>top</span>
+						<span className={this.props.childName}>
+							<span className={leftClass}>left</span>
+							{this.props.children}
+							<span className={rightClass}>right</span>
+						</span>						
+						<span className={bottomClass}>bottom</span>
+					</div>
+				);
+		}
+	});
+
+	var MargginBox=React.createClass({
+		render:function () {
+			return (<span className="margginBox">
+					<Box className='borderBox' height='height400' width='width400' boxName='margin' classBg='bgred'>{this.props.children}</Box>
+				</span>);
+		}
+	});
+	var BoxContainer=React.createClass({
+		render:function () {
+			return (
+				<MargginBox></MargginBox>
+				);
+		}
+	});
+	React.render(
+		<BoxContainer />,
+		document.getElementById('container')
+		);
+	</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>React重新学习</title>
+	<script type="text/javascript" src="js/react.min.js"></script>
+	<script src="js/JSXTransformer.js"></script>
+	<style>
+        p:active{ color: deeppink; }
+    </style>
+</head>
+<body>
+	<div id="a"></div>
+	<script type="text/jsx">
+		var Component1=React.createClass({
+			render:function(){
+				return (<li>{this.props.children}</li>);
+			}
+		});
+
+		var Component2=React.createClass({
+			list:['张三','李四','王五'],
+			render:function(){
+				return (
+					<ul>
+						{
+							this.list.map(function(item){
+								return <Component1>{item}</Component1>
+							})
+						}
+					</ul>
+				);
+			}
+		});
+		React.render(
+			<Component2 />,
+			document.getElementById('a')
+		)
+	</script>
+</body>
+</html>
