@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>box-orient 学习</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body>div{
+			border: 1px solid #ccc;
+			margin: 20px;åå			
+		}
+		div>div{
+			border: 1px solid #f36;
+			padding: 10px;
+		}
+		.box{
+			display: -moz-box;
+			display: -webkit-box;
+			display: box;
+		}
+		.box-horizontal{
+			-moz-box-orient:horizontal;
+			-webkit-box-orient:horizontal;
+			-ms-box-orient:horizontal;
+			box-orient:horizontal;
+		}
+		.box-vertical{
+			-moz-box-orient:vertical;
+			-webkit-box-orient:vertical;
+			-ms-box-orient:vertical;
+			box-orient:vertical;
+		}
+		.box-inline-axis{
+			-moz-box-orient:inline-axis;
+			-webkit-box-orient:inline-axis;
+			-ms-box-orient:inline-axis;
+			box-orient:inline-axis;
+		}
+		.box-block-axis{
+			-moz-box-orient:block-axis;
+			-webkit-box-orient:block-axis;
+			-ms-box-orient:block-axis;
+			box-orient:block-axis;	
+		}
+	</style>
+</head>
+<body>
+	<div class="box box-horizontal">
+		<div>A</div>
+		<div>B</div>
+		<div>C</div>
+		<div>D</div>
+	</div>
+	<div class="box box-vertical">
+		<div>A</div>
+		<div>B</div>
+		<div>C</div>
+		<div>D</div>
+	</div>
+	<div class="box box-inline-axis">
+		<div>A</div>
+		<div>B</div>
+		<div>C</div>
+		<div>D</div>
+	</div>
+	<div class="box box-block-axis">
+		<div>A</div>
+		<div>B</div>
+		<div>C</div>
+		<div>D</div>
+	</div>
+</body>
+</html>

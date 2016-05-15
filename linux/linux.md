@@ -39,6 +39,18 @@ ls、cd、pwd、mdir、rm、rmdir、mv、cp、touch、cat、more、less、head�
 
 ### shell脚本
 
+shell的分类：bash、sh、csh、ksh等
+
+shell的执行方式：赋于执行权限（chmod 755 脚本名称），直接运行脚本，另一种方式通过Bash调用执行脚本
+
+### 系统管理
+
+查看RPM包安装的服务:chkconfig --list
+
+查看源码包安装的服务：
+
+查看当前进程：ps aux
+
 
 
 参考资料：
