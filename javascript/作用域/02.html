@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作用域二</title>
+	<script type="text/javascript">
+		var i=10;
+		function myFunc () {
+			var i=20;
+			function innerFunc () {
+				alert(i);
+			}
+			return innerFunc;
+		}
+		var func=myFunc();
+		func();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作用域三</title>
+	<script type="text/javascript">
+		var name='stephenchan';
+		function callMePlz() {
+			alert(name);
+		}
+		function myFunc () {
+			var name="endlesscode";
+			callMePlz();
+		}
+		myFunc();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
