@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性</title>
+    <script type="text/javascript" src="https://cn.vuejs.org/js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>第一次调用computed属性：{{reversedMsg}}</div>
+        <div>第二次调用computed属性：{{reversedMsg}}</div>
+        <div>第三次调用computed属性：{{reversedMsg}}</div>
+        <!-- 下面是methods调用 -->
+        <div>第一次调用methods方法：{{reversedMsg1()}}</div>
+        <div>第二次调用methods方法：{{reversedMsg1()}}</div>
+        <div>第三次调用methods方法：{{reversedMsg1()}}</div>
+    </div>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello'
+            },
+            computed: {
+                reversedMsg() {
+                    console.log(1111)
+                    // this 指向 vm实例
+                    return this.msg.split('').reverse().join('');
+                }
+            },
+            methods: {
+                reversedMsg1() {
+                    console.log(2222);
+                    // this 指向vm实例
+                    return this.msg.split('').reverse().join('')
+                }
+            }
+        })
+        console.log(vm);
+    </script>
+</body>
+
+</html>
