@@ -11,7 +11,18 @@
     <input type="button" value="生成dom" onclick="hanldeClick1()">
     <input type="button" value="diff dom" onclick="hanldeClick2()">
     <script>
+        var ulRoot;
 
+        function hanldeClick1() {
+            var el = vd.el
+            var ul = el('div', {
+                id: 'virtual-dom'
+            }, [])
+        }
+
+        function hanldeClick2() {
+
+        }
     </script>
 </body>
 
