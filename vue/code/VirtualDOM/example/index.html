@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>虚拟DOM例子</title>
+    <script src="../dist/bundle.js"></script>
 </head>
 
 <body>
@@ -17,11 +18,71 @@
             var el = vd.el
             var ul = el('div', {
                 id: 'virtual-dom'
-            }, [])
+            }, [
+                el('p', {}, ['Virtual DOM']),
+                el('ul', {
+                    id: 'list'
+                }, [
+                    el('li', {
+                        class: 'item'
+                    }, ['Item 1']),
+                    el('li', {
+                        class: 'item'
+                    }, ['Item 2']),
+                    el('li', {
+                        class: 'item'
+                    }, ['Item 3'])
+                ]),
+                el('div', {}, ['Hello World'])
+            ])
+
+            console.log(ul)
+            ulRoot = ul.render()
+            document.body.appendChild(ulRoot)
         }
 
         function hanldeClick2() {
+            var el = vd.el
+            var diff = vd.diff
+            var patch = vd.patch
 
+            var ul1 = el('div', {
+                id: 'virtual-dom'
+            }, [
+                el('p', {}, ['Virtual DOM']),
+                el('ul', {
+                    id: 'list'
+                }, [
+                    el('li', {
+                        class: 'item'
+                    }, ['Item 1']),
+                    el('li', {
+                        class: 'item'
+                    }, ['Item 2']),
+                    el('li', {
+                        class: 'item'
+                    }, ['Item 3'])
+                ]),
+                el('div', {}, ['Hello World'])
+            ])
+            var ul2 = el('div', {
+                id: 'virtual-dom'
+            }, [
+                el('p', {}, ['Virtual DOM']),
+                el('ul', {
+                    id: 'list'
+                }, [
+                    el('li', {
+                        class: 'item'
+                    }, ['Item 21']),
+                    el('li', {
+                        class: 'item'
+                    }, ['Item 23'])
+                ]),
+                el('p', {}, ['Hello World'])
+            ])
+            var patches = diff(ul1, ul2)
+            console.log(ulRoot, patches)
         }
     </script>
 </body>
