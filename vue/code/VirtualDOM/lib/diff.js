@@ -2,19 +2,22 @@ var _ = require("./util")
 var patch = require("./patch")
 var listDiff = require('list-diff2')
 
+//  diff 函数，对比两棵树
 function diff(oldTree, newTree) {
-    var index = 0
-    var patches = {}
+    var index = 0 // 当前节点的标志
+    var patches = {} // 用来记录每个节点差异的对象
     dfsWalk(oldTree, newTree, index, patches)
     return patches
 }
 
+// 对两棵树进行深度优先遍历
 function dfsWalk(oldNode, newNode, index, patches) {
     var currentPatch = []
 
     if (newNode === null) {
 
     } else if (_.isString(oldNode) && _.isString(newNode)) {
+        // 文本内容改变
         if (newNode !== oldNode) {
             currentPatch.push({
                 type: patch.TEXT,
@@ -22,6 +25,7 @@ function dfsWalk(oldNode, newNode, index, patches) {
             })
         }
     } else if (oldNode.tagName === newNode.tagName && oldNode.key === newNode.key) {
+        //  节点相同，比较属性
         var propsPatches = diffProps(oldNode, newNode)
         if (propsPatches) {
             currentPatch.push({
@@ -29,10 +33,12 @@ function dfsWalk(oldNode, newNode, index, patches) {
                 props: propsPatches
             })
         }
+        //  比较子节点，如果子节点有''ignore属性，则不需要比较
         if (!isIgnoreChildren(newNode)) {
             diffChildren(oldNode.children, newNode.children, index, patches, currentPatch)
         }
     } else {
+        // 新节点和旧节点不同，用replace替换
         currentPatch.push({
             type: patch.REPLACE,
             node: newNode
@@ -44,6 +50,7 @@ function dfsWalk(oldNode, newNode, index, patches) {
     }
 }
 
+// 遍历子节点
 function diffChildren(oldChildren, newChildren, index, patches, currentPatch) {
     var diffs = listDiff(oldChildren, newChildren, 'key')
     newChildren = diffs.children
@@ -66,6 +73,7 @@ function diffChildren(oldChildren, newChildren, index, patches, currentPatch) {
     })
 }
 
+// 比较节点属性
 function diffProps(oldNode, newNode) {
     var count = 0
     var oldProps = oldNode.props
@@ -73,7 +81,7 @@ function diffProps(oldNode, newNode) {
 
     var key, value
     var propsPatches = {}
-
+    // 查找属性值不同的属性
     for (key in oldProps) {
         value = oldProps[key]
         if (newProps[key] !== value) {
@@ -82,6 +90,7 @@ function diffProps(oldNode, newNode) {
         }
     }
 
+    // 查找新属性
     for (key in newProps) {
         value = newProps[key]
         if (!oldProps.hasOwnProperty(key)) {
@@ -89,7 +98,7 @@ function diffProps(oldNode, newNode) {
             propsPatches[key] = newProps[key]
         }
     }
-
+    // 没有属性改变
     if (count === 0) {
         return null
     }

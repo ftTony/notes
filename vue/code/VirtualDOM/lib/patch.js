@@ -1,9 +1,9 @@
 var _ = require('./util')
 
-var REPLACE = 0
-var REORDER = 1
-var PROPS = 2
-var TEXT = 3
+var REPLACE = 0 // 替换的原先的节点
+var REORDER = 1 // 重新排序
+var PROPS = 2 // 修改了节点的属性
+var TEXT = 3 // 文本内容改变
 
 function patch(node, patches) {
     var walker = {
@@ -13,15 +13,17 @@ function patch(node, patches) {
 }
 
 function dfsWalk(node, walker, patches) {
+    // 从patches拿出当前节点的差异
     var currentPatches = patchs[walker.index]
 
     var len = node.childNodes ? node.childNodes.length : 0
+    // 深度遍历子节点
     for (var i = 0; i < len; i++) {
         var child = node.childNodes[i]
         walker.index++
         dfsWalk(child, walker, patches)
     }
-
+    // 对当前节点进行DOM操作
     if (currentPatches) {
         applyPatches(node, currentPatches)
     }
@@ -68,6 +70,7 @@ function reorderChildren(node, moves) {
     var staticNodeList = _.toArray(node.childNodes)
     var maps = {}
     _.each(staticNodeList, function (node) {
+        // 如果是一个元素节点
         if (node.nodeType === 1) {
             var key = node.getAttribute('key')
             if (key) {
@@ -79,6 +82,7 @@ function reorderChildren(node, moves) {
     _.each(moves, function (move) {
         var index = move.index
         if (move.type === 0) {
+            // type为0，表示新的dom对象已经删除该节点
             if (staticNodeList[index] === node.childNodes[index]) {
                 node.removeChild(node.childNodes[index])
             }
