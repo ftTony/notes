@@ -6,11 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>爱心</title>
     <style>
-        #heart {}
+        #heart {
+            width: 100px;
+            height: 90px;
+            position: relative;
+            margin: 100px auto;
+        }
 
-        #heart::before {}
+        #heart::before {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 90px;
+            background: red;
+            border-radius: 50px 45px 0 0;
+            transform-origin: 0 100%;
+        }
 
-        #heart::after {}
+        #heart::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+        }
     </style>
 </head>
 
