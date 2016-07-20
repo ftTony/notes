@@ -5,10 +5,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>五角星</title>
+    <style>
+        #star {
+            position: relative;
+            margin: 200px auto;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-color: transparent transparent red transparent;
+            border-width: 70px 100px;
+            transform: rotate(35deg);
+        }
+
+        #star::before {
+            position: absolute;
+            content: '';
+            width: 0;
+            height: 0;
+            top: -128px;
+            left: -95px;
+            border-style: solid;
+            border-color: transparent transparent red transparent;
+            border-width: 80px 30px;
+            transform: rotate(-35deg);
+        }
+
+        #star::after {
+            position: absolute;
+            content: '';
+            width: 0;
+            height: 0;
+            top: -45px;
+            left: -140px;
+            border-style: solid;
+            border-color: transparent transparent red transparent;
+            border-width: 70px 100px;
+            transform: rotate(-70deg);
+        }
+    </style>
 </head>
 
 <body>
-
+    <div id="star"></div>
 </body>
 
 </html>
