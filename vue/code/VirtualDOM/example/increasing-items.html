@@ -35,6 +35,18 @@
                 el('ul', items)
             ])
         }
+
+        var tree = renderTree()
+        var root = tree.render()
+        document.body.appendChild(root)
+        setInterval(function () {
+            var newTree = renderTree()
+            var patches = diff(tree, newTree)
+            console.log(patches)
+            patch(root, patches)
+
+            tree = newTree
+        }, 1000)
     </script>
 </body>
 

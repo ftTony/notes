@@ -5,10 +5,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>虚拟DOM</title>
+    <style>
+        thead {
+            color: green
+        }
+
+        tbody {
+            color: blue
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black
+        }
+    </style>
 </head>
 
 <body>
     <script src="../dist/bundle.js"></script>
+    <script>
+        var el = vd.el
+        var diff = vd.diff
+        var patch = vd.patch
+
+        var AGE = 'age'
+        var REPUTATION = 'reputation'
+
+        var sortKey = AGE
+        var sortType = 1
+
+        var list = [{
+                username: 'Jerry',
+                age: 12,
+                reputation: 200,
+                uid: 'user1'
+            },
+            {
+                username: 'Pony',
+                age: 33,
+                reputation: 3000,
+                uid: 'user4'
+            },
+            {
+                username: 'Lucy',
+                age: 21,
+                reputation: 99,
+                uid: 'user2'
+            },
+            {
+                username: 'Tomy',
+                age: 20,
+                reputation: 20,
+                uid: 'user3'
+            },
+            {
+                username: 'Funky',
+                age: 49,
+                reputation: 521,
+                uid: 'user5'
+            }
+        ]
+
+        function renderTree() {
+
+        }
+
+        function renderRows() {
+
+        }
+
+        function sortData() {
+
+        }
+    </script>
 </body>
 
 </html>
