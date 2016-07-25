@@ -68,12 +68,48 @@
         ]
 
         function renderTree() {
-
+            var rows = renderRows()
+            return el('div', [el('b', ['sortKey: ' + sortKey, ' | sortType：' + (sortType ? 'up' : 'down')]), el('table',
+                [
+                    el('thead', [
+                        el('tr', [
+                            el('th', ['UID']),
+                            el('th', ['NAME']),
+                            el('th', {
+                                'id': 'sort-head1',
+                                sortKey: 'age'
+                            }, ['AGE']),
+                            el('th', {
+                                'id': 'sort-head2',
+                                sortKey: 'reputation'
+                            }, ['REPUTATION'])
+                        ])
+                    ]),
+                    el('tbody', rows)
+                ])])
         }
 
         function renderRows() {
-
+            var rows = []
+            for (var i = 0, len = list.length; i < len; i++) {
+                var item = list[i]
+                rows.push(
+                    el('tr', {
+                        key: item.uid
+                    }, [
+                        el('td', [item.uid]),
+                        el('td', [item.username]),
+                        el('td', [item.age]),
+                        el('td', [item.reputation])
+                    ])
+                )
+            }
+            return rows
         }
+
+        var tree = renderTree()
+        var dom = tree.render()
+        document.body.appendChild(dom)
 
         function sortData() {
 
