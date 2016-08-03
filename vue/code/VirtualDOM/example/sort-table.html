@@ -111,8 +111,38 @@
         var dom = tree.render()
         document.body.appendChild(dom)
 
-        function sortData() {
+        var sortTriggers = [
+            document.getElementById('sort-head1'),
+            document.getElementById('sort-head2')
+        ]
+        for (var i = 0, len = sortTriggers.length; i < len; i++) {
+            var trigger = sortTriggers[i]
+                (function (_trigger) {
+                    _trigger.onclick = function () {
+                        var key = _trigger.getAttribute('sortKey')
+                        if (key === sortKey) {
+                            sortType = !sortType
+                        } else {
+                            sortKey = key
+                            sortType = 1
+                        }
+                        sortData()
+                        var newTree = renderTree()
+                        var patches = diff(tree, newTree)
+                        patch(dom, patches)
+                        tree = newTree
+                    }
+                })(trigger)
+        }
 
+        function sortData() {
+            list.sort(function (a, b) {
+                if (sortType) {
+                    return a[sortKey] - b[sortKey]
+                } else {
+                    return b[sortKey] - a[sortKey]
+                }
+            })
         }
     </script>
 </body>
