@@ -7,7 +7,20 @@
     <title>五边形</title>
     <style>
         #pentagon{
-            
+            position: relative;
+            width: 54px;
+            box-sizing: content-box;
+            border-width: 50px 10px 0;
+            border-style: solid;
+            border-color: red transparent;
+        }
+        #pentagon::before{
+            content: '';
+            position: absolute;
+            height: 0;
+            width: 0;
+            top: -85px;
+            left: -18px;
         }
     </style>
 </head>
