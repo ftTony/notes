@@ -116,23 +116,23 @@
             document.getElementById('sort-head2')
         ]
         for (var i = 0, len = sortTriggers.length; i < len; i++) {
-            var trigger = sortTriggers[i]
-                (function (_trigger) {
-                    _trigger.onclick = function () {
-                        var key = _trigger.getAttribute('sortKey')
-                        if (key === sortKey) {
-                            sortType = !sortType
-                        } else {
-                            sortKey = key
-                            sortType = 1
-                        }
-                        sortData()
-                        var newTree = renderTree()
-                        var patches = diff(tree, newTree)
-                        patch(dom, patches)
-                        tree = newTree
+            var trigger = sortTriggers[i];
+            (function (_trigger) {
+                _trigger.onclick = function () {
+                    var key = _trigger.getAttribute('sortKey')
+                    if (key === sortKey) {
+                        sortType = !sortType
+                    } else {
+                        sortKey = key
+                        sortType = 1
                     }
-                })(trigger)
+                    sortData()
+                    var newTree = renderTree()
+                    var patches = diff(tree, newTree)
+                    patch(dom, patches)
+                    tree = newTree
+                }
+            })(trigger)
         }
 
         function sortData() {

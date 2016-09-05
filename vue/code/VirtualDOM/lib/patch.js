@@ -14,7 +14,7 @@ function patch(node, patches) {
 
 function dfsWalk(node, walker, patches) {
     // 从patches拿出当前节点的差异
-    var currentPatches = patchs[walker.index]
+    var currentPatches = patches[walker.index]
 
     var len = node.childNodes ? node.childNodes.length : 0
     // 深度遍历子节点
@@ -37,7 +37,7 @@ function applyPatches(node, currentPatches) {
                 node.parentNode.replaceChild(newNode, node)
                 break
             case REORDER:
-                reorderChildren(nodek, currentPatch.moves)
+                reorderChildren(node, currentPatch.moves)
                 break
             case PROPS:
                 setProps(node, currentPatch.props)
