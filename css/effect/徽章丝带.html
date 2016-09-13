@@ -5,10 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>徽章丝带</title>
+    <style>
+        #badge-ribbon{
+            position: relative;
+            background: red;
+            height: 100px;
+            width: 100px;
+            border-radius: 50px;
+        }
+        #badge-ribbon::before,#badge-ribbon::after{
+            content: '';
+            position: absolute;
+            border-bottom: 70px solid red;
+            border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
+            top: 70px;
+            left: -10px;
+            transform: rotate(-140deg);
+        }
+        #badge-ribbon::after{
+            left: auto;
+            right: -10px;
+            transform: rotate(140deg);
+        }
+    </style>
 </head>
 
 <body>
-
+    <div id="badge-ribbon"></div>
 </body>
 
 </html>
