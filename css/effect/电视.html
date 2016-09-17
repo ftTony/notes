@@ -5,10 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>电视</title>
+    <style>
+        #tv{
+            position: relative;
+            width: 200px;
+            height: 150px;
+            margin: 20px 0;
+            background: red;
+            border-radius: 50%/10%;
+            color: white;
+            text-align: center;
+            text-indent: .1em;
+            left: 20px;
+        }
+        #tv::before{
+            content:'';
+            position: absolute;
+            top:10%;
+            bottom: 10%;
+            right: -5%;
+            left: -5%;
+            background: inherit;
+            border-radius: 5% /50%;
+        }
+    </style>
 </head>
 
 <body>
-
+    <div id="tv"></div>
 </body>
 
 </html>

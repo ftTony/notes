@@ -4,11 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>跳动的字节</title>
+    <title>雪佛龙</title>
+    <style>
+        #chevron{
+            position: relative;
+            text-align: center;
+            padding: 12px;
+            margin-bottom: 6px;
+            height: 60px;
+            width: 200px;
+        }
+        #chevron::before{
+            content:'';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 51%;
+            background:red;
+            transform: skew(0deg,6deg);
+        }
+        #chevron::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 50%;
+            background: red;
+            transform: skew(0deg,-6deg);
+        }
+    </style>
 </head>
 
 <body>
-
+    <div id="chevron"></div>
 </body>
 
 </html>
