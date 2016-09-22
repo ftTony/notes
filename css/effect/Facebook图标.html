@@ -6,14 +6,40 @@
     <title>Facebook图标</title>
     <style>
         #facebook-icon{
-            
+            background:red;
+            text-indent: -999em;
+            width: 100px;
+            height: 110px;
+            box-sizing: content-box;
+            border-radius: 5px;
+            position: relative;
+            overflow:hidden;
+            border:15px solid red;
+            border-bottom: 0;
         }
 
         #facebook-icon::before{
+            content: "/20";
+            position: absolute;
+            background: red;
+            width: 40px;
+            height: 90px;
+            bottom:-30px;
+            right: -37px;
+            border:20px solid #eee;
+            border-radius: 25px;
+            box-sizing: content-box;
         }
 
         #facebook-icon::after{
-
+            content: "/20";
+            position: absolute;
+            width: 55px;
+            top: 50px;
+            height: 20px;
+            background: #eee;
+            right: 5px;
+            box-sizing: content-box;
         }
     </style>
 </head>
