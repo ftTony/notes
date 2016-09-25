@@ -5,10 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>十字架</title>
+    <style>
+        #cross{
+            background-color: red;
+            height: 100px;
+            position: relative;
+            width: 20px;
+            left: 40px;
+        }
+        #cross::after{
+            background-color: red;
+            content: '';
+            height: 20px;
+            left: -40px;
+            position: absolute;
+            top: 40px;
+            width: 100px;
+        }
+    </style>
 </head>
 
 <body>
-
+    <div id="cross"></div>
 </body>
 
 </html>
