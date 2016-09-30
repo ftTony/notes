@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>手风琴</title>
+    <style>
+      .accordion-container {
+        overflow: hidden;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+      .accordion-container .accordion-item {
+        list-style: none;
+        height: 500px;
+        transition: width 0.5s;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .accordion-container .accordion-item:not(:hover) {
+        width: 20%;
+      }
+      .accordion-container .accordion-item:hover {
+        width: 800px;
+      }
+      .accordion-container .accordion-item:hover::after {
+        opacity: 1;
+      }
+      .accordion-container .accordion-item::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.5s;
+      }
+      .accordion-container .accordion-item .accordion-title {
+        color: #fff;
+        font-size: 18px;
+        z-index: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="accordion-container">
+      <li
+        class="accordion-item"
+        style="background-image: url(https://qishaoxuan.github.io/css_tricks/assets/img/bg7.af68deb6.jpeg);"
+      >
+        <p class="accordion-title">背景1</p>
+      </li>
+      <li
+        class="accordion-item"
+        style="background-image: url(https://qishaoxuan.github.io/css_tricks/assets/img/bg10.eaa9de63.jpeg);"
+      >
+        <p class="accordion-title">背景2</p>
+      </li>
+      <li
+        class="accordion-item"
+        style="background-image: url(https://qishaoxuan.github.io/css_tricks/assets/img/bg9.aa9a9041.jpeg);"
+      >
+        <p class="accordion-title">背景3</p>
+      </li>
+      <li
+        class="accordion-item"
+        style="background-image: url(https://qishaoxuan.github.io/css_tricks/assets/img/bg7.af68deb6.jpeg);"
+      >
+        <p class="accordion-title">背景4</p>
+      </li>
+      <li
+        class="accordion-item"
+        style="background-image: url(https://qishaoxuan.github.io/css_tricks/assets/img/bg10.eaa9de63.jpeg);"
+      >
+        <p class="accordion-title">背景5</p>
+      </li>
+    </ul>
+  </body>
+</html>

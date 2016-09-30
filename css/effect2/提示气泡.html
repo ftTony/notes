@@ -1,12 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>提示气泡</title>
-    <style></style>
-</head>
-<body>
+    <style>
+      .poptip {
+        position: relative;
+        z-index: 101;
+        top: 50px;
+      }
+      .poptip::before,
+      .poptip::after {
+        visibility: hidden;
+        opacity: 0;
+        transform: translate3d(0, 0, 0);
+        transition: all 0.3s ease 0.2s;
+        box-sizing: border-box;
+      }
+      .poptip::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-color: #30363d transparent transparent transparent;
+        left: calc(50% - 8px);
+        top: 0px;
+        transform: translateX(0%) translateY(-12px);
+      }
+      .poptip::after {
+        font-size: 14px;
+        color: #fff;
+        content: attr(aria-controls);
+        position: absolute;
+        padding: 6px 12px;
+        white-space: nowrap;
+        z-index: -1;
+        left: 50%;
+        bottom: 100%;
+        transform: translateX(-50%) translateY(-12px);
+        background-color: #30363d;
+        line-height: 1;
+        border-radius: 2px;
+      }
+      .poptip:hover::before,
+      .poptip:hover::after {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .btn {
+        width: 100px;
+        line-height: 1.5;
+        padding: 5px 10px;
+        color: #fff;
+        background-color: #00adb5;
+        border-radius: 4px;
+        text-align: center;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
     <div class="poptip btn" aria-controls="弹出气泡">poptip</div>
-</body>
+  </body>
 </html>
