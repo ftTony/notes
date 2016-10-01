@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>边框动画</title>
+    <style>
+      .button {
+        width: 200px;
+        height: 60px;
+        position: relative;
+        background: #fff;
+        margin: 30px auto;
+        box-sizing: border-box;
+        cursor: pointer;
+        text-align: center;
+        line-height: 60px;
+      }
+      .button::before {
+        content: '';
+        width: 0;
+        height: 0;
+        background: #00adb5;
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        z-index: 0;
+        transition: width 0.5s, height 0.5s;
+      }
+      .button::after {
+        content: '';
+        width: 0;
+        height: 0;
+        background: #00adb5;
+        position: absolute;
+        bottom: -1px;
+        left: -1px;
+        z-index: 0;
+        transition: width 0.5s, height 0.5s;
+      }
+      .button:hover::before {
+        width: calc(100% + 2px);
+        height: calc(100% + 2px);
+      }
+      .button:hover::after {
+        width: calc(100% + 2px);
+        height: calc(100% + 2px);
+      }
+      .button__content {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        background: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="button">
+      <div class="button__content">hover me to change</div>
+    </div>
+  </body>
+</html>
