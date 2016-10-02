@@ -4,6 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>图片闪光</title>
+    <style>
+      .flash-container {
+      }
+      .flash-container::after {
+      }
+      @keyframes move {
+        0% {
+          transform: translate(-200px, -200px) rotate(45deg);
+        }
+        100% {
+          transform: translate(200px, 200px) rotate(45deg);
+        }
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <div class="flash-container">
+      <img
+        src="https://qishaoxuan.github.io/css_tricks/assets/img/bg7.af68deb6.jpeg"
+        alt=""
+      />
+    </div>
+  </body>
 </html>
