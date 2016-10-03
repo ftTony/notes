@@ -6,8 +6,30 @@
     <title>图片闪光</title>
     <style>
       .flash-container {
+        width: 300px;
+        height: 500px;
+        background-color: #333333;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
       }
       .flash-container::after {
+        content: '';
+        height: 150%;
+        width: 25px;
+        background-color: #fff;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        opacity: 0.6;
+        filter: blur(6px);
+        animation: move 1s infinite ease-out;
+      }
+      .flash-container img {
+        max-width: 100%;
       }
       @keyframes move {
         0% {
