@@ -2,121 +2,111 @@
 单链表
 */
 
-function Node(element) {
-  this.element = element
-  this.next = null
-}
-
-function LList() {
-  this.head = new Node('head')
-  this.find = find
-  this.insert = insert
-  this.remove = remove
-  this.display = display
-}
-
-function find(item) {
-  var currNode = this.head
-  while (currNode.element != item) {
-    currNode = currNode.next
-  }
-  return currNode
-}
-
-function insert(newElement, item) {
-  var newNode = new Node(newElement)
-  var current = this.find(item)
-  newNode.next = current.next
-  current.next = newNode
-}
-
-function display() {
-  var currNode = this.head
-  while (!(currNode.next == null)) {
-    console.log(currNode.next.element)
-    currNode = currNode.next
+class Node{
+  constructor(element,next)){
+      this.element = delementata;
+      this.next = next;
   }
 }
 
-function findPrevious(item) {
-  var currNode = this.head
-  while (!(currNode.next == null) && currNode.next.element != item) {
-    currNode = currNode.next
+class LinkedList{
+  constructor(equalsFn = ((a,b)=>a===b)){
+      this.count = 0;
+      this.head = undefined;
+      this.equalsFn = equalsFn;
   }
-  return currNode
-}
-
-function remove(item) {
-  var prevNode = this.findPrevious(item)
-  if (!(prevNode.next == null)) {
-    prevNode.next = prevNode.next.next
+  push(element){
+      const node = new Node(element);
+      let current;
+      if(this.head == null){
+          this.head = node;
+      }else{
+          current = this.head;
+          while(current.next !=null){
+              current = current.next;
+          }
+          current.next = node;
+      }
+      this.count++;
+  }
+  removeAt(index){
+      if(index>=0 && index<this.count){
+          let current = this.head;
+          if(index === 0){
+              this.head = current.next;
+          }else{
+              const previous = this.getElementAt(index-1);
+              current = previous.next;
+              previous.next = current.next;
+          }
+          this.count--;
+          return current.element;
+      }
+      return undefined;
+  }
+  getElementAt(index){
+      if(index>0 && index<= this.count){
+          let node = this.head;
+          for(let i=0;i<index && node!=null;i++){
+              node = node.next;
+          }
+          return node;
+      }
+      return undefined;
+  }
+  remove(element){
+      const index = this.indexOf(element);
+      return this.removeAt(index);
+  }
+  insert(element,index){
+      if(index>=0 && index<=this.count){
+          const node = new Node(element);
+          if(index === 0){
+              const current = this.head;
+              node.next = current;
+          }else{
+              const previous = this.getElementAt(index-1);
+              node.next = previous.next;
+              previous.next = node;
+          }
+          this.count++;
+          return true;
+      }
+      return false;
+  }
+  indexOf(element){
+      let current = this.head;
+      for(let i=0;i<this.size() && current !=null;i++){
+          if(this.equalsFn(element,current.element)){
+              return i;
+          }
+          current = current.next;
+      }
+      return -1;
+  }
+  size(){
+      return this.count;
+  }
+  isEmpty(){
+      return this.size()===0;
+  }
+  getHead(){
+      return this.head;
+  }
+  toString(){
+      if(this.head ==null){
+          return '';
+      }
+      let objString = `${this.head.element}`;
+      let current = this.head.next;
+      for(let i=1;i<this.size() && current !=null;i++){
+          objString = `${objString},${current.element}`;
+          current = current.next;
+      }
+      return objString;
+  }
+  clear(){
+      this.head = undefined;
+      this.count = 0;
   }
 }
-
-/* function Node(element) {
-    this.element = element;
-    this.next = null;
-    this.previous = null;
-}
-
-function LList() {
-    this.head = new Node('head');
-    this.find = find;
-    this.insert = insert;
-    this.display = display;
-    this.remove = remove;
-    this.findLast = findLast;
-    this.dispReverse = dispReverse;
-}
-
-function dispReverse() {
-    var currNode = this.head;
-    currNode = this.findLast();
-    while (!(currNode.previous == null)) {
-        console.log(currNode.element);
-        currNode = currNode.previous;
-    }
-}
-
-function findLast() {
-    var currNode = this.head;
-    while (!(currNode.next == null)) {
-        currNode = currNode.next;
-    }
-    return currNode;
-}
-
-function remove(item) {
-    var currNode = this.find(item);
-    if (!(currNode.next == null)) {
-        currNode.previous.next = currNode.next;
-        currNode.next.previous = currNode.previous;
-        currNode.next = null;
-        currNode.previous = null;
-    }
-}
-
-function display(){
-    var currNode=this.head;
-    while(!(currNode.next==null)){
-        console.log(currNode.next.element);
-        currNode=currNode.next;
-    }
-}
-
-function find(item){
-    var currNode=this.head;
-    while(currNode.element!=item){
-        currNode=currNode.next;
-    }
-    return currNode;
-}
-
-function insert(newElement,item){
-    var newNode=new Node(newElement);
-    var currNode=this.find(item);
-    newNode.next=currNode.next;
-    newNode.previous=current;
-    current.next=newNode;
-}
- */
