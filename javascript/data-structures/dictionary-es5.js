@@ -1,22 +1,39 @@
 function Dictionary() {
-    this.datastore = new Array();
-}
+    var items = {};
 
-function add(key, value) {
-    this.datastore[key] = value;
-}
+    this.has = function (key) {
+        return key in items;
+    }
 
-function find(key) {
-    return this.datastore[key];
-}
+    this.set = function (key, value) {
+        items[key] = value;
+    }
 
-function remove(key) {
-    delete this.datastore[key];
-}
+    this.remove = function (key) {
+        if (this.has(key)) {
+            delete items[key];
 
-function showAll() {
-    for (var key in Object.keys(this.datastore)) {
-        console.log(key + ' ->' + this.datastore[key]);
+            return true;
+        }
+        return false;
+    }
+
+    this.get = function (key) {
+        return this.has(key) ? items[key] : undefined;
+    }
+
+    this.values = function (key) {
+        var values = {};
+        for (var k in items) {
+            if (this.has(k)) {
+                values.push(items[k]);
+            }
+        }
+        return values;
+    }
+
+    this.getItems = function () {
+        return items;
     }
 }
 
