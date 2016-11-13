@@ -9,6 +9,16 @@ function defaultToString(item) {
     return item.toString();
 }
 
+class ValuePair {
+    constructor(key, value) {
+        this.key = key;
+        this.value = value;
+    }
+    toString() {
+        return `[#${this.key}:${this.value}]`;
+    }
+}
+
 class Dictionary {
     constructor(toStrFn = defaultToString) {
         this.toStrFn = toStrFn;
@@ -17,18 +27,24 @@ class Dictionary {
     set(key, value) {
         if (key != null && value != null) {
             const tableKey = this.toStrFn(key);
-            this.table[tableKey] = new ValuePair(key)
+            this.table[tableKey] = new ValuePair(key, value);
+            return true;
         }
         return false;
     }
     get(key) {
-
+        const valuePair = this.table[this.toStrFn(key)];
+        return valuePair === null ? undefined : valuePair.value;
     }
     hasKey(key) {
-
+        return this.table[this.toStrFn(key)] != null;
     }
     remove(key) {
-
+        if (this.hasKey(key)) {
+            delete this.table[this.toStrFn(key)];
+            return true;
+        }
+        return false;
     }
     values() {
 
@@ -52,6 +68,8 @@ class Dictionary {
         this.table = {};
     }
     toString() {
-
+        if (this.isEmpty()) {
+            return '';
+        }
     }
 }
