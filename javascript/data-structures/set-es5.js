@@ -1,106 +1,134 @@
 /**
- * 集合
+ * es5 set
+ * 
  */
-
 function Set() {
-    this.dataStore = [];
-    this.add = add;
-    this.remove = remove;
-    this.size = size;
-    this.union = union;
-    this.intersect = intersect;
-    this.subset = subset;
-    this.difference = difference;
-    this.show = show;
-}
 
-function add(data){
-    if(this.dataStore.indexOf(data)<0){
-        this.dataStore.push(data);
-        return true;
-    }else{
-        return false;
-    }
-}
+    var items = {};
 
-function remove(data){
-    var pos=this.dataStore.indexOf(data);
-    if(pos>-1){
-        this.dataStore.splice(pos,1);
-        return true;
-    }else{
-        return false;
-    }
-}
-
-function remove(data){
-    var pos=this.dataStore.indexOf(data);
-    if(pos>-1){
-        this.dataStore.splice(pos,1);
-        return true;
-    }else{
-        return false;
-    }
-}
-
-function show(){
-    return this.dataStore;
-}
-
-function contains(data){
-    if(this.dataStore.indexOf(data)>-1){
-        return true;
-    }else{
-        return false;
-    }
-}
-
-function union(set){
-    var tempSet=new Set();
-    for(var i=0;i<this.dataStore.length;++i){
-        tempSet.add(this.dataStore[i]);
-    }
-    for(var i=0;i<set.dataStore.length;++i){
-        if(!tempSet.contains(set.dataStore[i])){
-            tempSet.dataStore.push(set.dataStore[i]);
+    this.add = function (value) {
+        if (!this.has(value)) {
+            items[value] = value;
+            return true;
         }
-    }
-    return tempSet;
-}
-
-function interset(set){
-    var tempSet=new Set();
-    for(var i=0;i<this.dataStore.length;++i){
-        if(set.contains(this.dataStore[i])){
-            tempSet.add(this.dataStore[i]);
-        }
-    }
-    return tempSet;
-}
-
-function subset(set){
-    if(this.size()>set.size()){
         return false;
-    }else{
-        for(var member in this.dataStore){
-            if(!set.contains(member)){
-                return false;
+    };
+
+    this.remove = function (value) {
+        if (this.has(value)) {
+            delete items[value];
+            return true;
+        }
+        return false;
+    };
+
+    this.has = function (value) {
+        return items.hasOwnProperty(value);
+        //return value in items;
+    };
+
+    this.clear = function () {
+        items = {};
+    };
+
+    /**
+     * Modern browsers function
+     * IE9+, FF4+, Chrome5+, Opera12+, Safari5+
+     * @returns {Number}
+     */
+    this.size = function () {
+        return Object.keys(items).length;
+    };
+
+    /**
+     * cross browser compatibility - legacy browsers
+     * for modern browsers use size function
+     * @returns {number}
+     */
+    this.sizeLegacy = function () {
+        var count = 0;
+        for (var prop in items) {
+            if (items.hasOwnProperty(prop))
+                ++count;
+        }
+        return count;
+    };
+
+    /**
+     * Modern browsers function
+     * IE9+, FF4+, Chrome5+, Opera12+, Safari5+
+     * @returns {Array}
+     */
+    this.values = function () {
+        return Object.keys(items);
+    };
+
+    this.valuesLegacy = function () {
+        var keys = [];
+        for (var key in items) {
+            keys.push(key);
+        }
+        return keys;
+    };
+
+    this.getItems = function () {
+        return items;
+    };
+
+    this.union = function (otherSet) {
+        var unionSet = new Set(); //{1}
+
+        var values = this.values(); //{2}
+        for (var i = 0; i < values.length; i++) {
+            unionSet.add(values[i]);
+        }
+
+        values = otherSet.values(); //{3}
+        for (var i = 0; i < values.length; i++) {
+            unionSet.add(values[i]);
+        }
+
+        return unionSet;
+    };
+
+    this.intersection = function (otherSet) {
+        var intersectionSet = new Set(); //{1}
+
+        var values = this.values();
+        for (var i = 0; i < values.length; i++) { //{2}
+            if (otherSet.has(values[i])) { //{3}
+                intersectionSet.add(values[i]); //{4}
             }
         }
-    }
-    return true;
-}
 
-function size(){
-    return this.dataStore.length;
-}
+        return intersectionSet;
+    };
 
-function difference(set){
-    var tempSet=new Set();
-    for(var i=0;i<this.dataStore.length;++i){
-        if(!set.contains(this.dataStore[i])){
-            tempSet.add(this.dataStore[i]);
+    this.difference = function (otherSet) {
+        var differenceSet = new Set(); //{1}
+
+        var values = this.values();
+        for (var i = 0; i < values.length; i++) { //{2}
+            if (!otherSet.has(values[i])) { //{3}
+                differenceSet.add(values[i]); //{4}
+            }
         }
-    }
-    return tempSet;
+
+        return differenceSet;
+    };
+
+    this.subset = function (otherSet) {
+
+        if (this.size() > otherSet.size()) { //{1}
+            return false;
+        } else {
+            var values = this.values();
+            for (var i = 0; i < values.length; i++) { //{2}
+                if (!otherSet.has(values[i])) { //{3}
+                    return false; //{4}
+                }
+            }
+            return true;
+        }
+    };
 }
