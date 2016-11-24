@@ -1,75 +1,87 @@
 function defaultToString(item) {
-    if (item === null) {
-        return 'NULL';
-    } else if (item === undefined) {
-        return 'UNDEFINED';
-    } else if (typeof item === 'string' || item instanceof String) {
-        return `${item}`
-    }
-    return item.toString();
+  if (item === null) {
+    return 'NULL'
+  } else if (item === undefined) {
+    return 'UNDEFINED'
+  } else if (typeof item === 'string' || item instanceof String) {
+    return `${item}`
+  }
+  return item.toString()
 }
 
 class ValuePair {
-    constructor(key, value) {
-        this.key = key;
-        this.value = value;
-    }
-    toString() {
-        return `[#${this.key}:${this.value}]`;
-    }
+  constructor(key, value) {
+    this.key = key
+    this.value = value
+  }
+  toString() {
+    return `[#${this.key}:${this.value}]`
+  }
 }
 
 class Dictionary {
-    constructor(toStrFn = defaultToString) {
-        this.toStrFn = toStrFn;
-        this.table = {};
+  constructor(toStrFn = defaultToString) {
+    this.toStrFn = toStrFn
+    this.table = {}
+  }
+  set(key, value) {
+    if (key != null && value != null) {
+      const tableKey = this.toStrFn(key)
+      this.table[tableKey] = new ValuePair(key, value)
+      return true
     }
-    set(key, value) {
-        if (key != null && value != null) {
-            const tableKey = this.toStrFn(key);
-            this.table[tableKey] = new ValuePair(key, value);
-            return true;
-        }
-        return false;
+    return false
+  }
+  get(key) {
+    const valuePair = this.table[this.toStrFn(key)]
+    return valuePair === null ? undefined : valuePair.value
+  }
+  hasKey(key) {
+    return this.table[this.toStrFn(key)] != null
+  }
+  remove(key) {
+    if (this.hasKey(key)) {
+      delete this.table[this.toStrFn(key)]
+      return true
     }
-    get(key) {
-        const valuePair = this.table[this.toStrFn(key)];
-        return valuePair === null ? undefined : valuePair.value;
+    return false
+  }
+  values() {
+    return this.keyValues().map(valuePair => valuePair.value)
+  }
+  keys() {
+    return this.keyValues().map(valuePair => valuePair.key)
+  }
+  keyValues() {
+    return Object.values(this.table)
+  }
+  forEach(callbackFn) {
+    const valuePairs = this.keyValues()
+    for (let i = 0; i < valuePairs.length; i++) {
+      const result = callbackFn(valuePairs[i].key, valuePairs[i].value)
+      if (result === false) {
+        break
+      }
     }
-    hasKey(key) {
-        return this.table[this.toStrFn(key)] != null;
+  }
+  isEmpty() {
+    return this.size() === 0
+  }
+  size() {
+    return Object.keys(this.table).length
+  }
+  clear() {
+    this.table = {}
+  }
+  toString() {
+    if (this.isEmpty()) {
+      return ''
     }
-    remove(key) {
-        if (this.hasKey(key)) {
-            delete this.table[this.toStrFn(key)];
-            return true;
-        }
-        return false;
+    const valuePairs = this.keyValues()
+    let objString = `${valuePairs[0].toString()}`
+    for (let i = 1; i < valuePairs.length; i++) {
+      objString = `${objString},${valuePairs[i].toString()}`
     }
-    values() {
-
-    }
-    keys() {
-
-    }
-    keyValues() {
-
-    }
-    forEach(callbackFn) {
-
-    }
-    isEmpty() {
-        return this.size() === 0;
-    }
-    size() {
-        return Object.keys(this.table).length;
-    }
-    clear() {
-        this.table = {};
-    }
-    toString() {
-        if (this.isEmpty()) {
-            return '';
-        }
-    }
+    return objString
+  }
 }
