@@ -94,7 +94,9 @@ class HashTableLinearProbing {
         while (this.table[index] != null) {
             const posHash = this.hashCode(this.table[index].key)
             if (posHash <= hash || posHash <= removedPosition) {
-
+                this.table[removePosition] = this.table[index]
+                delete this.table[index]
+                removePosition = index
             }
             index++;
         }
