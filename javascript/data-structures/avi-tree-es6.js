@@ -73,14 +73,18 @@ class AVITree extends BinarySearchTree {
      * @param node Node<T>
      */
     rotationRR(node) {
-
+        const tmp = node.right
+        node.right = tmp.left
+        tmp.left = node
+        return tmp
     }
     /**
      * Left right case: rotate left then right
      * @param node Node<T>
      */
     rotationLR(node) {
-
+        node.left = this.rotationRR(node.left)
+        return this.rotationLL(node)
     }
     /**
      * Right left case: rotate right then left
@@ -91,15 +95,29 @@ class AVITree extends BinarySearchTree {
         return this.rotationRR(node)
     }
     getBalanceFactor(node) {
+        const heightDifference = this.getNodeHeight(node.left) - this.getNodeHeight(node.right)
+        switch (heightDifference) {
 
+        }
     }
     insert(key) {
-
+        this.root = this.insertNode(this.root, key)
     }
     insertNode(node, key) {
+        if (node == null) {
 
+        } else if (this.compareFn(key, node.key) === Compare.LESS_THAN) {
+
+        } else if (this.compareFn(key, node.key) === Compare.BIGGER_THAN) {
+
+        } else {
+            return node;
+        }
     }
     removeNode(node, key) {
-
+        node = super.removeNode(node, key);
+        if (node == null) {
+            return node
+        }
     }
 }
