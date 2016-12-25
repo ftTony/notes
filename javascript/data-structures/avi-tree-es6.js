@@ -124,6 +124,14 @@ class AVITree extends BinarySearchTree {
         }
 
         const balanceFactor = this.getBalanceFactor(node);
+        if (balanceFactor === BalanceFactor.UNBALANCED_LEFT) {
+            if (this.compareFn(key, node.left.key) === Compare.LESS_THAN) {
+                node = this.rotationRR(node);
+            } else {
+                return this.rotationLR(node);
+            }
+        }
+        return node;
     }
     removeNode(node, key) {
         node = super.removeNode(node, key);
@@ -133,14 +141,19 @@ class AVITree extends BinarySearchTree {
 
         const balanceFactor = this.getBalanceFactor(node);
         if (balanceFactor === BalanceFactor.UNBALANCED_LEFT) {
-
+            if (this.getBalanceFactor(node.left) === BalanceFactor.BALANCED || this.getBalanceFactor(node.left) === BalanceFactor.SLIGHTLY_UNBALANCED_LEFT) {
+                return this.rotationLL(node)
+            }
+            if (this.getBalanceFactor(node.left) === BalanceFactor.SLIGHTLY_UNBALANCED_RIGHT) {
+                return this.rotationLR(node.left)
+            }
         }
         if (balanceFactor === BalanceFactor.UNBALANCED_RIGHT) {
             if (this.getBalanceFactor(node.right) === BalanceFactor.BALANCED || this.getBalanceFactor(node.right) === BalanceFactor.SLIGHTLY_UNBALANCED_RIGHT) {
                 return this.rotationRR(node)
             }
             if (this.getBalanceFactor(node.right) === BalanceFactor.SLIGHTLY_UNBALANCED_LEFT) {
-
+                return this.rotationRL(node.right)
             }
         }
         return node;
