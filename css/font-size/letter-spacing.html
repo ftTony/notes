@@ -5,7 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>文本控制letter-spacing属性学习</title>
-    <style></style>
+    <style>
+      /* 指定字符之间的额外间隙。 */
+      .title {
+        width: 8em;
+        margin: auto;
+        white-space: nowrap;
+        animation: textIn 1s both;
+      }
+      @keyframes textIn {
+        0% {
+          opacity: 0;
+          letter-spacing: -200px;
+        }
+        60% {
+          letter-spacing: 5px;
+        }
+        100% {
+          opacity: 1;
+          letter-spacing: 0;
+        }
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <div class="title">我是标题文字内容</div>
+  </body>
 </html>
