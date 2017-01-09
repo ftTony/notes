@@ -1,30 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>多行文本垂直居中</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>行距</title>
     <style>
-        .box{
-            line-height: 250px;
-            height: 250px;
-            text-align: center;
-            width: 200px;
-            margin:0 auto;
-            border: 1px solid red;
-        }
-        .box>.text{
-            display:inline-block;
-            line-height: normal;
-            text-align: left;
-            vertical-align: middle;
-        }
+      div {
+        line-height: 300px;
+        border: 1px solid;
+      }
+      span{
+          
+      }
     </style>
-</head>
-<body>
-<div class="box">
-    <p class="text">
-        多行文字水平垂直居中实现的原理跟上一页图片的实现是一样的，区别在于要把多行文本所在的容器display水平转换成和图片一样的，也就是inline-block,以及重置外部继承的text-align和line-height属性值。
-    </p>
-</div>
-</body>
+  </head>
+  <body>
+    <div class="box">
+      x
+      <span></span>
+    </div>
+  </body>
 </html>
