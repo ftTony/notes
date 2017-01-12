@@ -2,14 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>多行文本垂直居中</title>
-    <style></style>
+    <title>内联元素的大值特性</title>
+    <style>
+      .box {
+        line-height: 30px;
+        background: lightgreen;
+      }
+      .box span {
+        line-height: 100px;
+      }
+    </style>
   </head>
   <body>
     <div class="box">
-      <p class="text">
-        多行文字水平垂直居中实现的原理跟上一页图片的实现是一样的，区别在于要把多行文本所在的容器display水平转换成和图片一样的，也就是inline-block,以及重置外部继承的text-align和line-height属性值。
-      </p>
+      <span>asdf</span>
     </div>
   </body>
 </html>
