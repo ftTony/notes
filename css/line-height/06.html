@@ -18,6 +18,22 @@
         white-space: nowrap;
         overflow: auto;
       }
+      .container::after {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+      }
+      .dialog {
+        display: inline-block;
+        width: 400px;
+        height: 400px;
+        vertical-align: middle;
+        text-align: left;
+        font-size: 14px;
+        white-space: normal;
+        background-color: white;
+      }
     </style>
   </head>
   <body>
