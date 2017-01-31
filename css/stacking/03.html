@@ -5,7 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>层叠上下文——给子元素增加 z-index</title>
-    <style></style>
+    <style>
+      div {
+        position: relative;
+      }
+      .red,
+      .green,
+      .blue,
+      .gold {
+        position: absolute;
+        width: 100px;
+        color: white;
+        line-height: 100px;
+        text-align: center;
+      }
+      .red {
+        top: 20px;
+        left: 20px;
+        background-color: red;
+      }
+      .green {
+        z-index: 1;
+        top: 60px;
+        left: 60px;
+        background-color: green;
+      }
+      .blue {
+        top: 100px;
+        left: 100px;
+        background-color: blue;
+      }
+      .gold {
+        z-index: -1;
+        width: 140px;
+        line-height: 140px;
+        top: 40px;
+        left: 40px;
+        background-color: gold;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <div class="first-box">
+      <div class="red">Red</div>
+      <div class="green">Green</div>
+    </div>
+    <div class="second-box">
+      <div class="blue">Blue</div>
+      <div class="gold">Gold</div>
+    </div>
+  </body>
 </html>
