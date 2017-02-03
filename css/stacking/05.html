@@ -5,7 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>层叠上下文——给子元素设置 opacity</title>
-    <style></style>
+    <style>
+      .first-box {
+        opacity: 0.99;
+      }
+      div {
+        position: relative;
+      }
+      .red,
+      .green,
+      .blue,
+      .gold {
+        position: absolute;
+        width: 100px;
+        color: white;
+        line-height: 100px;
+        text-align: center;
+      }
+      .red {
+        top: 20px;
+        left: 20px;
+        background-color: red;
+        z-index: 999;
+      }
+      .green {
+        top: 60px;
+        left: 60px;
+        background: green;
+        z-index: 999; /* 设置了很大的z-index */
+      }
+      .blue {
+        top: 100px;
+        left: 100px;
+        background: blue;
+      }
+
+      .gold {
+        z-index: -1; /* 设置了负的z-index */
+        width: 140px;
+        line-height: 140px;
+        top: 40px;
+        left: 40px;
+        background: gold;
+      }
+    </style>
   </head>
   <body>
     <div class="first-box">
