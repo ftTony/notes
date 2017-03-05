@@ -28,4 +28,12 @@ export class HashRouter extends BaseRouter {
     const base = i >= 0 ? href.slice(0, i) : href;
     return base + '#' + path;
   }
+  // 替换页面
+  replace(path) {
+    window.location.replace(this.getUrl(path));
+  }
+  // 前进or后退浏览历史
+  go(n) {
+    window.history.go(n);
+  }
 }
