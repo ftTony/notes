@@ -3,7 +3,7 @@ import { HistoryRouter } from './history';
 import { ROUTELIST } from './routeList';
 
 // 路由模式
-const MODE = 'hash';
+const MODE = 'h5';
 class WebRouter {
   constructor({ mode = 'hash', routeList }) {
     this.router =
@@ -22,6 +22,11 @@ class WebRouter {
   }
 }
 
+const webRouter = new WebRouter({
+  mode: MODE,
+  routeList: ROUTELIST
+});
+
 document.querySelector('.btn-list').addEventListener('click', e => {
   const event = e || window.event;
   if (event.target.tagName === 'LI') {
@@ -31,5 +36,5 @@ document.querySelector('.btn-list').addEventListener('click', e => {
 });
 
 document.querySelector('.replace-btn').addEventListener('click', e => {
-  WebRouter.replace('/');
+  webRouter.replace('/');
 });
