@@ -1,22 +1,28 @@
 <template>
   <div id="app">
-    <Parent/>
+    <!-- <Parent/>
     <event-parent></event-parent>
-    <props-parent></props-parent>
+    <props-parent></props-parent> -->
+    <!-- <attrs></attrs> -->
+    <listeners></listeners>
   </div>
 </template>
 
 <script>
-import Parent from "./components/Parent.vue";
-import EventParent from "./components/EventParent.vue";
-import PropsParent from "./components/PropsParent.vue";
+// import Parent from "./components/Parent.vue";
+// import EventParent from "./components/EventParent.vue";
+// import PropsParent from "./components/PropsParent.vue";
+
+import listeners from './components/listenersParent.vue'
 
 export default {
   name: "app",
   components: {
-    Parent,
-    EventParent,
-    PropsParent
+    listeners
+    // attrs,
+    // Parent,
+    // EventParent,
+    // PropsParent
   }
 };
 </script>
