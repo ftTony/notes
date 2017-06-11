@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>两端对齐列表的间隙问题实例页面</title>
+    <style>
+      .box {
+        max-width: 360px;
+        background-color: #f0f3f9;
+        text-align: justify;
+      }
+      .box img {
+        width: 96px;
+        height: 72px;
+      }
+
+      .justify-fix {
+        display: inline-block;
+        width: 96px;
+      } /* 测试与示意 */
+      .box-1 .justify-fix,
+      .box-2 .justify-fix,
+      .box-3 .justify-fix,
+      .box-4 .justify-fix {
+        outline: 1px dashed red;
+      }
+      .box-2 {
+        line-height: 0;
+      }
+      .box-3 {
+        font-size: 0;
+      }
+      .box-4 {
+        /* 此处对应HTML中的&nbsp;很关键 */
+        line-height: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <img src="1.jpg" />
+      <img src="1.jpg" />
+      <img src="1.jpg" />
+      <img src="1.jpg" />
+      <i class="justify-fix"></i>
+      <i class="justify-fix"></i>
+      <i class="justify-fix"></i>
+    </div>
+    <h4>辅助空标签outline高亮：</h4>
+    <div class="box box-1">
+      <img src="1.jpg" />
+      <img src="1.jpg" />
+      <img src="1.jpg" />
+      <img src="1.jpg" />
+      <i class="justify-fix"></i>
+      <i class="justify-fix"></i>
+      <i class="justify-fix"></i>
+    </div>
+    <h4>容器line-height:0清除间隙：</h4>
+    <div class="box box-2">
+      <img src="1.jpg" />
+      <img src="1.jpg" />
+      <img src="1.jpg" />
+      <img src="1.jpg" />
+      <i class="justify-fix"></i>
+      <i class="justify-fix"></i>
+      <i class="justify-fix"></i>
+    </div>
+    <h4>容器font-size:0清除间隙：</h4>
+    <div class="box box-3">
+      <img src="1.jpg" />
+      <img src="1.jpg" />
+      <img src="1.jpg" />
+      <img src="1.jpg" />
+      <i class="justify-fix"></i>
+      <i class="justify-fix"></i>
+      <i class="justify-fix"></i>
+    </div>
+    <h4>标签插入空格同时line-height:0：</h4>
+    <div class="box box-4">
+      <img src="1.jpg" />
+      <img src="1.jpg" />
+      <img src="1.jpg" />
+      <img src="1.jpg" />
+      <i class="justify-fix">&nbsp;</i>
+      <i class="justify-fix">&nbsp;</i>
+      <i class="justify-fix">&nbsp;</i>
+    </div>
+  </body>
+</html>
