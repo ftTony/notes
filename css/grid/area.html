@@ -13,9 +13,10 @@
         display: inline-grid;
         grid-template-columns: 100px 100px 100px;
         grid-template-rows: 100px 100px 100px;
-        /* justify-items: start;
-                        align-items: start; */
-        place-items: start end;
+        grid-template-areas:
+          'a b c'
+          'd e f'
+          'g h i';
       }
       .item {
         font-size: 2em;
@@ -24,6 +25,7 @@
       }
       .item-1 {
         background-color: #ef342a;
+        grid-area: e;
       }
 
       .item-2 {
