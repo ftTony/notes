@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const fs = request('fs');
+const fs = require('fs');
 
 // 定义读取用户的信息 的接口
 app.get('/users', (req, res) => {
