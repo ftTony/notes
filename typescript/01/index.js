@@ -1,3 +1,16 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 function sayHello(person) {
     return 'Hello, ' + person;
 }
@@ -124,3 +137,82 @@ var Days;
     Days[Days["Fri"] = 5] = "Fri";
     Days[Days["Sat"] = 6] = "Sat";
 })(Days || (Days = {}));
+var Color;
+(function (Color) {
+    Color[Color["Red"] = 0] = "Red";
+    Color[Color["Green"] = 1] = "Green";
+    Color[Color["Blue"] = 'blue'.length] = "Blue";
+})(Color || (Color = {}));
+// 类
+var Animal = /** @class */ (function () {
+    function Animal(name) {
+        this.name = name;
+    }
+    return Animal;
+}());
+// let a = new Animal('Jack')
+// console.log(a.name)
+// a.name = 'Tom'
+var Cat = /** @class */ (function (_super) {
+    __extends(Cat, _super);
+    function Cat(name) {
+        var _this = _super.call(this, name) || this;
+        console.log(_this.name);
+        return _this;
+    }
+    return Cat;
+}(Animal));
+var Animal1 = /** @class */ (function () {
+    function Animal1(name) {
+        this.name = name;
+    }
+    return Animal1;
+}());
+var Cat1 = /** @class */ (function (_super) {
+    __extends(Cat1, _super);
+    function Cat1() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Cat1.prototype.sayHi = function () {
+        console.log("Meow, My name is " + this.name);
+    };
+    return Cat1;
+}(Animal1));
+var Door = /** @class */ (function () {
+    function Door() {
+    }
+    return Door;
+}());
+var SecurityDoor = /** @class */ (function (_super) {
+    __extends(SecurityDoor, _super);
+    function SecurityDoor() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    SecurityDoor.prototype.alert = function () {
+        console.log('SecurityDoor alert');
+    };
+    return SecurityDoor;
+}(Door));
+var Car = /** @class */ (function () {
+    function Car() {
+    }
+    Car.prototype.alert = function () {
+        console.log('Car alert');
+    };
+    Car.prototype.lightOn = function () {
+        console.log('Car light on');
+    };
+    Car.prototype.lightOff = function () {
+        console.log('Car light off');
+    };
+    return Car;
+}());
+// 接口继承类
+var Point = /** @class */ (function () {
+    function Point() {
+        this.x = 0;
+        this.y = 0;
+    }
+    return Point;
+}());
+var point3d = { x: 1, y: 2, z: 3 };

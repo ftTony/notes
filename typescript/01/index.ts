@@ -176,3 +176,90 @@ enum Days {
   Fri,
   Sat
 }
+
+enum Color {
+  Red,
+  Green,
+  Blue = 'blue'.length
+}
+
+// 类
+class Animal {
+  protected name: string
+  public constructor(name: string) {
+    this.name = name
+  }
+}
+
+// let a = new Animal('Jack')
+// console.log(a.name)
+// a.name = 'Tom'
+
+class Cat extends Animal {
+  constructor(name: string) {
+    super(name)
+    console.log(this.name)
+  }
+}
+
+abstract class Animal1 {
+  public name: string
+  public constructor(name: string) {
+    this.name = name
+  }
+  public abstract sayHi(): void
+}
+
+class Cat1 extends Animal1 {
+  public sayHi() {
+    console.log(`Meow, My name is ${this.name}`)
+  }
+}
+
+// 类与接口
+interface Alarm {
+  alert(): void
+}
+
+interface Light {
+  lightOn(): void
+  lightOff(): void
+}
+
+class Door {}
+
+class SecurityDoor extends Door implements Alarm {
+  alert() {
+    console.log('SecurityDoor alert')
+  }
+}
+
+class Car implements Alarm, Light {
+  alert() {
+    console.log('Car alert')
+  }
+  lightOn() {
+    console.log('Car light on')
+  }
+  lightOff() {
+    console.log('Car light off')
+  }
+}
+
+// 接口继承接口
+interface LightableAlarm extends Alarm {
+  lightOn(): void
+  lightOff(): void
+}
+
+// 接口继承类
+class Point {
+  x: number = 0
+  y: number = 0
+}
+
+interface Point3d extends Point {
+  z: number
+}
+
+let point3d: Point3d = { x: 1, y: 2, z: 3 }
