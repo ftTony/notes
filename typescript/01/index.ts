@@ -263,3 +263,47 @@ interface Point3d extends Point {
 }
 
 let point3d: Point3d = { x: 1, y: 2, z: 3 }
+
+// 泛型
+function createArray<T>(length: number, value: T): Array<T> {
+  let result: T[] = []
+  for (let i = 0; i < length; i++) {
+    result[i] = value
+  }
+  return result
+}
+
+createArray<string>(3, 'x')
+
+function swap<T, U>(tuple: [T, U]): [U, T] {
+  return [tuple[1], tuple[0]]
+}
+
+swap([7, 'seven'])
+
+interface CreateArrayFunc {
+  <T>(length: number, value: T): Array<T>
+}
+
+let createArray1: CreateArrayFunc
+createArray1 = function<T>(length: number, value: T): Array<T> {
+  let result: T[] = []
+  for (let i = 0; i < length; i++) {
+    result[i] = value
+  }
+  return result
+}
+
+createArray1(3, 'x') // ['x', 'x', 'x']
+
+// 泛型类
+// class GenericNumber<T> {
+//   zeroValue: T
+//   add: (x: T, y: T) => T
+// }
+
+// let myGenericNumber = new GenericNumber<number>()
+// myGenericNumber.zeroValue = 0
+// myGenericNumber.add = function(x, y) {
+//   return x + y
+// }
