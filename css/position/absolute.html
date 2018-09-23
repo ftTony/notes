@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>absolute的流体特性</title>
+    <style>
+      .container {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        border: 1px solid;
+      }
+      .content {
+        position: absolute;
+        height: 100px;
+        width: 100px;
+        margin: auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content"></div>
+    </div>
+  </body>
+</html>
