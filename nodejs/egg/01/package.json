@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "egg": "^2.22.2",
+    "egg-mock": "^3.24.1",
     "egg-mysql": "^3.0.0",
     "egg-view-nunjucks": "^2.2.0",
     "koa-compress": "^3.0.0",

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用属性contain来设置背景图片</title>
+    <style>
+        .bsize1 {
+            width: 400px;
+            height: 200px;
+            background: url("01.jpg") no-repeat;
+            border: 1px solid red;
+            overflow: hidden;
+            background-size: cover;
+        }
+
+        .contain {
+            background-size: contain;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 把图像扩展至最大尺寸，以使宽度和高度 完全适应内容区域。  -->
+    <h3>使用属性cover来设置背景图片</h3>
+    <div class="bsize1 contain"></div>
+</body>
+
+</html>
