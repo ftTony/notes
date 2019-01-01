@@ -1,35 +1,21 @@
-/* 内容区模块代码 */
-var ContentMode=React.createClass({
-	render:function () {
-		return(
-			<div className="ContentMode">
-				<div class="contents">{this.props.contents}</div>
-				{this.props.children}
-			</div>
-		)
-	}
-});
+const show=require('./show.js');
+import MyImage from './Myimage.jpg'
+import { a } from './util';
+a();
+require('./main.css');
+show('Webpack');
+function* g() {
+	yield 'a';
+	yield 'b';
+	yield 'c';
+	return 'ending';
+  }
+  
+  var gen = g();
+  console.log(gen.next()); // 返回Object {value: "a", done: false}
+  
+  for(let a of [1,2,3,4]) {
+	console.log(a); // 打印出 1, 2, 3, 4
+  }
 
-/*页面div封装 上面三个模块*/
-var Page=React.createClass({
-	render:function () {
-		return (
-			<div className="homepage">
-				<ContentMode contents="tony">this is one comment</ContentMode>
-				<ContentMode contents="tony1">
-					this is two comment
-				</ContentMode>
-			</div>
-			)
-	}
-});
-/*初始化到content容器内*/
-React.render(
-	React.createElement(Page,null),document.getElementById('content')
-);
-
-
-
-
-
-
+  console.log('asdf');

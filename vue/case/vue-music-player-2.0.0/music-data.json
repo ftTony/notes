@@ -1,0 +1,39 @@
+{
+  "musicData": [
+    {
+      "name": "李玉刚 - 刚好遇见你",
+      "src": "http://m10.music.126.net/20180128200701/ec3740a5cb04a126511f267ceeae7f37/ymusic/f623/5875/5fc2/c351e06b8d3b89b8cf113f407b41164b.mp3",
+      "musicImgSrc": "http://p4.music.126.net/lDyytkTaPYVTb1Vpide6AA==/18591642115187138.jpg"
+    },
+    {
+      "name": "以冬 - 我的一个道姑朋友",
+      "src": "http://m10.music.126.net/20180128200922/1b5cfbfef55a3e2d0b126f4312245e59/ymusic/d7da/cd7b/89cf/9c17650c7b42f95d5b7e84fcfec51439.mp3",
+      "musicImgSrc": "http://omratag7g.bkt.clouddn.com/%E6%B0%91%E8%B0%A3.jpg"
+    },
+    {
+      "name": "任素汐 - 我要你",
+      "src": "http://m10.music.126.net/20180128201017/5bb63faf6b4af272c331e7f3518800de/ymusic/cda2/89aa/e245/a52627d677ac19b20ac98393377702e4.mp3",
+      "musicImgSrc": "http://omratag7g.bkt.clouddn.com/%E6%88%91%E8%A6%81%E4%BD%A0.jpg"
+    },
+    {
+      "name": "赵雷 - 成都",
+      "src":"http://m10.music.126.net/20180128201137/05346e78674b508343d05afa781f01e8/ymusic/35e8/22de/2dcd/3d2ccb1bd197e23827a6953af6297eab.mp3",
+      "musicImgSrc": "http://p4.music.126.net/34YW1QtKxJ_3YnX9ZzKhzw==/2946691234868155.jpg"
+    },
+    {
+      "name": "韩安旭 - 多幸运",
+      "src":"http://m10.music.126.net/20180128201212/4f33dc5047b95cdc211192a796b554d4/ymusic/4fa9/c9d8/62d7/3675de0b6c71e277e942a652d3cb5abc.mp3",
+      "musicImgSrc": "http://p3.music.126.net/U9RoJy0AUsoYuaKjmJbAzQ==/3386495814257685.jpg"
+    },
+    {
+      "name": "李健 - 假如爱有天意",
+      "src": "http://m10.music.126.net/20180128201255/098032a65de5fda02d9842d31d91d823/ymusic/fed5/d503/0894/f77199f765f7d2dff2f7453d9cec7aa8.mp3",
+      "musicImgSrc": "http://omratag7g.bkt.clouddn.com/%E6%9D%8E%E5%81%A5.jpg"
+    },
+    {
+      "name": "七月上",
+      "src": "http://m10.music.126.net/20180128201336/003eb1452a0291edf9b6647eb85481ff/ymusic/4c8d/a7f3/76de/14ff6fd6083f9744ea5b99dfcd3559c2.mp3",
+      "musicImgSrc": "http://p3.music.126.net/9kZl6NRj3HxmQQ8DqTjZ4Q==/17729624997966923.jpg"
+    }
+  ]
+}
