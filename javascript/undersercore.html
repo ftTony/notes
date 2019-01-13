@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>underscore学习</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+</head>
+
+<body>
+    <script>
+        var users = [{
+                id: 0,
+                name: 'wxj',
+                age: 18,
+                sex: 'male'
+            },
+            {
+                id: 1,
+                name: 'john',
+                age: 28,
+                sex: 'male'
+            },
+            {
+                id: 2,
+                name: 'bob',
+                age: 33,
+                sex: 'male'
+            },
+            {
+                id: 3,
+                name: 'tom',
+                age: 22,
+                sex: 'male'
+            },
+            {
+                id: 4,
+                name: 'alice',
+                age: 18,
+                sex: 'female'
+            },
+            {
+                id: 5,
+                name: 'rihana',
+                age: 35,
+                sex: 'female'
+            },
+            {
+                id: 6,
+                name: 'sara',
+                age: 20,
+                sex: 'female'
+            }
+        ];
+       var sql=new _.SQL(users);
+       var predicate=function(row){
+           return row.age<30;
+       };
+var result=sql.groupBy('sex').where(predicate).select(['username','id']).getResult();
+console.log(result);
+    </script>
+</body>
+
+</html>
