@@ -73,7 +73,7 @@ export function getPlayStorage() {
 }
 
 // 增加
-export function savePlya(song) {
+export function savePlay(song) {
     // 当前localstorage数组
     let songs = storage.get(PLAY_KEY, [])
 

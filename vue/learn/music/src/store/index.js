@@ -7,7 +7,7 @@ import * as actions from './actions.js'
 import * as getters from './getters.js'
 import createLogger from 'vuex/dist/logger'
 
-Vuex.use(Vuex)
+Vue.use(Vuex)
 
 const debug=process.env.NODE_ENV!=='production'
 
