@@ -1,45 +1,75 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import Mv from '@/components/Mv'
-import Radio from '@/components/Radio'
-import Find from '@/components/Find'
-import musicList from '@/components/MusicList'
 
-Vue.use(Router)
+Vue.use(Router);
+
+const MyRecommend = resolve => require.ensure([], () => resolve(require('@/components/MyRecommend')), 'recommend');
+
+const MySongListDetail = resolve => require.ensure([], () => resolve(require('@/components/MySongListDetail')), 'songlistdetail');
+
+const MyUser = resolve => require.ensure([], () => resolve(require('@/components/MyUser')), 'myuser');
+const MySinger = resolve => require.ensure([], () => resolve(require('@/components/MySinger')), 'mysinger');
+const MySingerDetail = resolve => require.ensure([], () => resolve(require('@/components/MySingerDetail')), 'mysingerdetail');
+const MyRank = resolve => require.ensure([], () => resolve(require('@/components/MyRank')), 'myrank');
+const MyRankDetail = resolve => require.ensure([], () => resolve(require('@/components/MyRankDetail')), 'myrankdetail');
+const MySearch = resolve => require.ensure([], () => resolve(require('@/components/MySearch')), 'mysearch');
+
+
+
+// const MySongListDetail=(resolve)=>{
+//     import('@/components/MySongListDetail').then((module)=>{
+//         resolve(module)
+//     });
+// }
 
 export default new Router({
-  mode: 'history',
-  linkActiveClass: 'active',
-  routes: [
-    {
-      path: '/home',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/mv',
-      name: 'mv',
-      component: Mv
-    },
-    {
-      path: '/radio',
-      name: 'radio',
-      component: Radio
-    },
-    {
-      path: '/find',
-      name: 'find',
-      component: Find
-    },
-    {
-      path: '/',
-      redirect: '/home'
-    },
-    {
-      path: '/music-list/:id',
-      name: 'musicList',
-      component: musicList
-    }
-  ]
-})
+    routes: [{
+            path: '/',
+            redirect: '/recommend'
+        },
+        {
+            path: '/user',
+            name: 'user',
+            component: MyUser
+        },
+        {
+            path: '/recommend',
+            name: 'recommend',
+            component: MyRecommend,
+            children: [{
+                path: 'id',
+                name: 'songlistdetail',
+                component: MySongListDetail
+            }]
+        },
+        {
+            path: '/singer',
+            name: 'singer',
+            component: MySinger,
+            children: [{
+                path: ':id',
+                name: 'singerdetail',
+                component: MySingerDetail
+            }]
+        },
+        {
+            path: '/rank',
+            name: 'rank',
+            component: MyRank,
+            children: [{
+                path: ':id',
+                name: 'rankdetail',
+                component: MyRankDetail
+            }]
+        },
+        {
+            path: '/search',
+            name: 'search',
+            component: MySearch,
+            children: [{
+                path: ':id',
+                component: MySingerDetail
+            }]
+        }
+    ]
+});
