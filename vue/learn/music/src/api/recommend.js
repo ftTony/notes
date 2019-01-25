@@ -27,7 +27,7 @@ export function getRecommend() {
  * 
  */
 export function getList() {
-    let url = '/api/getList'
+    let url = 'http://localhost:8889/api/getList'
     let data = Object.assign({}, commonParams, {
         rnd: Math.random(),
         hostUin: 0,
@@ -53,7 +53,7 @@ export function getList() {
  * @param {*} disstid 
  */
 export function getSongList(disstid) {
-    let url = '/api/getSongList';
+    let url = 'http://localhost:8889/api/getSongList';
     let data = Object.assign({}, commonParams, {
         disstid,
         type: 1,
