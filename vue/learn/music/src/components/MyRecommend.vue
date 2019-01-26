@@ -109,8 +109,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "~@/common/scss/const.scss";
-@import "~@/common/scss/mymixin.scss";
+@import '~@/common/scss/const.scss';
+@import '~@/common/scss/mymixin.scss';
 
 .my-recommend {
   position: fixed;

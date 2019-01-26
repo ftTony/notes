@@ -5,7 +5,7 @@ Vue.use(Router);
 
 const MyRecommend = resolve => require.ensure([], () => resolve(require('@/components/MyRecommend')), 'recommend');
 
-const MySongListDetail = resolve => require.ensure([], () => resolve(require('@/components/MySongListDetail')), 'songlistdetail');
+const MySongListDetail = resolve => require.ensure([], () => resolve(require('@/components/MySongListDetail')), 'mysonglistdetail');
 
 const MyUser = resolve => require.ensure([], () => resolve(require('@/components/MyUser')), 'myuser');
 const MySinger = resolve => require.ensure([], () => resolve(require('@/components/MySinger')), 'mysinger');
@@ -37,7 +37,7 @@ export default new Router({
             name: 'recommend',
             component: MyRecommend,
             children: [{
-                path: 'id',
+                path: ':id',
                 name: 'songlistdetail',
                 component: MySongListDetail
             }]

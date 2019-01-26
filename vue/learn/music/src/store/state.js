@@ -26,6 +26,8 @@ const state = {
     // 当前播放歌曲索引
     currentIndex: -1,
     // 推荐页歌单
+    songlist:{},
+    // 歌曲排行数据
     rankList: {},
     // 搜索结果
     searchHistory: getStorage(),
