@@ -88,7 +88,7 @@
             <div class="icon i-right">
               <i
                 class="icon"
-                :class="getFavorite(currentSong)"
+                :class="getFavoriteCls(currentSong)"
                 @click="toggleFavoriteCls(currentSong)"
               ></i>
             </div>
