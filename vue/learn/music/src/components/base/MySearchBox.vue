@@ -26,9 +26,24 @@ export default {
     methods:{
         // 给父亲用的，让输入框失去焦点，避免滚动搜索结果时移动端键盘遮挡
         blur(){
-
+            this.$refs.queryRef.blur()
+        },
+        getQuery(k){
+            this.query=k
+        },
+        clearQuery(){
+            this.query=''
         }
-    }
+    },
+    computed:{},
+    create(){
+        // 节流
+        this.$watch('query',myDOM.debounce((newQuery)=>{
+            this.$emit('query',newQuery)
+        },300))
+    },
+    mounted(){},
+    destroyed(){}
 }
 </script>
 <style lang="scss" scoped>

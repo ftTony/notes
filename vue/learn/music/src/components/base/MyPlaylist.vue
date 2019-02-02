@@ -168,7 +168,7 @@ export default {
     confirm() {
       this.deleteSongList();
     },
-    created() {
+    cancel() {
       return;
     },
     // 改变播放模式，实质是修改playlist
