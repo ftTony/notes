@@ -1,5 +1,5 @@
 <template>
-    <transitio name="confirm-fade">
+    <transition name="confirm-fade">
         <div class="my-confirm" v-show="showFlag" @click.stop>
             <div class="confirm-wrapper">
                 <div class="confirm-content">
@@ -13,7 +13,7 @@
                 </div>
             </div>
         </div>
-    </transitio>
+    </transition>
 </template>
 <script>
 export default {

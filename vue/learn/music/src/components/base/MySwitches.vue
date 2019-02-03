@@ -11,7 +11,33 @@
   </ul>
 </template>
 <script>
-export default {};
+export default {
+  components:{},
+  data(){
+    return {}
+  },
+  props:{
+    switches:{
+      type:Array,
+      default:[]
+    },
+    currentIndex:{
+      type:Number,
+      default:0
+    }
+  },
+  watch:{},
+  methods:{
+    switchItem(index){
+      this.$emit('switch',index)
+    }
+  },
+  filters:{},
+  computed:{},
+  created(){},
+  mounted(){},
+  destroyed(){}
+};
 </script>
 <style lang="scss" scoped>
 @import '~@/common/scss/const.scss';

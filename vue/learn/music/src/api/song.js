@@ -4,7 +4,7 @@ import {
 } from '@/api/common-query.js'
 
 export function getLyric(mid) {
-    let url = '/api/getLyric'
+    let url = 'http://localhost:8889/api/getLyric'
     let data = Object.assign({}, commonParams, {
         songmid: mid,
         format: 'json',
