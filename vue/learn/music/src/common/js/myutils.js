@@ -32,7 +32,7 @@ export const myDOM = {
         if (val) {
             return el.setAttribute(`data-${name}`, val);
         } else {
-            return el.setAttribute(`data-${name}`)
+            return el.getAttribute(`data-${name}`)
         }
     },
     /**
