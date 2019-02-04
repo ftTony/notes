@@ -3,7 +3,7 @@
     <ul>
       <li @click="selectItem(item,index)" v-for="(item,index) in songs" class="item">
         <div class="rank" v-show="rank">
-          <span class="icon">{{getRankTxt(index)}}</span>
+          <span class="icon" :class="getRankCls(index)">{{getRankTxt(index)}}</span>
         </div>
         <div class="content">
           <p class="name">{{item.name}}</p>

@@ -1,8 +1,8 @@
 <template>
     <div class="my-singer" ref="singerRef">
         <my-phone-list ref="listRef" :data="singers" @select="selectSinger">
-            <router-view></router-view>
         </my-phone-list>
+        <router-view></router-view>
     </div>
 </template>
 <script>
