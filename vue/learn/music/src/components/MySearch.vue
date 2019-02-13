@@ -12,7 +12,7 @@
 
             <ul>
               <li class="item" v-for="item in hotkey" @click="addQuery(item.k)">
-                <span>{{iem.k}}</span>
+                <span>{{item.k}}</span>
               </li>
             </ul>
           </div>
@@ -22,7 +22,7 @@
             <h1 class="title">
               <span class="text">搜索历史</span>
               
-              <span class="clear" @click="showConfrim">
+              <span class="clear" @click="confirm">
                 <i class="icon-clear"></i>
               </span>
             </h1>
@@ -95,7 +95,7 @@ export default {
   methods: {
     ...mapActions(["saveHistory", "delHistory", "clearHistory"]),
     // 保存搜索结果历史到vuex和localstorage中
-    saveHis() {
+    savaHis() {
       this.saveHistory(this.query);
     },
     deleteHis(item) {
@@ -133,7 +133,7 @@ export default {
     handlePlaylist(playlist) {
       let bottom = playlist.length > 0 ? "60px" : "";
 
-      this.$refs.shortoutRef.style.bottom = bottom
+      this.$refs.shortcutRef.style.bottom = bottom
       this.$refs.scrollRef.refresh()
 
       this.$refs.resultRef.style.bottom=bottom
