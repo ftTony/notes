@@ -1,3 +1,10 @@
+/**
+ * 节流
+ * 高频事件触发，但在n秒内只会执行一次，所以节流会稀释函数的执行频率
+ * @param {*} fn 
+ * @param {*} wait 
+ */
+
 var throttle=function(fn,wait){
     var timer,previous,now,diff;
     return function(){
