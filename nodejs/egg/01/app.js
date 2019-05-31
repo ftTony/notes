@@ -1,4 +1,6 @@
 module.exports = app => {
+
+    // app.config.coreMiddleware.unshift('report')
     // app.cache = new Cache();
     // app.once('server', server => {
 

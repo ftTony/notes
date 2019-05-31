@@ -24,5 +24,79 @@
     "stack": [
       "wrappedController"
     ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [
+      {
+        "name": "id",
+        "prefix": "/",
+        "delimiter": "/",
+        "optional": false,
+        "repeat": false,
+        "partial": false,
+        "asterisk": false,
+        "pattern": "[^\\/]+?"
+      }
+    ],
+    "path": "/user/:id",
+    "regexp": "/^\\/user\\/((?:[^\\/]+?))(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/search",
+    "regexp": "/^\\/search(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [
+      {
+        "name": 0,
+        "prefix": null,
+        "delimiter": null,
+        "optional": false,
+        "repeat": false,
+        "partial": false,
+        "asterisk": false,
+        "pattern": null
+      }
+    ],
+    "path": {
+      "keys": [
+        {
+          "name": 0,
+          "prefix": null,
+          "delimiter": null,
+          "optional": false,
+          "repeat": false,
+          "partial": false,
+          "asterisk": false,
+          "pattern": null
+        }
+      ]
+    },
+    "regexp": "/^\\/package\\/([\\w-.]+\\/[\\w-.]+)$/",
+    "stack": [
+      "wrappedController"
+    ]
   }
 ]

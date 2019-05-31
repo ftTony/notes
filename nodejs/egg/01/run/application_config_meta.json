@@ -1,17 +1,7 @@
 {
-  "keys": "D:\\personal\\notes\\nodejs\\egg\\01\\config\\config.default.js",
-  "view": {
-    "defaultViewEngine": "D:\\personal\\notes\\nodejs\\egg\\01\\config\\config.default.js",
-    "mapping": {
-      ".tpl": "D:\\personal\\notes\\nodejs\\egg\\01\\config\\config.default.js"
-    },
-    "root": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg-view\\config\\config.default.js",
-    "cache": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg-view\\config\\config.local.js",
-    "defaultExtension": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg-view\\config\\config.default.js"
-  },
-  "news": {
-    "pageSize": "D:\\personal\\notes\\nodejs\\egg\\01\\config\\config.default.js",
-    "serverUrl": "D:\\personal\\notes\\nodejs\\egg\\01\\config\\config.default.js"
+  "middleware": "D:\\personal\\notes\\nodejs\\egg\\01\\config\\config.default.js",
+  "gzip": {
+    "threshold": "D:\\personal\\notes\\nodejs\\egg\\01\\config\\config.default.js"
   },
   "logger": {
     "level": "D:\\personal\\notes\\nodejs\\egg\\01\\config\\config.default.js",
@@ -31,6 +21,35 @@
     },
     "allowDebugAtProd": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js"
   },
+  "news": {
+    "pageSize": "D:\\personal\\notes\\nodejs\\egg\\01\\config\\config.default.js",
+    "serverUrl": "D:\\personal\\notes\\nodejs\\egg\\01\\config\\config.default.js"
+  },
+  "view": {
+    "defaultViewEngine": "D:\\personal\\notes\\nodejs\\egg\\01\\config\\config.default.js",
+    "mapping": {
+      ".tpl": "D:\\personal\\notes\\nodejs\\egg\\01\\config\\config.default.js"
+    },
+    "root": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg-view\\config\\config.default.js",
+    "cache": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg-view\\config\\config.local.js",
+    "defaultExtension": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg-view\\config\\config.default.js"
+  },
+  "bodyParser": {
+    "jsonLimit": "D:\\personal\\notes\\nodejs\\egg\\01\\config\\config.default.js",
+    "enable": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
+    "formLimit": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
+    "strict": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
+    "queryString": {
+      "arrayLimit": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
+      "depth": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
+      "parameterLimit": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "compress": {
+    "threshold": "D:\\personal\\notes\\nodejs\\egg\\01\\config\\config.default.js"
+  },
+  "keys": "D:\\personal\\notes\\nodejs\\egg\\01\\config\\config.default.js",
   "session": {
     "maxAge": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg-session\\config\\config.default.js",
     "key": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg-session\\config\\config.default.js",
@@ -193,6 +212,7 @@
     "dependencies": {
       "egg": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
       "egg-view-nunjucks": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
+      "koa-compress": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
       "koa-is-json": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
       "moment": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
       "zlib": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js"
@@ -219,18 +239,6 @@
   },
   "siteFile": {
     "/favicon.ico": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js"
-  },
-  "bodyParser": {
-    "enable": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
-    "encoding": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
-    "formLimit": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
-    "jsonLimit": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
-    "strict": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
-    "queryString": {
-      "arrayLimit": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
-      "depth": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
-      "parameterLimit": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js"
-    }
   },
   "httpclient": {
     "enableDNSCache": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",

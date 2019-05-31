@@ -208,6 +208,7 @@
       "dependencies": {
         "egg": "^2.22.2",
         "egg-view-nunjucks": "^2.2.0",
+        "koa-compress": "^3.0.0",
         "koa-is-json": "^1.0.0",
         "moment": "^2.24.0",
         "zlib": "^1.0.5"
@@ -239,7 +240,7 @@
       "enable": true,
       "encoding": "utf8",
       "formLimit": "100kb",
-      "jsonLimit": "100kb",
+      "jsonLimit": "10mb",
       "strict": true,
       "queryString": {
         "arrayLimit": 100,
@@ -317,13 +318,22 @@
       "responseTimeout": 60000
     },
     "onClientError": null,
+    "middleware": [
+      "compress"
+    ],
+    "gzip": {
+      "threshold": 1024
+    },
     "news": {
       "pageSize": 5,
       "serverUrl": "https://hacker-news.firebaseio.com/v0"
     },
+    "compress": {
+      "threshold": 2048
+    },
     "coreMiddlewares": "~config~coreMiddleware",
-    "appMiddlewares": [],
-    "appMiddleware": "~config~appMiddlewares",
+    "appMiddlewares": "~config~middleware",
+    "appMiddleware": "~config~middleware",
     "multipartParseOptions": {
       "autoFields": false,
       "defCharset": "utf8",
