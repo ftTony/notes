@@ -5,4 +5,5 @@ module.exports = app => {
     router.get('/user/:id', controller.user.info);
     router.get('/search', controller.search.index);
     router.get(/^\/package\/([\w-.]+\/[\w-.]+)$/, controller.package.detail);
+    router.post('createPost', '/api/posts', controller.post.create);
 }

@@ -201,3 +201,12 @@ name: "unhandledExceptionError"
 pid: 69528
 hostname: KM-20190513BNUG
 
+2019-05-31 19:26:33,713 ERROR 69528 nodejs.unhandledExceptionError: read ECONNRESET
+    at TCP.onStreamRead (internal/stream_base_commons.js:111:27)
+errno: "ECONNRESET"
+code: "ECONNRESET"
+syscall: "read"
+name: "unhandledExceptionError"
+pid: 69528
+hostname: KM-20190513BNUG
+
