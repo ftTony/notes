@@ -23,5 +23,9 @@ module.exports = {
     compress: {
         threshold: 2048,
     },
+    mysql: {
+        enable: true,
+        package: 'egg-mysql'
+    },
     keys: 'my-cookie-secret-key'
 }

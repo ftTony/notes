@@ -49,6 +49,10 @@
   "compress": {
     "threshold": "D:\\personal\\notes\\nodejs\\egg\\01\\config\\config.default.js"
   },
+  "mysql": {
+    "enable": "D:\\personal\\notes\\nodejs\\egg\\01\\config\\config.default.js",
+    "package": "D:\\personal\\notes\\nodejs\\egg\\01\\config\\config.default.js"
+  },
   "keys": "D:\\personal\\notes\\nodejs\\egg\\01\\config\\config.default.js",
   "session": {
     "maxAge": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg-session\\config\\config.default.js",
@@ -211,6 +215,7 @@
     "license": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
     "dependencies": {
       "egg": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
+      "egg-mysql": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
       "egg-view-nunjucks": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
       "koa-compress": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
       "koa-is-json": "D:\\personal\\notes\\nodejs\\egg\\01\\node_modules\\egg\\config\\config.default.js",
