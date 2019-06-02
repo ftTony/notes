@@ -2,9 +2,12 @@ import Vue from 'vue'
 import NuxtLoading from './components/nuxt-loading.vue'
 import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
-import _6f6c098b from './layouts/default.vue'
+import '../assets/main.css'
 
-const layouts = { "_default": _6f6c098b }
+import _2d21d098 from '../layouts/blog.vue'
+import _6f6c098b from '../layouts/default.vue'
+
+const layouts = { "_blog": _2d21d098,"_default": _6f6c098b }
 
 export default {
   head: {"meta":[],"link":[],"style":[],"script":[]},

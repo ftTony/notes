@@ -2,9 +2,18 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import { interopDefault } from './utils'
 
+const _67f55d98 = () => interopDefault(import('../pages/posts.vue' /* webpackChunkName: "pages/posts" */))
 const _ca385b06 = () => interopDefault(import('../pages/user/index.vue' /* webpackChunkName: "pages/user/index" */))
 const _476f525e = () => interopDefault(import('../pages/user/one.vue' /* webpackChunkName: "pages/user/one" */))
+const _f5635fb6 = () => interopDefault(import('../pages/user/_id.vue' /* webpackChunkName: "pages/user/_id" */))
 const _237566b3 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _c43dbb84 = () => interopDefault(import('../pages/_category.vue' /* webpackChunkName: "pages/_category" */))
+const _688e8241 = () => interopDefault(import('../pages/_category/index.vue' /* webpackChunkName: "pages/_category/index" */))
+const _6f878e00 = () => interopDefault(import('../pages/_category/_subCategory.vue' /* webpackChunkName: "pages/_category/_subCategory" */))
+const _0239ff83 = () => interopDefault(import('../pages/_category/_subCategory/index.vue' /* webpackChunkName: "pages/_category/_subCategory/index" */))
+const _003806ab = () => interopDefault(import('../pages/_category/_subCategory/_id.vue' /* webpackChunkName: "pages/_category/_subCategory/_id" */))
+const _924360a4 = () => interopDefault(import('../pages/_slug/index.vue' /* webpackChunkName: "pages/_slug/index" */))
+const _8f6dda70 = () => interopDefault(import('../pages/_slug/comments.vue' /* webpackChunkName: "pages/_slug/comments" */))
 
 Vue.use(Router)
 
@@ -81,6 +90,10 @@ export function createRouter() {
     scrollBehavior,
 
     routes: [{
+      path: "/posts",
+      component: _67f55d98,
+      name: "posts"
+    }, {
       path: "/user",
       component: _ca385b06,
       name: "user"
@@ -89,9 +102,41 @@ export function createRouter() {
       component: _476f525e,
       name: "user-one"
     }, {
+      path: "/user/:id",
+      component: _f5635fb6,
+      name: "user-id"
+    }, {
       path: "/",
       component: _237566b3,
       name: "index"
+    }, {
+      path: "/:category",
+      component: _c43dbb84,
+      children: [{
+        path: "",
+        component: _688e8241,
+        name: "category"
+      }, {
+        path: ":subCategory",
+        component: _6f878e00,
+        children: [{
+          path: "",
+          component: _0239ff83,
+          name: "category-subCategory"
+        }, {
+          path: ":id",
+          component: _003806ab,
+          name: "category-subCategory-id"
+        }]
+      }]
+    }, {
+      path: "/:slug",
+      component: _924360a4,
+      name: "slug"
+    }, {
+      path: "/:slug/comments",
+      component: _8f6dda70,
+      name: "slug-comments"
     }],
 
     fallback: false

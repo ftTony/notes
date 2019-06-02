@@ -3,12 +3,15 @@ import Meta from 'vue-meta'
 import { createRouter } from './router.js'
 import NoSsr from './components/no-ssr.js'
 import NuxtChild from './components/nuxt-child.js'
-import NuxtError from './components/nuxt-error.vue'
+import NuxtError from '../layouts/error.vue'
 import Nuxt from './components/nuxt.js'
 import App from './App.js'
 import { setContext, getLocation, getRouteData, normalizeError } from './utils'
 
 /* Plugins */
+
+import nuxt_plugin_vueinject_1aea0b89 from 'nuxt_plugin_vueinject_1aea0b89' // Source: ../plugins/vue-inject.js (mode: 'all')
+import nuxt_plugin_combinedinject_46de0ff4 from 'nuxt_plugin_combinedinject_46de0ff4' // Source: ../plugins/combined-inject.js (mode: 'all')
 
 // Component: <NoSsr>
 Vue.component(NoSsr.name, NoSsr)
@@ -102,7 +105,38 @@ async function createApp(ssrContext) {
     ssrContext
   })
 
+  const inject = function (key, value) {
+    if (!key) throw new Error('inject(key, value) has no key provided')
+    if (typeof value === 'undefined') throw new Error('inject(key, value) has no value provided')
+    key = '$' + key
+    // Add into app
+    app[key] = value
+
+    // Check if plugin not already installed
+    const installKey = '__nuxt_' + key + '_installed__'
+    if (Vue[installKey]) return
+    Vue[installKey] = true
+    // Call Vue.use() to install the plugin into vm
+    Vue.use(() => {
+      if (!Vue.prototype.hasOwnProperty(key)) {
+        Object.defineProperty(Vue.prototype, key, {
+          get() {
+            return this.$root.$options[key]
+          }
+        })
+      }
+    })
+  }
+
   // Plugin execution
+
+  if (typeof nuxt_plugin_vueinject_1aea0b89 === 'function') {
+    await nuxt_plugin_vueinject_1aea0b89(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_combinedinject_46de0ff4 === 'function') {
+    await nuxt_plugin_combinedinject_46de0ff4(app.context, inject)
+  }
 
   // If server-side, wait for async component to be resolved first
   if (process.server && ssrContext && ssrContext.url) {
