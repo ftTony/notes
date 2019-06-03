@@ -1,0 +1,12 @@
+2019-06-02 04:30:03,352 INFO 69528 [Timer] D:\personal\notes\nodejs\egg\01\node_modules\egg-multipart\app\schedule\clean_tmpdir.js next time will execute after 86396650ms at 2019-06-03 04:30:00.002
+2019-06-02 04:30:03,346 DEBUG 67256 [Job#155942100335010819982746441522] D:\personal\notes\nodejs\egg\01\node_modules\egg-multipart\app\schedule\clean_tmpdir.js task received by app
+2019-06-02 04:30:03,346 INFO 67256 [Job#155942100335010819982746441522] D:\personal\notes\nodejs\egg\01\node_modules\egg-multipart\app\schedule\clean_tmpdir.js executing by app
+2019-06-02 04:30:03,350 INFO 67256 [Job#155942100335010819982746441522] D:\personal\notes\nodejs\egg\01\node_modules\egg-multipart\app\schedule\clean_tmpdir.js execute succeed, used 4ms
+2019-06-03 00:00:03,708 INFO 69528 [Timer] D:\personal\notes\nodejs\egg\01\node_modules\egg-logrotator\app\schedule\clean_log.js next time will execute after 86396293ms at 2019-06-04 00:00:00.001
+2019-06-03 00:00:03,700 DEBUG 67256 [Job#155949120370711521955203304623] D:\personal\notes\nodejs\egg\01\node_modules\egg-logrotator\app\schedule\clean_log.js task received by app
+2019-06-03 00:00:03,700 INFO 67256 [Job#155949120370711521955203304623] D:\personal\notes\nodejs\egg\01\node_modules\egg-logrotator\app\schedule\clean_log.js executing by app
+2019-06-03 00:00:03,701 INFO 67256 [Job#155949120370711521955203304623] D:\personal\notes\nodejs\egg\01\node_modules\egg-logrotator\app\schedule\clean_log.js execute succeed, used 1ms
+2019-06-03 00:00:04,711 INFO 69528 [Timer] D:\personal\notes\nodejs\egg\01\node_modules\egg-logrotator\app\schedule\rotate_by_file.js next time will execute after 86396291ms at 2019-06-04 00:00:01.002
+2019-06-03 00:00:04,701 DEBUG 67256 [Job#155949120470911521965222768703] D:\personal\notes\nodejs\egg\01\node_modules\egg-logrotator\app\schedule\rotate_by_file.js task received by app
+2019-06-03 00:00:04,701 INFO 67256 [Job#155949120470911521965222768703] D:\personal\notes\nodejs\egg\01\node_modules\egg-logrotator\app\schedule\rotate_by_file.js executing by app
+2019-06-03 00:00:04,762 INFO 67256 [Job#155949120470911521965222768703] D:\personal\notes\nodejs\egg\01\node_modules\egg-logrotator\app\schedule\rotate_by_file.js execute succeed, used 61ms
