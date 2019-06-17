@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5052c2a-c4ea-4d4e-8452-37460569e713" name="Default" comment="2017year frist">
-      <change beforePath="$PROJECT_DIR$/nodejs/Exercise/01.js" beforeDir="false" afterPath="$PROJECT_DIR$/nodejs/Exercise/01.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="notes.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -19,17 +19,7 @@
     <favorites_list name="notes" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/nodejs/Exercise/01.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -102,7 +92,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="450" />
-    <option name="y" value="266" />
+    <option name="y" value="67" />
     <option name="width" value="1280" />
     <option name="height" value="882" />
   </component>
@@ -249,13 +239,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1477034889373</updated>
-      <workItem from="1559620374081" duration="3910000" />
+      <workItem from="1559620374081" duration="4658000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3910000" />
+    <option name="totallyTimeSpent" value="4658000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -267,18 +257,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="450" y="266" width="1280" height="882" extended-state="0" />
-    <editor active="true" />
+    <frame x="450" y="67" width="1280" height="882" extended-state="0" />
     <layout>
-      <window_info id="Favorites" order="0" sideWeight="0.50199205" side_tool="true" visible="true" weight="0.23349437" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49800798" visible="true" weight="0.23349437" />
+      <window_info id="Favorites" order="0" sideWeight="0.26680243" side_tool="true" visible="true" weight="0.23349437" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.73319757" visible="true" weight="0.23349437" />
       <window_info id="Structure" order="2" weight="0.24960254" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="0" weight="0.32991204" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.32977304" />
       <window_info anchor="bottom" id="Application Servers" order="3" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="4" visible="true" weight="0.32977304" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="4" visible="true" weight="0.34445927" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Find" order="6" weight="0.32892805" />
       <window_info anchor="bottom" id="Run" order="7" weight="0.4739653" />
