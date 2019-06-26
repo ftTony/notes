@@ -4,6 +4,7 @@ const path = require('path');
 
 module.exports = {
     entry: "./main",
+    devtool: '#source-map', //sourcemap
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true, //压缩
@@ -21,7 +22,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: __dirname + '/index.html',
+            template: __dirname + '/template/index.html',
             filename: 'index.html'
         }),
         new webpack.HotModuleReplacementPlugin()

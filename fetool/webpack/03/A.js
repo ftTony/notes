@@ -6,8 +6,8 @@ class A {
         console.log('say a');
     }
     say() {
-        console.logy('say A');
+        console.log('say A');
     }
 }
 
-module.exports = A;
+export default A;

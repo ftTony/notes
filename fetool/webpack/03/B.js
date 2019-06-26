@@ -1,7 +1,8 @@
+import A from './A';
 class B extends A {
     constructor() {
         super();
         super.a();
     }
 }
-module.exports = B;
+export default B;

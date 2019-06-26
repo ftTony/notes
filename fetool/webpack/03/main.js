@@ -1,3 +1,3 @@
-var B = require('./B');
+import B from './B';
 var b = new B();
 b.say();
