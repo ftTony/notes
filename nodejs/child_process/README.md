@@ -14,8 +14,14 @@ shell命令。
 ### 父子进程间如何通信？
 
 - 基本使用方法
+  [源码](./master.js) 
 - Master实现对Worker的请求进行分发
+  [源码](./master2.js)
 - Worker监听同一个端口
+  [源码](./master3.js)
 - 实现进程重启
+  [源码](./master4.js)
 
 ### 理解cluster集群
+
+  [源码](./master5.js)
