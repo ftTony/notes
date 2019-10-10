@@ -11,4 +11,23 @@ const distResolve = function (file) {
     return path.join(__dirname, '..', 'output', 'dist', file);
 }
 
-
+module.exports = {
+    entry: {
+        'index': srcResolve('js/index')
+    },
+    output: {
+        path: distResolve(''),
+        filename: 'js/[name].js'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                use: {
+                    loader: 'label-loader',
+                    options: babelConfig
+                }
+            }
+        ]
+    }
+}
