@@ -27,7 +27,39 @@ module.exports = {
                     loader: 'label-loader',
                     options: babelConfig
                 }
+            },
+            {
+                test: /\.(css|less)$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: () => {
+                                return [];
+                            }
+                        }
+                    },
+                    'less-loader'
+                ]
             }
         ]
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: 'css/[name].css'
+        })
+    ],
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendor',
+                    chunks: 'all'
+                }
+            }
+        }
     }
 }
