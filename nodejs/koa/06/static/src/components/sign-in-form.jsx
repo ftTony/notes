@@ -38,7 +38,29 @@ class SignIn extends React.Component {
 
     render () {
         const { getFieldDecorator } = this.props.form;
-        return (<div></div>)
+        return (
+            <div style={{ width: '280px', margin: '0 auto' }}>
+                <Form onSubmit={this.handleSubmit.bind(this)} className="login-form">
+                    <FormItem>
+                        {getFieldDecorator('userName', {
+                            rules: [{ required: true, message: '请输入账号密码！' }]
+                        })(<Input addonBefore={<Icon type="lock" />} type="password" placeholder="请您输入账号密码" />)}
+                    </FormItem>
+                    <FormItem>
+                        {getFieldDecorator('remember', {
+                            valuePropName: 'checked',
+                            initialValue: true,
+                        })(
+                            <Checkbox>记住登录</Checkbox>
+                        )}
+                        <a className="login-form-forgot">忘记密码</a><br />
+                        <Button type="primary" htmlType="submit" className="login-form-button">
+                            确定
+                        </Button>
+                    </FormItem>
+                </Form>
+            </div>
+        )
     }
 }
 
