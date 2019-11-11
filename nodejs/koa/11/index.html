@@ -68,7 +68,7 @@
                 return false;
             });
             socket.on('chat message', function (msg) {
-                $('#message').append($('<li>').text(msg));
+                $('#message').append(msg);
             });
         });
     </script>
