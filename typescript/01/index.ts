@@ -102,6 +102,8 @@ function push(array: any[], ...items: any[]) {
 let ab: any[] = []
 push(ab, 1, 2, 3)
 
+// 重载
+
 function reverse(x: number): number
 function reverse(x: string): string
 function reverse(x: number | string): number | string {
@@ -118,5 +120,17 @@ function reverse(x: number | string): number | string {
       .split('')
       .reverse()
       .join('')
+  } else {
+    return ''
+  }
+}
+
+// 类型断言
+
+function getLength(something: string | number): number {
+  if ((<string>something).length) {
+    return (<string>something).length
+  } else {
+    return something.toString().length
   }
 }

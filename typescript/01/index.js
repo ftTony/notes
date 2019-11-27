@@ -65,18 +65,31 @@ function push(array) {
 }
 var ab = [];
 push(ab, 1, 2, 3);
-function reverse(x) {
-    if (typeof x === 'number') {
-        return Number(x
-            .toString()
-            .split('')
-            .reverse()
-            .join(''));
+// 重载
+// function reverse(x: number): number
+// function reverse(x: string): string
+// function reverse(x: number | string): number | string {
+//   if (typeof x === 'number') {
+//     return Number(
+//       x
+//         .toString()
+//         .split('')
+//         .reverse()
+//         .join('')
+//     )
+//   } else if (typeof x === 'string') {
+//     return x
+//       .split('')
+//       .reverse()
+//       .join('')
+//   }
+// }
+// 类型断言
+function getLength(something) {
+    if (something.length) {
+        return something.length;
     }
-    else if (typeof x === 'string') {
-        return x
-            .split('')
-            .reverse()
-            .join('');
+    else {
+        return something.toString().length;
     }
 }
