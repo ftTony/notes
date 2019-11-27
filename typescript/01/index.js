@@ -65,25 +65,24 @@ function push(array) {
 }
 var ab = [];
 push(ab, 1, 2, 3);
-// 重载
-// function reverse(x: number): number
-// function reverse(x: string): string
-// function reverse(x: number | string): number | string {
-//   if (typeof x === 'number') {
-//     return Number(
-//       x
-//         .toString()
-//         .split('')
-//         .reverse()
-//         .join('')
-//     )
-//   } else if (typeof x === 'string') {
-//     return x
-//       .split('')
-//       .reverse()
-//       .join('')
-//   }
-// }
+function reverse(x) {
+    if (typeof x === 'number') {
+        return Number(x
+            .toString()
+            .split('')
+            .reverse()
+            .join(''));
+    }
+    else if (typeof x === 'string') {
+        return x
+            .split('')
+            .reverse()
+            .join('');
+    }
+    else {
+        return '';
+    }
+}
 // 类型断言
 function getLength(something) {
     if (something.length) {
@@ -93,3 +92,7 @@ function getLength(something) {
         return something.toString().length;
     }
 }
+var b = new Boolean(1);
+var e = new Error('Error occurred');
+var d = new Date();
+var r = /[a-z]/;
