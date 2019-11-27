@@ -92,7 +92,35 @@ function getLength(something) {
         return something.toString().length;
     }
 }
+// 内置对象
 var b = new Boolean(1);
 var e = new Error('Error occurred');
 var d = new Date();
 var r = /[a-z]/;
+var body = document.body;
+var allDiv = document.querySelectorAll('div');
+function getName(n) {
+    if (typeof n === 'string') {
+        return n;
+    }
+    else {
+        return n();
+    }
+}
+function handleEvent(ele, event) { }
+// handleEvent(document.getElementById('hello'), 'scroll') // 没问题
+// 元组
+var ton = ['Tom', 25];
+ton[0].slice(1);
+ton[1].toFixed(2);
+//枚举
+var Days;
+(function (Days) {
+    Days[Days["Sun"] = 0] = "Sun";
+    Days[Days["Mon"] = 1] = "Mon";
+    Days[Days["Tue"] = 2] = "Tue";
+    Days[Days["Wed"] = 3] = "Wed";
+    Days[Days["Thu"] = 4] = "Thu";
+    Days[Days["Fri"] = 5] = "Fri";
+    Days[Days["Sat"] = 6] = "Sat";
+})(Days || (Days = {}));

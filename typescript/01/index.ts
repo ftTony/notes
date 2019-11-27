@@ -154,3 +154,25 @@ function getName(n: NameOrResolver): Name {
     return n()
   }
 }
+
+// 字符串字面量类型
+type EventNames = 'click' | 'scroll' | 'mousemove'
+function handleEvent(ele: Element, event: EventNames) {}
+
+// handleEvent(document.getElementById('hello'), 'scroll') // 没问题
+
+// 元组
+let ton: [string, number] = ['Tom', 25]
+ton[0].slice(1)
+ton[1].toFixed(2)
+
+//枚举
+enum Days {
+  Sun,
+  Mon,
+  Tue,
+  Wed,
+  Thu,
+  Fri,
+  Sat
+}
