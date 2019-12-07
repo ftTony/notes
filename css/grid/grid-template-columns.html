@@ -9,12 +9,17 @@
     </title>
     <style>
       #container {
-        display: inline-grid;
+        display: grid;
         /* grid-template-columns: repeat(3, 33.33%);
         grid-template-rows: repeat(3, 33.33%); */
         /* grid-template-columns: 33.33% 33.33% 33.33%;
         grid-template-rows: 33.33% 33.33% 33.33%; 百分比*/
         /* grid-template-columns: repeat(2, 100px 20px 80px); */
+        /* grid-template-columns: repeat(auto-fill, 100px); */
+        grid-template-columns: 1fr 1fr;
+        /* grid-template-columns: 150px 1fr 2fr; */
+        /* grid-template-columns: 1fr 1fr minmax(100px, 1fr); */
+        /* grid-template-columns: 100px auto 100px; */
       }
       .item {
         font-size: 2em;
