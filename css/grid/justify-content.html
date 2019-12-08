@@ -10,9 +10,14 @@
         font-size: 2em;
       }
       #container {
+        width: 1000px;
+        height: 1000px;
         display: inline-grid;
         grid-template-columns: 100px 100px 100px;
         grid-template-rows: 100px 100px 100px;
+        place-content: space-between space-between;
+        /* justify-content: end;
+        align-content: end; */
       }
       .item {
         font-size: 2em;
