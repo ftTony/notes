@@ -6,10 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>background-size属性值length学习</title>
+    <style>
+        .bsize1 {
+            width: 400px;
+            height: 200px;
+            background: url("01.jpg") no-repeat;
+            border: 1px solid red;
+            overflow: hidden;
+            background-size: cover;
+        }
+
+        .bsize2 {
+            background-size: 400px 200px;
+        }
+    </style>
 </head>
 
 <body>
-
+    <h3>固定宽度400px和高度200px－使用background－size:400px 200px缩放设置</h3>
+    <div class="bsize1 bsize2"></div>
 </body>
 
 </html>
