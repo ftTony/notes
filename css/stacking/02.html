@@ -4,7 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>层叠上下文——普通情况</title>
+    <title>层叠上下文——在相同层叠上下文的父元素内的情况</title>
+    <style>
+      div {
+        position: relative;
+      }
+
+      .red,
+      .green,
+      .blue {
+        position: absolute;
+        width: 100px;
+        line-height: 100px;
+        color: white;
+        text-align: center;
+      }
+      .red {
+        top: 20px;
+        left: 20px;
+        background-color: red;
+      }
+      .green {
+        top: 60px;
+        left: 60px;
+        background: green;
+      }
+      .blue {
+        top: 100px;
+        left: 100px;
+        background-color: blue;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <div class="first-box">
+      <span class="red">Red</span>
+      <span class="green">Green</span>
+    </div>
+    <div class="second-box">
+      <span class="blue">Blue</span>
+    </div>
+  </body>
 </html>
