@@ -1,15 +1,24 @@
-import { HashRouter } from './hash';
-import { HistoryRouter } from './history';
-import { ROUTELIST } from './routeList';
+import {
+  HashRouter
+} from './hash';
+import {
+  HistoryRouter
+} from './history';
+import {
+  ROUTELIST
+} from './routeList';
 
 // 路由模式
-const MODE = 'h5';
+const MODE = 'hash';
 class WebRouter {
-  constructor({ mode = 'hash', routeList }) {
+  constructor({
+    mode = 'hash',
+    routeList
+  }) {
     this.router =
-      mode === 'hash'
-        ? new HashRouter(routeList)
-        : new HistoryRouter(routeList);
+      mode === 'hash' ?
+      new HashRouter(routeList) :
+      new HistoryRouter(routeList);
   }
   push(path) {
     this.router.push(path);
