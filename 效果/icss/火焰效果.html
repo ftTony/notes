@@ -7,7 +7,38 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CSS火焰效果</title>
     <style>
+        html,
+        body {
+            height: 100%;
+            background-color: #000;
+            overflow: hidden;
+        }
 
+        .g-candle {
+            position: absolute;
+            width: 400px;
+            margin: 0 auto;
+            height: 400px;
+        }
+
+        .g-body {
+            position: relative;
+            width: 100px;
+            height: 300px;
+            margin: 280px auto;
+            background: linear-gradient(230deg, #ca9800, #573903, black 70%);
+            z-index: 1;
+        }
+
+        .g-body::before {}
+
+        .g-body::after {}
+
+        .g-fire-box {}
+
+        .g-fire {}
+
+        .g-ball {}
     </style>
 </head>
 
