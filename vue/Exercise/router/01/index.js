@@ -9,7 +9,7 @@ import {
 } from './routeList';
 
 // 路由模式
-const MODE = 'hash';
+const MODE = 'history';
 class WebRouter {
   constructor({
     mode = 'hash',
