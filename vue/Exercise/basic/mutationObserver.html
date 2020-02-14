@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MutationObserver实例的方法</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li>tony</li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    var MutationObserver = window.MutationObserver || window.WebkitMutationObserver || window.MozMutationObserver;
+    var list = document.querySelector('ul');
+    var Observer = new MutationObserver(function(mutations,instance){
+        console.log(mutations);         // 打印mutations
+        console.log(instance);      // 打印 instance
+        mutations.forEach(function(mutation){
+            console.log(mutation);     // 打印mutation
+        });
+    });
+    Observer.observe(list,{
+        childList:true,     //  子节点的变动
+        characterData: true, // 节点内容或节点文本变动
+        attributes: true,       // 属性变化时
+        subtree:true        // 所有后代节点的变动
+    });
+    list.childNodes[0].data = "小武子";
+    var li = document.createElement('li');
+    var textNode = document.createTextNode('肖能武');
+    li.appendChild(textNode);
+    list.appendChild(li);
+    // 设置节点的属性，会触发回调函数
+    list.setAttribute('data-value', 'tugenhua111');
+
+    // 重新设置属性，会触发回调函数
+    list.setAttribute('data-value', 'tugenhua222');
+
+    // 删除属性，也会触发回调函数
+    list.removeAttribute('data-value');
+    </script>
+</body>
+</html>
