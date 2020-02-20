@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch deep属性学习</title>
+    <script type="text/javascript" src="https://cn.vuejs.org/js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>tony个人信息情况：{{basicMsg}}</p>
+        <p>tony今年的年龄：<input type="text" v-model="obj.age" /></p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                obj: {
+                    basicMsg: '',
+                    age: 30,
+                    single: '已婚'
+                }
+            },
+            watch: {
+                'obj': {
+                    handler(newVal, oldVal) {
+                        this.basicMsg = '今年' + newVal.age + '岁 ' + this.obj.single
+                    },
+                    immediate: true,
+                    deep: true
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

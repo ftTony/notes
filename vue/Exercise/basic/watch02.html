@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>watch immediate属性学习</title>
+    <script type="text/javascript" src="https://cn.vuejs.org/js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>tony个人信息情况：{{basicMsg}}</p>
+        <p>tony今年的年龄：<input type="text" v-model="age" /></p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                basicMsg: '',
+                age: 30,
+                single: '已婚'
+            },
+            watch: {
+                age: {
+                    handler(newVal, oldVal) {
+                        this.basicMsg = '今年' + newVal + '岁 ' + this.single
+                    },
+                    immediate: true
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
