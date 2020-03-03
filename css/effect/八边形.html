@@ -6,17 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>八边形</title>
     <style>
-        #octagon{
+        #octagon {
             width: 100px;
             height: 100px;
-            background-color: red;
+            background: red;
             position: relative;
         }
-        #octagon::after{
+        #octagon:before {
+            content: "";
+            width: 42px;
+            height: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-bottom: 29px solid red;
+            border-left: 29px solid #eee;
+            border-right: 29px solid #eee;
         }
-        #octagon::before{
+        #octagon:after {
+            content: "";
+            width: 42px;
+            height: 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-top: 29px solid red;
+            border-left: 29px solid #eee;
+            border-right: 29px solid #eee;
+        }  
 
-        }
     </style>
 </head>
 
