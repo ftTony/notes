@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>指示器</title>
-    <style></style>
+    <style>
+        #pointer {
+            width: 200px;
+            height: 40px;
+            position: relative;
+            background-color: red;
+        }
+
+        #pointer::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 20px solid white;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+        }
+
+        #pointer::before {
+            content: '';
+            position: absolute;
+            right: -20px;
+            bottom: 0;
+            width: 0;
+            border-left: 20px solid red;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div id="pointer"></div>
 </body>
+
 </html>

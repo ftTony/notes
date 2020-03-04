@@ -1,14 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>锁</title>
     <style>
-        
+        #lock {
+            font-size: 8px;
+            position: relative;
+            width: 18em;
+            height: 13em;
+            border-radius: 2em;
+            top: 10em;
+            box-sizing: border-box;
+            border: 3.5em solid red;
+            border-left-width: 7.5em;
+            border-right-width: 7.5em;
+            margin: 0 0 6rem 0;
+        }
+
+        #lock::before {
+            content: '';
+            box-sizing: border-box;
+            position: absolute;
+            border: 2.5em solid red;
+            width: 14em;
+            height: 12em;
+            left: 50%;
+            margin-left: -7em;
+            top: -12em;
+            border-top-left-radius: 7em;
+            border-top-right-radius: 7em;
+        }
+
+        #lock::after {
+            content: '';
+            box-sizing: border-box;
+            position: absolute;
+            border: 1em solid red;
+            width: 5em;
+            height: 8em;
+            border-radius: 2.5em;
+            left: 50%;
+            top: -1em;
+            margin-left: -2.5em;
+        }
     </style>
 </head>
+
 <body>
-    
+    <div id="lock"></div>
 </body>
+
 </html>
