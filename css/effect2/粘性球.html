@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>粘性球</title>
+    <style>
+      .sticky-container {
+        background-color: #000;
+        overflow: hidden;
+      }
+      .sticky-container .blurfield {
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #000;
+        filter: blur(10px) contrast(30);
+      }
+      .sticky-container .ball1,
+      .sticky-container .ball2 {
+        width: 80px;
+        height: 80px;
+        background-color: #fff;
+        position: absolute;
+        animation: ball 10s infinite;
+        border-radius: 100%;
+      }
+      .sticky-container .ball2 {
+        animation-delay: -2s;
+      }
+
+      @keyframes ball {
+        0%,
+        100% {
+          transform: translateX(-100px);
+        }
+
+        50% {
+          transform: translateX(100px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sticky-container">
+      <div class="blurfield">
+        <div class="ball1"></div>
+        <div class="ball2"></div>
+      </div>
+    </div>
+  </body>
+</html>
