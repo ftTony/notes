@@ -1,33 +1,37 @@
 import DoublyLinkList from './doubly-linked-list-es6'
 
 class StackLinkedList {
-  constructor() {
-      this.items = new DoublyLinkList();
+    constructor() {
+        this.items = new DoublyLinkList();
     }
-    push (element) {
-        this.items.push(element){
-
+    push(element) {
+        this.items.push(element) {
+            this.items.push(element);
         }
     }
-    pop () {
-        
+    pop() {
+        if (this.isEmpty()) {
+            return undefined;
+        }
+        const result = this.items.removeAt(this.size() - 1);
+        return result;
     }
-    peek () {
-        
+    peek() {
+        if (this.isEmpty()) {
+            return undefined;
+        }
+        return this.items.getElementAt(this.size() - 1).element;
     }
-    isEmpty () {
-        
+    isEmpty() {
+        return this.items.isEmpty();
     }
-    size () {
-        
+    size() {
+        return this.items.size();
     }
-    size () {
-        
+    clear() {
+        this.items.clear();
     }
-    clear () {
-        
-    }
-    toString () {
+    toString() {
         return this.items.toString();
     }
 }
