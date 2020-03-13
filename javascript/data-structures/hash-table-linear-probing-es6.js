@@ -1,4 +1,4 @@
-function defaultToString (item) {
+function defaultToString(item) {
     if (item === null) {
         return 'NULL'
     } else if (item === undefined) {
@@ -8,27 +8,57 @@ function defaultToString (item) {
     }
     return item.toString()
 }
-class HashTableLinearProbing{
+class HashTableLinearProbing {
     constructor(toStrFn = defaultToString) {
         this.toStrFn = toStrFn
         this.table = {}
     }
-    loseloseHashCode (key) {
-        
+    loseloseHashCode(key) {
+        if (typeof key === 'number') {
+            return key
+        }
+        const tableKey = this.toStrFn(key)
+        let hash = 0
+        for (let i = 0; i < this.tableKey.length; i++) {
+            hash += tableKey.charCodeAt(i)
+        }
+        return hash % 37
     }
-    hashCode (key) {
-        
+    hashCode(key) {
+        return this.loseloseHashCode(key)
     }
-    put (key, value) {
-        
+    put(key, value) {
+
     }
-    get (key) {
-        
+    get(key) {
+
     }
-    verifyRemoveSideEffect (key, removedPosition) {
-        
+    verifyRemoveSideEffect(key, removedPosition) {
+
     }
-    isEmpty () {
-        
+    isEmpty() {
+        return this.size() === 0
     }
- }
+    size() {
+        return Object.keys(this.table).length
+    }
+    clear() {
+        this.table = {}
+    }
+    getTable() {
+        return this.table
+    }
+    toString() {
+        if (this.isEmpty()) {
+            return '';
+        }
+        const keys = Object.keys(this.table);
+        let objString = `{${keys[0]} => ${this.table[keys[0]].toString()}}`;
+        for (let i = 1; i < keys.length; i++) {
+            objString = `${objString},{${keys[i]} => ${this.table[
+              keys[i]
+            ].toString()}}`;
+        }
+        return objString;
+    }
+}
