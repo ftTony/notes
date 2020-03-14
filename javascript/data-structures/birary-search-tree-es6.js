@@ -28,34 +28,48 @@ class BinarySearchTree {
         this.root = undefined
     }
     insert(key) {
-
+        if (this.root = null) {
+            this.root = new Node(this.root, key)
+        } else {
+            this.insertNode(this.root, key)
+        }
     }
     insertNode(node, key) {
-
+        if (this.compareFn(key, node.key) === Compare.LESS_THAN) {
+            if (node.left == null) {
+                node.left = new Node(key)
+            } else {
+                this.insertNode(node.left, key)
+            }
+        } else if (node.right == null) {
+            node.right = new Node(key)
+        } else {
+            this.insertNode(node.right, key)
+        }
     }
     getRoot() {
         return this.root
     }
     search(key) {
-
+        return this.searchNode(this.root, key)
     }
     searchNode(node, key) {
 
     }
     inOrderTraverse(callback) {
-
+        this.inOrderTraveseNode(this.root, callback)
     }
     inOrderTraveseNode(node, callback) {
 
     }
     preOrderTravese(callback) {
-
+        this.preOrderTraveseNode(this.root, callback)
     }
     preOrderTraveseNode(node, callback) {
 
     }
     postOrderTravese(callback) {
-
+        this.postOrderTraveseNode(this.root, callback)
     }
     postOrderTraveseNode(node, callback) {
 
@@ -73,7 +87,7 @@ class BinarySearchTree {
 
     }
     remove(key) {
-
+        this.root = this.removeNode(this.root, key)
     }
     removeNode(node, key) {
 
