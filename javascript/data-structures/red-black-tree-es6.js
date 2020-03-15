@@ -11,6 +11,11 @@ function defaultCompare(a, b) {
     return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN
 }
 
+const Colors = {
+    RED: 0,
+    BLACK: 1
+}
+
 class Node {
     constructor(key) {
         this.key = key
@@ -25,7 +30,9 @@ class Node {
 class RedBlackNode extends Node {
     constructor(key) {
         super(key)
-        this.key = key
+        this.left = undefined
+        this.right = undefined
+        this.parent = undefined
         this.color = Colors.RED
     }
     isRed() {
@@ -40,16 +47,12 @@ class RedBlackNode extends Node {
     }
 }
 
-const Colors = {
-    RED: 0,
-    BLACK: 1
-}
-
 import BinarySearchTree from './birary-search-tree-es6'
 
 class RedBlackTree extends BinarySearchTree {
     constructor(compareFn = defaultCompare) {
         super(compareFn)
+        this.root = null
     }
     rotationLL(node) {
         const tmp = node.left
