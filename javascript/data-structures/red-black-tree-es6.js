@@ -126,7 +126,57 @@ class RedBlackTree extends BinarySearchTree {
         }
     }
     fixTreeProperties(node) {
+        while (node && node.parent && node.parent.color === Colors.RED && node.color !== Colors.BLACK) {
+            let parent = node.parent
+            const grandParent = parent.parent
 
+            // case A
+            if (grandParent && grandParent.left === parent) {
+
+                const uncle = grandParent.right
+
+                if (uncle && uncle.color === Colors.RED) {
+                    grandParent.color = Colors.RED
+                    parent.color = Colors.BLACK
+                    uncle.color = Colors.BLACK
+                    node = grandParent
+                } else {
+                    if (node === parent.right) {
+                        this.rotationRR(parent)
+                        node = parent
+                        parent = node.parent
+                    }
+
+                    this.rotationLL(grandParent)
+                    parent.color = Colors.BLACK
+                    grandParent.color = Colors.RED
+                    node = parent
+                }
+            } else {
+
+                const uncle = grandParent.left
+
+                if (uncle && uncle.color === Colors.RED) {
+                    grandParent.color = Colors.RED
+                    parent.color = Colors.BLACK
+                    uncle.color = Colors.BLACK
+                    node = grandParent
+                } else {
+                    if (node === parent.left) {
+                        this.rotationLL(parent)
+                        node = parent
+                        parent = node.parent
+                    }
+                }
+
+                this.rotationRR(grandParent)
+
+                parent.color = Colors.BLACK
+                grandParent.color = Colors.RED
+                node = parent
+            }
+        }
+        this.root.color = Colors.BLACK
     }
     getRoot() {
         return this.root
