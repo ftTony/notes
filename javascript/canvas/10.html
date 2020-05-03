@@ -10,8 +10,32 @@
 <body>
     <canvas id="canvas" width="800" height="500"></canvas>
     <script>
-        function draw() {
+        var img = new Image()
+        img.src = './img/National_Park.jpg'
+        var CanvasXSize = 800
+        var CanvasYSize = 200
+        var speed = 30
+        var scale = 1.05
+        var y = -4.5
+
+        var dx = 0.75
+        var imgN
+        var imgH
+        var x = 0
+        var clearX
+        var clearY
+        var ctx
+
+        img.onload = function () {
             var ctx = document.getElementById('canvas').getContext('2d');
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, clearX, clearY)
+
+            if (imgN <= CanvasXSize) {
+
+            }
         }
         draw()
     </script>
