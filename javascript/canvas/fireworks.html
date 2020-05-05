@@ -4,12 +4,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>烟花</title>
+    <title>文字烟花</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0
+        }
+
+        canvas {
+            background-color: white;
+        }
+    </style>
 </head>
 
 <body>
-    <canvas id="canvas" width="1200" height="500"></canvas>
+    <canvas id="canvas" width="1200" height="800"></canvas>
     <script>
+        let dt = 0.1 // 每帧表示的时间间隔
+
+        class Ball {
+            constructor(x, y, r, id) {
+                this.pos = new Vector2(x, y) // 记录当前坐标
+                this.id = id
+                this.color = ''
+                this.r = r
+                this.velocity = null
+                this.life = true
+            }
+
+            // 更新粒子坐标
+            update() {
+                // 重力加速度影响速度
+                this.velocity = this.velocity.add(g.multiply(dt))
+            }
+
+            paint() {
+
+            }
+        }
+
+        class Timer {
+
+        }
+
+        // 二维向量定义
+        Vector2 = function (x, y) {
+            this.x = x;
+            this.y = y
+        }
+
+        Vector2.prototype = {
+            copy: function () {
+                return new Vector2(this.x, this.y)
+            },
+            length: function () {
+                return Math.sqrt(this.x * this.x + this.y * this.y)
+            },
+            sqrtLength: function () {
+                return this.x * this.x + this.y * this.y
+            },
+            normalize: function () {
+                var inv = 1 / this.length()
+                return new Vector2(this.x * inv, this.y * inv)
+            },
+            negate: function () {
+                return Vector2(-this.x, -this.y)
+            },
+            add: function (v) {
+                return new Vector2(this.x + v.x, this.y + v.y)
+            },
+            subtract: function (v) {
+                return new Vector2(this.x - vx, this.y - v.y)
+            },
+            multiply: function (f) {
+                return new Vector2(this.x * f, this.y * f)
+            },
+            divide: function (f) {
+                var invf = 1 / f
+                return new Vector2(this.x * invf, this.y * invf)
+            },
+            dot: function (v) {
+                return this.x * v.x + this.y * v.y
+            }
+        }
         var ctx = document.getElementById('canvas').getContext('2d')
     </script>
 </body>
