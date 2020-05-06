@@ -70,18 +70,36 @@
                 context.stroke()
 
                 // 绘制虚线
-                context.beginPath()
-                context.strokeStyle = '#eaeaea'
-                context.strokeWidth = 2
-                context.moveTo(chartZone[0], chartZone[3] - (gap * i))
-                context.lineTo(chartZone[2], chartZone[3] - (gap * i))
-                context.stroke()
+                if (i !== 0) {
+                    context.beginPath()
+                    context.strokeStyle = '#eaeaea'
+                    context.strokeWidth = 2
+                    context.moveTo(chartZone[0], chartZone[3] - (gap * i))
+                    context.lineTo(chartZone[2], chartZone[3] - (gap * i))
+                    context.stroke()
+                }
             }
         }
 
         // 绘制x轴坐标
         function drawXLabels(options) {
+            let chartZone = options.chartZone
+            let xLength = (chartZone[2] - chartZone[0]) * 0.96
+            let labels = options.xAxisLabel
+            let gap = xLength / labels.length
+            labels.forEach((item, index) => {
+                context.strokeStyle = '#eaeaea';
+                context.font = '18px';
+                context.textAlign = 'center';
+                context.fillText(item, chartZone[0] + (index + 1) * gap, chartZone[3] + 20)
 
+                // 绘制间隙
+                context.beginPath()
+                context.strokeStyle = "#353535"
+                context.moveTo(chartZone[0] + gap * (index + 1), chartZone[3])
+                context.lineTo(chartZone[0] + gap * (index + 1), chartZone[3] + 5)
+                context.stroke()
+            })
         }
 
         // 绘制数据
