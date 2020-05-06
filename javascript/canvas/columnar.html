@@ -99,12 +99,24 @@
                 context.moveTo(chartZone[0] + gap * (index + 1), chartZone[3])
                 context.lineTo(chartZone[0] + gap * (index + 1), chartZone[3] + 5)
                 context.stroke()
+                options.xAxisPos[index] = (index + 1) * gap;
             })
         }
 
         // 绘制数据
         function drawData(options) {
-
+            let chartZone = options.chartZone
+            context.beginPath()
+            context.moveTo(chartZone[0], chartZone[3])
+            let data = options.data
+            let yLength = (chartZone[3] - chartZone[1]) * 0.98
+            let gap = yLength / options.yMax
+            context.strokeStyle = options.barStyle.color || "#1abc9c"; //02BAD4
+            context.strokeWidth = 2;
+            data.forEach((item, index) => {
+                context.lineTo(options.xAxisPos[index] + chartZone[0], chartZone[3] - item * gap)
+                context.stroke()
+            })
         }
     </script>
 </body>
