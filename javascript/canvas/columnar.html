@@ -35,7 +35,8 @@
             drawAxis(options); //绘制坐标轴
             drawYLabels(options); //绘制y轴坐标
             drawXLabels(options); //绘制x轴坐标
-            drawData(options); // 绘制数据
+            // drawData(options); // 绘制数据
+            drawDataWithCubicBezier(options)
         }
 
         //绘制坐标轴
@@ -121,12 +122,46 @@
 
         // 三次贝塞尔曲线数据拟合
         function drawDataWithCubicBezier(options) {
-
+            // 计算用于绘图的数据点和控制点坐标
+            let drawingPoints = calcControlPoints(options)
+            // 设置绘图样式
+            context.strokeStyle = options.barStyle.color || '#1abc9c'
+            context.strokeWidth = 4
+            context.beginPath()
+            context.moveTo(options.chartZone[0], options.chartZone[3])
+            for (let i = 1; i < drawingPoints.length; i++) {
+                context.bezierCurveTo(drawingPoints[i - 1].cp1x, drawingPoints[i - 1].cp1y, drawingPoints[i - 1].cp2x,
+                    drawingPoints[i - 1].cp2y, drawingPoints[i].dx, drawingPoints[i].dy)
+            }
+            // 绘制线条
+            context.stroke()
         }
 
         // 计算控制点
         function calcControlPoints(options) {
-
+            let results = []
+            let y = options.data
+            let x = options.xAxisPos
+            // 补充值
+            y.unshift(y[0])
+            x.unshift(0)
+            // 补充右值
+            x.push(x[y.length - 1])
+            x.push(x[y.length - 1])
+            y.push(y[y.length - 1])
+            y.push(y[y.length - 1])
+            // 计算用于绘制曲线的坐标点及控制点坐标值
+            for (let i = 1; i < y.length - 2; i++) {
+                results.push({
+                    dx: transToCanvasCoord(x[i], 'x'),
+                    dy: transToCanvasCoord(y[i]),
+                    cp1x: transToCanvasCoord(x[i] + (x[i + 1] - x[i - 1]) / 4, 'x'),
+                    cp1y: transToCanvasCoord(y[i] + (y[i + 1] - y[i - 1]) / 4),
+                    cp2x: transToCanvasCoord(x[i + 1] - (x[i + 2] - x[i]) / 4, 'x'),
+                    cp2y: transToCanvasCoord(y[i + 1] - (y[i + 2] - y[i]) / 4)
+                })
+            }
+            return results
         }
 
         /**
