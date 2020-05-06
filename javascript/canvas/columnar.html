@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <canvas id="canvas" width="1200" height="500"></canvas>
+    <canvas id="canvas" width="1200" height="800"></canvas>
     <script>
         const canvas = document.getElementById('canvas')
         const context = canvas.getContext('2d')
@@ -35,11 +35,19 @@
             drawAxis(options); //绘制坐标轴
             drawYLabels(options); //绘制y轴坐标
             drawXLabels(options); //绘制x轴坐标
+            drawData(options); // 绘制数据
         }
 
         //绘制坐标轴
         function drawAxis(options) {
-
+            let chartZone = options.chartZone
+            context.strokeWidth = 4
+            context.strokeStyle = "#353535"
+            context.moveTo(chartZone[0], chartZone[1])
+            context.lineTo(chartZone[0], chartZone[3]) //y轴总高650
+            context.moveTo(chartZone[0], chartZone[3])
+            context.lineTo(chartZone[2], chartZone[3]) //x轴总长
+            context.stroke();
         }
 
         //绘制y轴坐标
@@ -49,6 +57,11 @@
 
         // 绘制x轴坐标
         function drawXLabels(options) {
+
+        }
+
+        // 绘制数据
+        function drawData(options) {
 
         }
     </script>
