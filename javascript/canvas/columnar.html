@@ -115,8 +115,31 @@
             context.strokeWidth = 2;
             data.forEach((item, index) => {
                 context.lineTo(options.xAxisPos[index] + chartZone[0], chartZone[3] - item * gap)
-                context.stroke()
             })
+            context.stroke()
+        }
+
+        // 三次贝塞尔曲线数据拟合
+        function drawDataWithCubicBezier(options) {
+
+        }
+
+        // 计算控制点
+        function calcControlPoints(options) {
+
+        }
+
+        /**
+         *  将坐标转换为相对canvas的坐标
+         */
+        function transToCanvasCoord(coord, flag) {
+            let xLength = (options.chartZone[2] - options.chartZone[0]) * 0.96
+            let yLength = (options.chartZone[3] - options.chartZone[1]) * 0.98
+            let yFactor = yLength / options.yMax
+            if (flag === 'x') {
+                return coord + options.chartZone[0]
+            }
+            return options.chartZone[3] - coord * yFactor
         }
     </script>
 </body>
