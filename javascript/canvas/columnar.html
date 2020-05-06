@@ -52,7 +52,31 @@
 
         //绘制y轴坐标
         function drawYLabels(options) {
+            let chartZone = options.chartZone
+            let yLength = (chartZone[3] - chartZone[1]) * 0.98
+            let labels = options.yAxisLabel
+            let gap = Math.floor(yLength / (labels.length - 1))
+            for (let i = 0; i < labels.length; i++) {
+                let offset = context.measureText(labels[i]).width + 20
+                context.strokeStyle = '#eaeaea';
+                context.font = '16px';
+                context.fillText(labels[i], chartZone[0] - offset, chartZone[3] - (gap * i))
 
+                // 绘制间隙
+                context.beginPath()
+                context.strokeStyle = "#353535"
+                context.moveTo(chartZone[0] - 10, chartZone[3] - (gap * i))
+                context.lineTo(chartZone[0], chartZone[3] - (gap * i))
+                context.stroke()
+
+                // 绘制虚线
+                context.beginPath()
+                context.strokeStyle = '#eaeaea'
+                context.strokeWidth = 2
+                context.moveTo(chartZone[0], chartZone[3] - (gap * i))
+                context.lineTo(chartZone[2], chartZone[3] - (gap * i))
+                context.stroke()
+            }
         }
 
         // 绘制x轴坐标
