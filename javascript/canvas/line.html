@@ -44,6 +44,29 @@
 
         function drawLineChart(options) {
             drawAxis(options)
+            drawYLabels(options)
+            drawXLabels(options)
+        }
+
+        // 绘制坐标
+        function drawAxis(options) {
+            let chartZone = options.chartZone
+            context.strokeWidth = 4;
+            context.strokeStyle = "#353535";
+            context.moveTo(chartZone[0], chartZone[1])
+            context.lineTo(chartZone[0], chartZone[3])
+            context.lineTo(chartZone[2], chartZone[3])
+            context.stroke()
+        }
+
+        // 绘制Xl轴
+        function drawXLabels() {
+
+        }
+
+        // 绘制Y轴
+        function drawYLabels() {
+
         }
     </script>
 </body>
