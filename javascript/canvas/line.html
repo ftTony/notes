@@ -21,7 +21,30 @@
 <body>
     <canvas id="canvas" width="1200" height="800"></canvas>
     <script>
-        var ctx = document.getElementById('canvas').getContext('2d')
+        var canvas = document.getElementById('canvas')
+        var context = canvas.getContext('2d')
+        //基本绘图配置
+        let options = {
+            chartZone: [50, 50, 1000, 700],
+            yAxisLabel: ['0', '100', '200', '300', '400'],
+            yMax: 400,
+            xAxisLabel: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            xAxisPos: [], //用于暂存x坐标轴标签的位置
+            data: [10, 50, 200, 330, 390, 320, 220],
+            barStyle: {
+                width: 70,
+                color: '#1abc9c'
+            },
+            axisArrow: {
+                size: 2,
+                color: '#DA5961'
+            }
+        }
+        drawLineChart(options)
+
+        function drawLineChart(options) {
+            drawAxis(options)
+        }
     </script>
 </body>
 
