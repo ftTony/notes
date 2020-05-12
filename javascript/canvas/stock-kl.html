@@ -10,7 +10,46 @@
 <body>
     <canvas id="canvas" width="1200" height="500"></canvas>
     <script>
-        var ctx = document.getElementById('canvas').getContext('2d')
+        var canvas = document.getElementById('canvas')
+        var context = canva.getContext('2d')
+        //基本绘图配置
+        let options = {
+            chartZone: [50, 50, 1000, 700],
+            yAxisLabel: ['2100', '2150', '2200', '2250', '2300', '2350'],
+            yMax: 2350,
+            yMin: 2100,
+            xAxisLabel: data0.categoryData,
+            xAxisPos: [], //用于暂存x坐标轴标签的位置
+            data: data0.values,
+        }
+        drawCandlestickChart(options)
+
+        function drawCandlestickChart(options) {
+            drawAxis(options); //绘制坐标轴
+            drawYLabels(options); //绘制y轴坐标
+            drawXLabels(options); //绘制x轴坐标
+            drawData(options); //绘制K线图
+        }
+
+        // 绘制坐标轴
+        function drawAxis(options) {
+
+        }
+
+        // 绘制y轴坐标
+        function drawYLabels(options) {
+
+        }
+
+        // 绘制x轴坐标
+        function drawXLabels(options) {
+
+        }
+
+        // 绘制K线图
+        function drawData(options) {
+
+        }
     </script>
 </body>
 
