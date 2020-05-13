@@ -23,19 +23,33 @@
     <script>
         var canvas = document.getElementById('canvas')
         var context = canvas.getContext('2d')
-        let dt = 0.5
+        let dt = 0.5    // 每帧表示的时间间隔
 
         // 球体
         class Ball {
             constructor(x, y, id) {
-
+                this.pos = new Vector2(x,y) // 记录当前坐标
+                this.id = id
+                this.color = ''
+                this.r = 20
+                this.velocity = null
             }
 
             /** 更新状态
-             * 
+             *  由于检测碰撞需要知道其他小球的位置，故此处将小球数组的引用传入也可以直接以面向对象的方式来定义
              */
             update(index, balls) {
+                let nextPos     // 模拟下一次落点
 
+                // 计算下一次落点
+                nextPos = this.pos.add(this.velocity.multiply(dt))
+
+                // 2.判断新位置是否碰触边界，如果是则边界法向的速度反向，假设碰撞过程是无能量损失
+                if(nextPos.x + this.r > rightBorder || nextPos.x<this.r){
+
+                }
+
+                3.判断是否
             }
             paint() {
 
@@ -56,7 +70,38 @@
             this.y = y
         }
         Vector2.prototype = {
-
+            copy: function () {
+                return new Vector2(this.x, this.y)
+            },
+            length: function () {
+                return Math.sqrt(this.x * this.x + this.y * this.y)
+            },
+            sqrLength:function(){
+                return this.x* this.x+ this.y* this.y
+            },
+            normalize:function(){
+                var inv = 1/this.length()
+                return new Vector2(this.x*inv,this.y*inv)
+            },
+            negate:function(){
+                return new Vector2(-this.x,-this.y)
+            },
+            add:function(v){
+                return new Vector2(this.x+v.x,this.y+v.y)
+            },
+            subtract:function(v){
+                return new Vector2(this.x-v.x,this.y-v.y)
+            },
+            multiply:function(f){
+                return new Vector2(this.x*f,this.y*f)
+            },
+            divide:function(f){
+                var invf=1/f
+                return new Vector2(this.x*invf,this.y*invf)
+            },
+            dot:function(v){
+                return this.x*v.x+this.y*v.y
+            }
         }
         var colorPalette = [
             '#dd6b66', '#759aa0', '#e69d87', '#8dc1a9', '#ea7e53',
