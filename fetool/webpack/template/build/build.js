@@ -1,10 +1,9 @@
-const rimra = require('rimraf')
+const rimraf = require('rimraf');
 const ora = require('ora')
 const chalk = require('chalk')
 const path = require('path')
-
-// 删除dist 目录
-rimra.sync(path.join(process.cwd(), 'dist'))
+// 删除 dist 目录
+rimraf.sync(path.join(process.cwd(), 'dist'))
 
 const config = require('./base')()
 const webpack = require('webpack')
