@@ -65,3 +65,27 @@ program.usage('<command> [options]').version(packageConfig.version).command('bui
     lock = true
     require('../build/ssr')(args)
 })
+
+program.usage('<command> [options]').version(packageConfig.version).command('ssr:server [app-page]').description(`服务端渲染 server 端运行`).action(async (name, cmd) => {
+    const options = cleanArgs(cmd)
+    const args = Object.assign(options, {
+        name
+    }, boxConf)
+    if (lock) return
+    lock = true
+    require('../build/ssr-server')(args)
+})
+
+program.parse(process.argv).args && program.parse(process.argv).args[0]
+program.commands.forEach(c => c.on('--help', () => console.log()))
+
+if (process.argv[2] && !__name__.includes(process.argv[2])) {
+    console.log()
+    console.log(chalk.red(`  没有找到 ${process.argv[2]} 命令`))
+    console.log()
+    program.help()
+}
+
+if (!process.argv[2]) {
+    program.help()
+}
