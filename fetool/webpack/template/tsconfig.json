@@ -4,6 +4,23 @@
         "outDir": "dist",
         "sourceMap": false,
         "target": "es5",
-        "module": "esnext"
+        "module": "esnext",
+        "moduleResolution": "node",
+        "allowJs": false,
+        "noUnusedLocals": true,
+        "strictNullChecks": false,
+        "noImplicitAny": false,
+        "noImplicitThis": true,
+        "experimentalDecorators": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": false,
+        "removeComments": false,
+        "jsx": "react",
+        "lib": ["ESNext", "DOM"],
+        "types": ["node"],
+        "rootDir": ".",
+        "paths": {
+            "@src": ["src"]
+        }
     }
 }
