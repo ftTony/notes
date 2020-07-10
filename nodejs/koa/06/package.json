@@ -30,5 +30,8 @@
     "react-dom": "^16.6.3",
     "validator": "^6.2.0",
     "whatwg-fetch": "^2.0.1"
+  },
+  "devDependencies": {
+    "koa-bodyparser": "^4.3.0"
   }
 }
