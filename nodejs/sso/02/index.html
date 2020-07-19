@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>域名2</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <h2>域名2</h2>
+    <h2>当前登录用户：<span class="j-username"></span></h2>
+    <a href="/logout">退出系统</a>
+    <!-- <img src="/api" /> -->
+    <script>
+         $(function(){
+            $.ajax({
+                    url:'/api',
+                    success:function(res){
+                        if(+res.code==0){
+                            $('.j-username').text(res.data.name)
+                        }else{
+                            alert(res.data)
+                        }
+                    }
+            })
+        })
+    </script>
+</body>
+</html>
