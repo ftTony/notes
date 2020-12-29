@@ -41,8 +41,17 @@ let tableData = [
 ]
 
 
-// 树转表
+// 树转表  方法一
 const TreeToTable = (treeData)=>{
-    // ...
-    return tableData;
+    let result = [];
+    treeData.forEach(node=>getItemsFromNode(node))
+
+    function getItemsFromNode(node){
+        let {children,...copy} = node;
+        result.push(copy);
+        if(children && children.length>0){
+            children.forEach(child=>getItemsFromNode(child));
+        }
+    }
+    return result;
 }

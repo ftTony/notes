@@ -43,6 +43,26 @@ let tableData = [
 
 // 表转树
 const TableToTree = (tableData)=>{
-    // ...
-    return treeData
+    if(!Array.isArray(treeData) || treeData.length===0){
+        return
+    }
+
+    let nodeMap = new Map();
+    tableData.forEach(item=>{
+        nodeMap.set(item.id,{...item});
+    });
+
+    let result = [];
+
+    tableData.forEach(item=>{
+        let node = nodeMap.get(item.id);
+        let pnode = nodeMap.get(item.pid);
+        if(pnode){
+            pnode.children = pnode.children || [];
+            pnode.set(item.id,node);
+        }else{
+            result.push(node);
+        }
+    });
+    return result
 }
