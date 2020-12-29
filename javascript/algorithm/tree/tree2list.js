@@ -55,3 +55,12 @@ const TreeToTable = (treeData)=>{
     }
     return result;
 }
+
+
+// 方法二
+function tree2table (tree = []) {
+    return tree.reduce(
+        (accumulator, {children, ...props}) => [...accumulator, props, ...tree2table(children)],
+        []
+    )
+}
