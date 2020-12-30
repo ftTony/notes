@@ -1,4 +1,5 @@
 // 树形结构数据示例
+// https://juejin.cn/post/6844904035263184903
 // https://juejin.im/post/6844904029793812487
 let treeData = [
     {
@@ -43,7 +44,7 @@ let tableData = [
 
 // 表转树
 const TableToTree = (tableData)=>{
-    if(!Array.isArray(treeData) || treeData.length===0){
+    if(!Array.isArray(tableData) || tableData.length===0){
         return
     }
 
@@ -59,10 +60,13 @@ const TableToTree = (tableData)=>{
         let pnode = nodeMap.get(item.pid);
         if(pnode){
             pnode.children = pnode.children || [];
-            pnode.set(item.id,node);
+            pnode.children.push(node);
+            nodeMap.set(item.id,node);
         }else{
             result.push(node);
         }
     });
     return result
 }
+
+console.log(TableToTree(tableData))
