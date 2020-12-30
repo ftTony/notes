@@ -42,25 +42,34 @@ let tableData = [
 
 
 // 树转表  方法一
-const TreeToTable = (treeData)=>{
-    let result = [];
-    treeData.forEach(node=>getItemsFromNode(node))
+// const TreeToTable = (treeData)=>{
+//     let result = [];
+//     treeData.forEach(node=>getItemsFromNode(node))
 
-    function getItemsFromNode(node){
-        let {children,...copy} = node;
-        result.push(copy);
-        if(children && children.length>0){
-            children.forEach(child=>getItemsFromNode(child));
-        }
-    }
-    return result;
-}
+//     function getItemsFromNode(node){
+//        let {children,...copy} = node;
+//        result.push(copy);
+//        if(children && children.length>0){
+//            children.forEach(child=>getItemsFromNode(child));
+//        }
+//     }
+//     return result;
+// }
+
 
 
 // 方法二
-function tree2table (tree = []) {
-    return tree.reduce(
-        (accumulator, {children, ...props}) => [...accumulator, props, ...tree2table(children)],
-        []
-    )
+// function tree2table (tree = []) {
+//     return  tree.reduce((accumulator,{children,...props})=>[...accumulator,props,...tree2table(children)],[]);
+// }
+
+// 方法三
+function tree2table(tree=[],table=[]){
+    tree.forEach(({children,...props})=>{
+        table.push(props);
+        children && children.length>0 && tree2table(children,table);
+    })
+    return table;
 }
+
+console.log(tree2table(treeData));
