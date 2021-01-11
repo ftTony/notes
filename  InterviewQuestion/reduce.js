@@ -6,4 +6,24 @@ Array.prototype.reduce2 = function(callback,initialValue){
         throw new TypeError(callback + ' is not a function');
     }
     const O = Object(this);
+    const len = O.length >>> 0;
+    let k = 0,acc
+    if(arguments.length>1){
+        acc = initialValue;
+    }else{
+        while(k<len && !(k in O)){
+            k++;
+        }
+        if(k>len){
+            throw new TypeError('Reduce of empty array with no initial value');
+        }
+        acc = O[k++];
+    }
+    while(k<len){
+        if(k in O){
+            acc = callback(acc,O[k],k,O);
+        }
+        k++;
+    }
+    return acc;
 }
