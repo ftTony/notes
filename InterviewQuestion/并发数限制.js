@@ -14,7 +14,7 @@ function handleFetchQueue(urls,max,callback){
             const len = results.push(res);
             if(len<urlCount && i+1<urlCount){
                 requestQueue.shift();
-                handleRequest(urlsp[++i]);
+                handleRequest(urls[++i]);
             }else if(len === urlCount){
                 'function' === typeof callback && callback(results);
             }
