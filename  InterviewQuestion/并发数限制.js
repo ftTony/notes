@@ -41,29 +41,36 @@ const fetch = function(idx){
     });
 }
 
-// 代码二
-/**
- * 
- * @param {*} list 要迭代的数组
- * @param {*} limit 并发数量控制数
- * @param {*} asyncHandle 
- */
-function mapLimit(list,limit,asyncHandle){
-    function recursion(arr){
-        return asyncHandle(arr.shift()).then(()=>{
-            if(arr.length !==0) 
-            {
-                return recursion(arr);  // 数组还未迭代完，递归继续进行迭代
-            }else{
-                return 'finish';
-            }
-        });
-    }
-    let listCopy = [].concat(list);
-    let asyncList = []; // 正在进行的所有迸发异步操作
-
-    while(limit--){
-        asyncList.push(recursion(listCopy));
-    }
-    return Promise.all(asyncList);  // 所有并发异步操作都完成后，本次并发控制迭代完成
+const max = 4;
+const callback = ()=>{
+    console.log('run callback');
 }
+
+handleFetchQueue(urls,max,callback);
+
+// // 代码二
+// /**
+//  * 
+//  * @param {*} list 要迭代的数组
+//  * @param {*} limit 并发数量控制数
+//  * @param {*} asyncHandle 
+//  */
+// function mapLimit(list,limit,asyncHandle){
+//     function recursion(arr){
+//         return asyncHandle(arr.shift()).then(()=>{
+//             if(arr.length !==0) 
+//             {
+//                 return recursion(arr);  // 数组还未迭代完，递归继续进行迭代
+//             }else{
+//                 return 'finish';
+//             }
+//         });
+//     }
+//     let listCopy = [].concat(list);
+//     let asyncList = []; // 正在进行的所有迸发异步操作
+
+//     while(limit--){
+//         asyncList.push(recursion(listCopy));
+//     }
+//     return Promise.all(asyncList);  // 所有并发异步操作都完成后，本次并发控制迭代完成
+// }
