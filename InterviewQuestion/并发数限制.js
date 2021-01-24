@@ -33,7 +33,7 @@ const urls = Array.from({length:10},(v,k)=>k);
 const fetch = function(idx){
     return new Promise(resolve =>{
         console.log(`start request ${idx}`);
-        const timeout = parseInt(Math.random() * 1000);
+        const timeout = parseInt(Math.random() * 10000);
         setTimeout(()=>{
             console.log(`end request ${idx}`);
             resolve(idx);
