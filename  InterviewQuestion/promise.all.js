@@ -1,3 +1,5 @@
+// https://zhuanlan.zhihu.com/p/41502945
+
 Promise.prototype.all = function(promises){
     let results = [];
     let promiseCount = 0;
