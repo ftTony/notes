@@ -8,7 +8,9 @@ function asyncPool(poolLimit,array,iteratorFn){
         if(i===array.length){
             return Promise.resolve();
         }
-
-        
+        // 每调一次enqueue，初始化一个promise
+        const item = array[i++];
+        const p = Promise.resolve().then(()=>iteratorFn(item,array));
+        // 放入promise数组
     }
 }
