@@ -1,4 +1,0 @@
-2019-06-03 04:30:03,886 INFO 69528 [Timer] D:\personal\notes\nodejs\egg\01\node_modules\egg-multipart\app\schedule\clean_tmpdir.js next time will execute after 86396116ms at 2019-06-04 04:30:00.001
-2019-06-03 04:30:03,885 DEBUG 67256 [Job#155950740388411683949260566503] D:\personal\notes\nodejs\egg\01\node_modules\egg-multipart\app\schedule\clean_tmpdir.js task received by app
-2019-06-03 04:30:03,885 INFO 67256 [Job#155950740388411683949260566503] D:\personal\notes\nodejs\egg\01\node_modules\egg-multipart\app\schedule\clean_tmpdir.js executing by app
-2019-06-03 04:30:03,887 INFO 67256 [Job#155950740388411683949260566503] D:\personal\notes\nodejs\egg\01\node_modules\egg-multipart\app\schedule\clean_tmpdir.js execute succeed, used 2ms

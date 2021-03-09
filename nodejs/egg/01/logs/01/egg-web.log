@@ -1,3 +1,0 @@
-2019-06-03 00:00:04,773 INFO 67256 [egg-logrotator] app logger reload: got log-reload message
-2019-06-03 04:30:03,885 INFO 67256 [-/127.0.0.1/-/0ms SCHEDULE /__schedule?path=D:\personal\notes\nodejs\egg\01\node_modules\egg-multipart\app\schedule\clean_tmpdir.js&type=worker&cron=0%2030%204%20*%20*%20*&immediate=false] [egg-multipart:CleanTmpdir] start clean tmpdir: "C:\\Users\\XIAONE~1\\AppData\\Local\\Temp\\egg-multipart-tmp\\01"
-2019-06-03 04:30:03,887 INFO 67256 [-/127.0.0.1/-/2ms SCHEDULE /__schedule?path=D:\personal\notes\nodejs\egg\01\node_modules\egg-multipart\app\schedule\clean_tmpdir.js&type=worker&cron=0%2030%204%20*%20*%20*&immediate=false] [egg-multipart:CleanTmpdir] end
