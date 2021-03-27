@@ -13,6 +13,30 @@ module.exports = {
         publicPach:"auto"
     },
     module:{
-        
-    }
+        rules:[
+            {
+                test:/bootstrap\.js$/,
+                loader:"bundle-loader",
+                options:{
+                    lazy:true
+                }
+            }
+        ]
+    },
+    plugins:[
+        new ModuleFederationPlugin({
+            name:"app1",
+            remotes:{
+                app2:``
+            },
+            shared:{
+                react:{
+                    singleton:true
+                },
+                "react-dom":{
+                    singleton:true
+                }
+            }
+        })
+    ]
 }
