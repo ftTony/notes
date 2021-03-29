@@ -10,7 +10,7 @@ module.exports = {
         port:3001,
     },
     output:{
-        publicPach:"auto"
+        publicPath:"auto"
     },
     module:{
         rules:[
