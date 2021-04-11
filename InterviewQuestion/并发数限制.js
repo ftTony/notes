@@ -33,8 +33,8 @@ const fetch = function(idx){
     return new Promise(resolve =>{
         console.log(`start request ${idx}`);
         const timeout = parseInt(Math.random() * 10000);
-        console.log(`=============`);
         console.log(`timeout:${timeout}`);
+        console.log(`=============`);
         setTimeout(()=>{
             console.log(`end request ${idx}`);
             resolve(idx);
