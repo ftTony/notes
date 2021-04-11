@@ -1,5 +1,7 @@
 /**
  * 事件总线（发布订阅模式）
+ * 死磕 36 个 JS 手写题（搞懂后，提升真的大）
+ * https://juejin.cn/post/6946022649768181774
  */
 
 class EventEmitter{
