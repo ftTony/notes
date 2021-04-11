@@ -10,7 +10,6 @@ function handleFetchQueue(urls,max,callback){
     let i = 0;
     const handleRequest = (url) =>{
         const req = fetch(url).then(res =>{
-            console.log('当前并发：' + requestQueue);
             const len = results.push(res);
             if(len<urlCount && i+1<urlCount){
                 requestQueue.shift();
@@ -34,6 +33,8 @@ const fetch = function(idx){
     return new Promise(resolve =>{
         console.log(`start request ${idx}`);
         const timeout = parseInt(Math.random() * 10000);
+        console.log(`=============`);
+        console.log(`timeout:${timeout}`);
         setTimeout(()=>{
             console.log(`end request ${idx}`);
             resolve(idx);
