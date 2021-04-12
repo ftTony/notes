@@ -27,6 +27,7 @@
                 };
                 img.onerror = reject;
                 img.src = url;
+                document.documentElement.appendChild(img);
             });
         }
 
@@ -35,8 +36,14 @@
         function bao(){
             count++;
             console.log('并发数：',count);
+            // 条件判断，urls长度大于0继续，小于等于零说明图片加载完成
             if(urls.length>0 && count <=3){
-                
+                // shift从数组中取出连接
+                loadImg(urls.shift()).then(()=>{
+                    // 计数器速减
+                    count--;
+                    // 递归调用
+                }).then(bao);
             }
         }
 
