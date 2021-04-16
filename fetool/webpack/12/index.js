@@ -58,7 +58,10 @@ function createGraph(entry){
             // 获取绝对路径，以便于createAsset读取文件
             const absolutePath = path.join(dirname,relativePath);
             // 与当前assert关联
-            
+            assert.dependencies.forEach(relativePath=>{
+                // 获取绝对路径，以便于crateAsset读取文件
+                const absolutePath = path.join(dirname,relativePath);
+            })
         })
     }
 }
