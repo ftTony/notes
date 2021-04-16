@@ -317,3 +317,4 @@ Promise.all = function (promises) {
         }
     })
 }
+
