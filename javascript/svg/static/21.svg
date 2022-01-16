@@ -1,0 +1,26 @@
+<svg width="400px" height="400px" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+       <path id="curvepath"/>
+       <path id="round-corner"/>
+       <path id="sharp-corner"/>
+       <path id="discontinuous"/>
+    </defs>
+    
+    <g style="font-family:'Liberation Sans';font-size:10pt;">
+        <use xlink:href="#curvepath"/>
+        <text>
+            <textPath xlink:href="#curvepath">
+                Following a cubic Bezier curve.
+            </textPath>
+        </text>
+
+        <use xlink:href="#round-corner"/>
+        <text>
+            <textPath xlink:href="#round-corner">
+                Going round the bend
+            </textPath>
+        </text>
+        
+    </g>
+
+</svg>
