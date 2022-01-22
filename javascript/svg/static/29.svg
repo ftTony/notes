@@ -1,0 +1,5 @@
+<svg width="400px" height="400px" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <circle cx="50" cy="50" r="30" style="fill:#ff9;stroke:black;stroke-width:10;">
+        <animate attributeName="fill" attributeType="XML" begin="2s" dur="4s" values="#ff9;#99f;#f99;#9f9" fill="freeze"/>
+    </circle>
+</svg>

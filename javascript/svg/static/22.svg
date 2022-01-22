@@ -1,0 +1,46 @@
+<svg width="400px" height="400px" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <mask id="redmask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
+            <rect x="0" y="0" width="1" style="fill:#f00;" />
+        </mask>
+
+        <mask id="greenmask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
+            <rect x="0" y="0" width="1" height="1" style="#0f0;" />
+        </mask>
+
+        <mask id="bluemask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
+            <rect x="0" y="0" width="1" height="1" style="#00f;" />
+        </mask>
+
+        <mask id="whitemask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
+            <rect x="0" y="0" width="1" height="1" style="#fff;" />
+        </mask>
+    </defs>
+
+    <rect x="10" y="10" width="50" height="50" style="fill:#f00" />
+    <rect x="70" y="10" width="50" height="50" style="fill:#0f0;" />
+    <rect x="130" y="10" width="50" height="50" style="fill:#00f;" />
+    <rect x="190" y="10" width="50" height="50" style="fill:#fff;" />
+    <rect x="10" y="72" width="250" height="5" style="fill:yellow;" />
+    <rect x="10" y="112" width="250" height="5" style="fill:yellow;" />
+
+    <g style="mask: url(#redmask);font-size:14pt;text-anchor:middle;">
+        <circle cx="35" cy="115" r="25" style="fill:black;" />
+        <text x="35" y="80">Red</text>
+    </g>
+
+    <g style="mask: url(#greenmask);font-size:14pt;text-anchor:middle;">
+        <circle cx="95" cy="115" r="25" style="fill:black;" />
+        <text x="95" y="80">Green</text>
+    </g>
+
+    <g style="mask: url(#bluemask);font-size:14pt;text-anchor:middle;">
+        <circle cx="155" cy="115" r="25" style="fill:black;" />
+        <text x="155" y="80">Blue</text>
+    </g>
+
+    <g style="mask: url(#whitemask);font-size:14pt;text-anchor:middle;">
+        <circle cx="215" cy="115" r="25" style="fill:black;" />
+        <text x="215" y="80">White</text>
+    </g>
+</svg>

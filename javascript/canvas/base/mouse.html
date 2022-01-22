@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动鼠标</title>
+    <style>
+        #canvas{
+            position: "absolute";
+            left:"0px";
+            top:"50px";
+            margin:"20px";
+            background:"#fff";
+            border:thin inset rgba(100,150,230,0.5);
+            cursor: pointer;
+        }
+        #readout{
+            margin-top: 10px;
+            margin-left: 15px;
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="readout"></div>
+    <p>加载一个图片，移动鼠标，获取基于cnavas鼠标处精灵表坐标</p>
+    <canvas width="500" id="canvas" height="250"></canvas>
+    <script>
+        var canvas = document.getElementById("canvas"),
+            context = canvas.getContext("2d"),
+            readout = document.getElementById("readout"),
+            spritesheet = new Image();
+
+        function windowToCanvas(canvas,x,y){
+            var bbox= canvas.getBoundingClientRect();
+            return {
+                x:x-bbox.left*(canvas.width/bbox.width),
+                y:y-bbox.top*(canvas.height/bbox.height)
+            }
+        }
+
+        function drawBackground(){
+            var VERTICAL_LINE_SOACING = 12,
+                i = context.canvas.height;
+
+            context.clearRect(0,0,canvas.width,canvas.height);
+            context.strokeStyle = 'lightgray';
+            context.lineWidth = 0.5;
+
+            while(i>VERTICAL_LINE_SOACING*4){
+                context.beginPath();
+                context.moveTo(0,i);
+                context.lineTo(canvas.width,i);
+                context.stroke();
+
+                i-= VERTICAL_LINE_SOACING;
+            }
+        }
+    
+        function drawSpritesheet(){
+            context.drawImage(spritesheet,0,0);
+        }
+
+        function drawGuidelines(x,y){
+            context.strokeStyle="rgba(0,0,230,0.8)";
+            context.lineWidth = 0.5;
+            drawVerticalLine(x);
+            drawHorizontalLine(y);
+        }
+
+        function updateReadout(x,y){
+            readout.innerHTML = '('+x.toFixed(0)+','+y.toFixed(0)+')';
+        }
+
+        /**
+         * 绘制水平跟随线
+        */
+        function drawHorizontalLine(y){
+            context.beginPath();
+            context.moveTo(0,y+0.5);
+            context.lineTo(context.canvas.width,y+0.5);
+            context.stroke();
+        }
+
+        /**
+         * 绘制垂直跟随线
+        */
+        function drawVerticalLine(x){
+            context.beginPath();
+            context.moveTo(x+0.5,0);
+            context.lineTo(x+0.5,context.canvas.height);
+            context.stroke();
+        }
+
+        canvas.onmousemove = function(e){
+            var loc = windowToCanvas(canvas,e.clientX,e.clientY);
+
+            drawBackground();
+            drawSpritesheet();
+            drawGuidelines(loc.x,loc.y);
+            updateReadout(loc.x,loc.y);
+        }
+        spritesheet.src="./img/running-sprite-sheet.png";
+
+        spritesheet.onload = function(ev){
+            drawSpritesheet();
+        };
+
+        drawBackground();
+    </script>
+</body>
+</html>
