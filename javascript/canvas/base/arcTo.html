@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arcTo画圆弧</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        var canvas = document.getElementById("canvas"),
+            context = canvas.getContext("2d");
+
+            context.lineWidth = 5;
+
+            context.setLineDash([5,5]);
+            context.beginPath();
+            context.moveTo(10,10);
+            context.lineTo(100,10);
+            context.stroke();
+
+            context.strokeStyle = 'red';
+            context.beginPath();
+            context.moveTo(100,10);
+            context.setLineDash([]);
+            context.arcTo(150,10,150,60,50);
+            context.stroke();
+
+            // 黑虚线画右边
+            context.strokeStyle = "black";
+            context.beginPath();
+            context.setLineDash([5,5]);
+            context.moveTo(150,60);
+            context.lineTo(150,150);
+            context.stroke();
+    </script>
+</body>
+</html>

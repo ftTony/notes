@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标绘画</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../base/utils.js"></script>
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <script>
+        window.onload = function(){
+            var canvas = document.getElementById('canvas'),
+                context = canvas.getContext('2d'),
+                mouse = utils.captureMouse(canvas);
+
+            canvas.addEventListener('mousedown',function(){
+                context.beginPath();
+                context.moveTo(mouse.x,mouse.y);
+                canvas.addEventListener('mousemove',onMouseMove,false);
+            },false);
+
+            canvas.addEventListener('mouseup',function(){
+                canvas.removeEventListener('mousemove',onMouseMove,false);
+            },false);
+
+            function onMouseMove(){
+                context.lineTo(mouse.x,mouse.y);
+                context.stroke();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图像合成</title>
+    <style>
+        #canvas{
+            border:1px solid cornflowerblue;
+            position: absolute;
+            left:150px;
+            top: 10px;
+            background:#eee;
+            border:thin solid #aaa;
+            cursor: pointer;
+            -webkit-box-shadow: rgba(200, 200, 255, 0.9) 5px 5px 10px;
+            -moz-box-shadow: rgba(200, 200, 255, 0.9) 5px 5px 10px;
+            box-shadow: rgba(200, 200, 255, 0.9) 5px 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <select size="11" id="compositingSelect">
+        <option value="source-atop">source-atop</option>
+        <option value='source-in'>source-in</option>
+        <option value='source-out'>source-out</option>
+        <option value='source-over'>source-over (default)</option>
+        <option value='destination-atop'>destination-atop</option>
+        <option value='destination-in'>destination-in</option>
+        <option value='destination-out'>destination-out</option>
+        <option value='destination-over'>destination-over</option>
+        <option value='lighter'>lighter</option>
+        <option value='copy'>copy</option>
+        <option value='xor'>xor</option>
+    </select>
+    <canvas id="canvas" width="600" height="420">Canvas not supports</canvas>
+    <script>
+        let context = document.getElementById('canvas').getContext("2d"),
+        selectElement = document.getElementById('compositingSelect');
+
+        let drawText = ()=>{
+            context.save();
+
+            context.shadowColor = 'rgba(100,100,150,0.8)';
+            context.shadowOffsetX = 5;
+            context.shadowOffsetY = 5;
+            context.shadowBlur = 10;
+
+            context.fillStyle = 'cornflowerblue';
+            context.fillText('小武子',20,250);
+
+            context.restore();
+        }
+
+        let windowToCanvas = (canvas,x,y)=>{
+            let bbox = canvas.getBoundingClientRect();
+            return {
+                x:x-bbox.left*(canvas.width/bbox.width),
+                y:y-bbox.top*(canvas.height/bbox.height)
+            }
+        }
+
+        context.canvas.onmousemove = e=>{
+            let loc = windowToCanvas(context.canvas,e.clientX,e.clientY);
+            context.clearRect(0,0,context.canvas.width,context.canvas.height);
+            drawText();
+
+            context.save();
+
+            context.globalCompositeOperation = selectElement.value;
+            context.beginPath();
+            context.arc(loc.x,loc.y,100,0,Math.PI*2,false);
+            context.fillStyle = 'orange';
+            context.stroke();
+            context.fill();
+            
+            context.restore();
+        }
+
+        selectElement.selectedIndex = 3;
+        context.lineWidth = 0.5;
+        context.font = '128pt Comic-sans';
+        drawText();
+    </script>
+</body>
+</html>
