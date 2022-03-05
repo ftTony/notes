@@ -5,9 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "ts-node",
+            "type": "node",
             "request": "launch",
             "name": "Launch Program",
+            "program": "${workspaceRoot}/node_modules/ts-node/dist/bin.js",
             "skipFiles": [
                 "<node_internals>/**"
             ],
