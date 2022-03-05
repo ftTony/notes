@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>双轴加速度</title>
+    <title>宇宙飞船</title>
     <link rel="stylesheet" href="../style.css">
+    <style>
+        #canvas{
+            background-color: #000;
+        }
+    </style>
     <script src="../base/utils.js"></script>
-    <script src="../base/ball.js"></script>
+    <script src="../base/ship.js"></script>
 </head>
 <body>
     <canvas id="canvas" width="400" height="400"></canvas>
@@ -15,28 +20,26 @@
         window.onload = function(){
            var canvas = document.getElementById('canvas'),
                context = canvas.getContext('2d'),
-               ball = new Ball(),
+               ship = new Ship(),
+               vr = 0,
                vx = 0,
                vy = 0,
-               ax = 0,
-               ay = 0;
+               thrust = 0;
 
-            ball.x = canvas.width /2;
-            ball.y = canvas.height /2;
+            ship.x = canvas.width /2;
+            ship.y = canvas.height /2;
 
             window.addEventListener('keydown',function(event){
                 switch(event.keyCode){
                     case 37:        // left
-                        ax = -0.1;
+                        vr = -3;
                         break;
                     case 39:        // right
-                        ax = 0.1;
+                        ax = 3;
                         break;
                     case 38:        // up
-                        ay = -0.1;
-                        break;
-                    case 40:    // down
-                        ay = 0.1;
+                        thrust = 0.05;
+                        ship.showFlame = true;
                         break;
                 }
             },false);
@@ -44,17 +47,23 @@
             window.addEventListener('keyup',function(){
                 ax = 0;
                 ay = 0;
+                ship.showFlame = false;
             },false);
         
             (function drawFrame(){
                 window.requestAnimationFrame(drawFrame,canvas);
                 context.clearRect(0,0,canvas.width,canvas.height);
 
+                ship.rotation += vr * Math.PI / 180;
+                var angle = ship.rotation,
+                    ax = Math.cos(angle) * thrust,
+                    ay = Math.sin(angle) * thrust;
+
                 vx += ax;
                 vy += ay;
-                ball.x += vx;
-                ball.y += vy;
-                ball.draw(context);
+                ship.x += vx;
+                ship.y += vy;
+                ship.draw(context);
             }());
         } 
     </script>
