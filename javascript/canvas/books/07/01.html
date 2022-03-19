@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../base/ball.js"></script>
+    <script src="../base/utils.js"></script>
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <script>
+        window.onload = function(){
+            let canvas = document.getElementById("canvas"),
+                context = canvas.getContext("2d"),
+                mouse = utils.captureMouse(canvas);
+                ball = new Ball();
+
+            ball.x = canvas.width /2,
+            ball.y = canvas.height /2;
+            
+            canvas.addEventListener('mousedown',function(){
+
+            },false);
+
+            function onMouseUp(){
+
+            }
+
+            function onMouseMove(event){
+
+            }
+
+            (function drawFrame(){
+
+            }());
+        };
+    </script>
+</body>
+</html>
