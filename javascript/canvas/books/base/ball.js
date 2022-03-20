@@ -4,6 +4,8 @@ function Ball(radius,color){
     this.x = 0;
     this.y = 0;
     this.radius = radius;
+    this.vx = 0;
+    this.vy = 0;
     this.rotation = 0;
     this.scaleX = 1;
     this.scaleY = 1;
@@ -27,4 +29,13 @@ Ball.prototype.draw = function(context){
         context.stroke();
     }
     context.restore();
+}
+
+Ball.prototype.getBounds = function(){
+    return {
+        x:this.x - this.radius,
+        y:this.y -  this.radius,
+        width:this.radius*2,
+        height: this.radius*2
+    }
 }

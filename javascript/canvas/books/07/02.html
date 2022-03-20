@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>拖拽</title>
+    <title>结合运动拖拽</title>
     <link rel="stylesheet" href="../style.css">
     <script src="../base/ball.js"></script>
     <script src="../base/utils.js"></script>
@@ -16,19 +16,27 @@
             let canvas = document.getElementById("canvas"),
                 context = canvas.getContext("2d"),
                 mouse = utils.captureMouse(canvas);
-                ball = new Ball();
+                ball = new Ball(),
+                vx = Math.random() * 10 -5,
+                vy = -10,
+                bounce = -0.7,
+                gravity = 0.2,
+                isMouseDown = false;
 
             ball.x = canvas.width /2,
             ball.y = canvas.height /2;
             
             canvas.addEventListener('mousedown',function(){
                 if(utils.containsPoint(ball.getBounds(),mouse.x,mouse.y)){
+                    isMouseDown = true;
+                    vx = vy = 0;
                     canvas.addEventListener('mouseup',onMouseUp,false);
                     canvas.addEventListener('mousemove',onMouseMove,false);
                 }
             },false);
 
             function onMouseUp(){
+                isMouseDown = false;
                 canvas.removeEventListener('mouseup',onMouseUp,false);
                 canvas.removeEventListener('mousemove',onMouseMove,false);
             }
@@ -38,10 +46,40 @@
                 ball.y = mouse.y;
             }
 
+            function checkBoundaries(){
+                var left = 0,
+                    right = canvas.width,
+                    top = 0,
+                    bottom = canvas.height;
+                
+                vy += gravity;
+                ball.x += vx;
+                ball.y += vy;
+
+                if(ball.x + ball.radius > right){
+                    ball.x = right - ball.radius;
+                    vx *= bounce;
+                }else if(ball.x - ball.radius < left){
+                    ball.x = left + ball.radius;
+                    vx *= bounce;
+                }
+
+                if(ball.y + ball.radius > bottom){
+                    ball.y = bottom - ball.radius;
+                    vy *= bounce;
+                }else if(ball.y - ball.radius < top){
+                    ball.y = top + ball.radius;
+                    vy *= bounce;
+                }
+            }
+
             (function drawFrame(){
                 window.requestAnimationFrame(drawFrame,canvas);
                 context.clearRect(0,0,canvas.width,canvas.height);
 
+                if (!isMouseDown) {
+                    checkBoundaries();
+                }
                 ball.draw(context);
             }());
         };
