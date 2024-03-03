@@ -19,6 +19,15 @@ export default class Circle extends Base{
     }
 
     draw(ctx: CanvasRenderingContext2D, osCtx: CanvasRenderingContext2D): void {
-        
+        const {x,y,radius,strokeColor,strokeWidth,fillColor} = this.props;
+        ctx.save();
+        ctx.beginPath();
+        ctx.fillStyle = fillColor;
+        ctx.strokeStyle = strokeColor;
+        ctx.lineWidth = strokeWidth;
+        ctx.arc(x,y,radius,0,Math.PI*2);
+        ctx.fill();
+        ctx.stroke();
+        ctx.restore();
     }
 }
