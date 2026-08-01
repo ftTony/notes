@@ -18,25 +18,45 @@
 // WebSocket 全局消息监听，后端推送任意标的行情后，统一更新 Zustand 行情仓库；
 // 封装通用 Hook useStockQuote(code)，所有业务组件统一调用，自动处理挂载订阅、卸载减计数，业务层无需关心 WS 底层、计数逻辑。
 
+import { useQuoteStore } from "./quote";
+import { useStockQuote } from "./useStockQuote";
+
+// 三、反面方案：仅用独立 Hooks、无全局管理器（不可线上使用）
+// 如果不抽离全局 WS 管理器，把订阅、计数逻辑全部写在useStockQuote内部：
+// 每个组件调用 Hook 都会生成独立的局部 count 变量，作用域隔离，组件之间无法共享计数；
+// 同一只标的两个组件挂载会发送两次订阅；其中一个组件卸载直接发送取消订阅，另一个组件瞬间丢失行情，产生线上 bug；
+// 多标的场景下重复信令暴增，加重服务器负载，不符合证券系统性能规范。
+// 结论：仅靠同一个 Hooks 无法实现多组件、多标的共享订阅，必须将计数、WS 连接提升到全局单例作用域统一管理。
+// 四、多标的场景专属边界优化（加分回答）
+// 页面批量加载十只以上标的：管理器内部做消息合并，短时间批量订阅时合并多条 sub 指令，减少上行消息条数；
+// 快速切换路由、频繁创建销毁行情组件：依靠引用计数过滤无效 unsub，不会频繁和网关交互；
+// 多标的高频推送优化：Zustand 更新采用局部覆盖，搭配 Web Worker 解析原始行情报文，不阻塞主线程；
+// 页面完全退出：所有组件清理函数执行完毕，所有标的计数归零，批量发送取消订阅，清空服务端订阅关系，释放服务器内存；
+// 重复渲染防护：Hook 依赖数组仅绑定股票 code，避免 useEffect 重复执行订阅逻辑。
 
 // 不能只单纯把订阅逻辑放到同一个 hooks 里，因为 hooks 内部变量作用域隔离，多个组件调用同一个 hooks 会各自维护独立状态，无法共享引用计数，一个组件销毁就会直接取消标的订阅，导致其他组件丢失行情。
 // 正确实现方式是：封装全局 WS 订阅管理器，用 Map 记录每个股票标的的组件引用计数，再封装统一 useStockQuote 公共 hooks 给所有组件使用。
 // 组件挂载时计数加一，计数从 0 变为 1 才向后端发起订阅；组件销毁计数减一，只有计数归零才执行取消订阅。
 // 多个组件共用同一标的时，单个组件销毁只会减少计数，不会断开订阅，保证其余存活组件正常接收行情，同时统一管理 ws 连接，避免重复订阅、频繁收发消息。
 
+// 一、核心设计亮点
+// 全局单例 + 唯一 WebSocket 连接
+// 多个页面 / 组件共用一条长连接，杜绝多组件多次创建 WS，减轻网关与行情服务器压力。
+// 引用计数机制
+// 一个标的被 N 个组件同时使用时，只向服务端发送一次sub；全部组件销毁才发送 unsub，避免单一组件卸载就取消订阅导致其他组件断行情。
+// 消息队列缓存
+// WS 连接还没建立完成时，订阅指令入队；连接成功自动补发，解决初始化时序问题。
+// 心跳检测 + pong 超时强断
+// 解决网络假死（TCP 连接存活但服务端断流）场景。
+// 指数退避重连
+// 断线不会疯狂重试，延时逐步拉长，保护后端行情网关；重连成功自动批量恢复当前所有活跃标的订阅。
+// 定时器统一清理
+// 防止页面反复挂载卸载造成定时器内存泄漏。
+
 
 type QuoteMsg = {
     type: "sub" | "unsub" | "ping" | "pong";
     code?: string;
-}
-
-type QuoteData = Record<string, any>;
-interface QuoteStore {
-    quoteMap: Record<string, QuoteData>;
-    updateQuote: (code: string, data: QuoteData) => void;
-}
-declare const useQuoteStore: {
-    getState: () => QuoteStore;
 }
 
 class QuoteWsManager {
@@ -104,7 +124,7 @@ class QuoteWsManager {
                 }
                 // 普通行情数据写入Zustand状态库，供各组件按需读取
                 if (data.code) {
-                    useQuoteStore.getState().updateQuote(data.code, data);
+                    useQuoteStore().updateQuote(data.code, data as any);
                 }
             } catch (err) {
                 console.error("ws消息解析失败", ev.data, err);
